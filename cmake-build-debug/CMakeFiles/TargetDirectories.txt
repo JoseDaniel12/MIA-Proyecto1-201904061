@@ -1,0 +1,3 @@
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir

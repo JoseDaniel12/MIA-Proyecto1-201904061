@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.cpp
+iostream
+-
+Command.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.h
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.h
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Scanner.cpp
+string
+-
+Scanner.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Scanner.h
+Command.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.h
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Scanner.h
+string
+-
+Command.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.h
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/main.cpp
+iostream
+-
+string
+-
+Scanner.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Scanner.h
+Command.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.h
+
