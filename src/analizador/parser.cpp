@@ -68,8 +68,13 @@
 /* First part of user prologue.  */
 
     #include "scanner.h" //se importa el header del analisis semantico
+    #include <bits/stdc++.h>
     #include <iostream>
-    #include "../Command.h"
+    #include <string>
+    #include <vector>
+    #include "../comandos/Command.h"
+    #include "../comandos/Mkdisk.h"
+    #include "../comandos/Param.h"
 
     extern int yylineno;
     extern int columna;
@@ -78,6 +83,9 @@
     using namespace std;
 
     Command* resAnalizer = NULL;
+    vector<Param> paramVector;
+    string paramValue;
+    string paramName;
 
     void yyerror(const char* mens) {
     	std::cout << "";
@@ -131,10 +139,10 @@ extern int yydebug;
   enum yytokentype
   {
     DESCONOCIDO = 258,
-    ENTERO = 259,
+    NUMERO = 259,
     CADENA = 260,
-    CARACTER = 261,
-    ID = 262,
+    ID = 261,
+    RUTA = 262,
     EXIT = 263,
     MKDISK = 264,
     RMDISK = 265,
@@ -190,10 +198,7 @@ extern int yydebug;
 union YYSTYPE
 {
 
-	int ival;
-	float fval;
 	char text[400];
-	class Nodo *nodito;
 
 
 };
@@ -528,18 +533,18 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  7
+#define YYFINAL  31
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   9
+#define YYLAST   33
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  55
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  4
+#define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  7
+#define YYNRULES  33
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  13
+#define YYNSTATES  39
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   309
@@ -591,7 +596,10 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    52,    52,    53,    58,    59,    63,    64
+       0,    57,    57,    58,    59,    64,    65,    69,    73,    74,
+      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
+      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
+      98,    99,   100,   101
 };
 #endif
 
@@ -600,16 +608,16 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "DESCONOCIDO", "ENTERO", "CADENA",
-  "CARACTER", "ID", "EXIT", "MKDISK", "RMDISK", "MOUNT", "UNMOUNT",
-  "LOGIN", "MKGRP", "RMGRP", "RMUSR", "CHMOD", "TOUCH", "CAT", "RM",
-  "EDIT", "REN", "MKDIR", "CP", "MV", "FIND", "CHOWN", "CHGRP", "POUSE",
-  "EXEC", "REP", "PARAM_SIZE", "PARAM_F", "PARAM_U", "PARAM_PATH",
-  "PARAM_TYPE", "PARAM_DELETE", "PARAM_NAME", "PARAM_ADD", "PARAM_ID",
-  "PARAM_FS", "PARAM_USER", "PARAM_PWD", "PARAM_USR", "PARAM_GRP",
-  "PARAM_UGO", "PARAM_R", "PARAM_CONT", "PARAM_STDIN", "PARAM_P",
-  "PARAM_DEST", "PARAM_RUTA", "PARAM_ROOT", "IGUAL", "$accept", "command",
-  "param_declarations", "param_declaration", YY_NULLPTR
+  "$end", "error", "$undefined", "DESCONOCIDO", "NUMERO", "CADENA", "ID",
+  "RUTA", "EXIT", "MKDISK", "RMDISK", "MOUNT", "UNMOUNT", "LOGIN", "MKGRP",
+  "RMGRP", "RMUSR", "CHMOD", "TOUCH", "CAT", "RM", "EDIT", "REN", "MKDIR",
+  "CP", "MV", "FIND", "CHOWN", "CHGRP", "POUSE", "EXEC", "REP",
+  "PARAM_SIZE", "PARAM_F", "PARAM_U", "PARAM_PATH", "PARAM_TYPE",
+  "PARAM_DELETE", "PARAM_NAME", "PARAM_ADD", "PARAM_ID", "PARAM_FS",
+  "PARAM_USER", "PARAM_PWD", "PARAM_USR", "PARAM_GRP", "PARAM_UGO",
+  "PARAM_R", "PARAM_CONT", "PARAM_STDIN", "PARAM_P", "PARAM_DEST",
+  "PARAM_RUTA", "PARAM_ROOT", "IGUAL", "$accept", "command",
+  "params_declaration", "param_declaration", "param_name", "param_value", YY_NULLPTR
 };
 #endif
 
@@ -627,7 +635,7 @@ static const yytype_int16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF (-51)
+#define YYPACT_NINF (-33)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -641,8 +649,10 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -7,   -32,     3,   -50,   -49,   -32,   -51,   -51,     2,     0,
-     -51,   -51,   -51
+      22,   -33,   -32,   -32,    27,   -33,   -33,   -33,   -33,   -33,
+     -33,   -33,   -33,   -33,   -33,   -33,   -33,   -33,   -33,   -33,
+     -33,   -33,   -33,   -33,   -33,   -33,   -33,   -32,   -33,   -26,
+     -32,   -33,   -33,    18,   -33,   -33,   -33,   -33,   -33
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -650,20 +660,22 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     3,     0,     0,     0,     2,     5,     1,     0,     0,
-       4,     6,     7
+       0,     4,     0,     0,     0,     8,    10,     9,    11,    12,
+      13,    14,    15,    16,    17,    18,    19,    20,    21,    22,
+      23,    24,    25,    26,    27,    28,    29,     2,     6,     0,
+       3,     1,     5,     0,    30,    33,    32,    31,     7
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -51,   -51,   -51,     4
+     -33,   -33,    30,    -1,   -33,   -33
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     5,     6
+      -1,     4,    27,    28,    29,    38
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -671,32 +683,46 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       3,     4,     1,     7,     8,     9,    11,    12,     0,    10
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      25,    26,    34,    35,    36,    37,    32,    31,    33,    32,
+       1,     2,     3,    30
 };
 
 static const yytype_int8 yycheck[] =
 {
-      32,    33,     9,     0,    54,    54,     4,     7,    -1,     5
+      32,    33,    34,    35,    36,    37,    38,    39,    40,    41,
+      42,    43,    44,    45,    46,    47,    48,    49,    50,    51,
+      52,    53,     4,     5,     6,     7,    27,     0,    54,    30,
+       8,     9,    10,     3
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     9,    56,    32,    33,    57,    58,     0,    54,    54,
-      58,     4,     7
+       0,     8,     9,    10,    56,    32,    33,    34,    35,    36,
+      37,    38,    39,    40,    41,    42,    43,    44,    45,    46,
+      47,    48,    49,    50,    51,    52,    53,    57,    58,    59,
+      57,     0,    58,    54,     4,     5,     6,     7,    60
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    55,    56,    56,    57,    57,    58,    58
+       0,    55,    56,    56,    56,    57,    57,    58,    59,    59,
+      59,    59,    59,    59,    59,    59,    59,    59,    59,    59,
+      59,    59,    59,    59,    59,    59,    59,    59,    59,    59,
+      60,    60,    60,    60
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     2,     1,     2,     1,     3,     3
+       0,     2,     2,     2,     1,     2,     1,     3,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1
 };
 
 
@@ -1487,15 +1513,15 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-                                        { resAnalizer = new Command(); }
+                                        { resAnalizer = new Mkdisk(paramVector); paramVector.clear(); }
     break;
 
   case 3:
-                                        { resAnalizer = new Command(); }
+                                        {}
     break;
 
   case 4:
-                                                {}
+                                        {}
     break;
 
   case 5:
@@ -1503,11 +1529,115 @@ yyreduce:
     break;
 
   case 6:
-                                        {}
+                                                {}
     break;
 
   case 7:
-                                        {}
+                                        { paramVector.push_back(*new Param(paramName, paramValue)); }
+    break;
+
+  case 8:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 9:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 10:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 11:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 12:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 13:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 14:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 15:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 16:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 17:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 18:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 19:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 20:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 21:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 22:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 23:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 24:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 25:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 26:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 27:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 28:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 29:
+                        { paramName = (yyvsp[0].text); }
+    break;
+
+  case 30:
+                { paramValue = (yyvsp[0].text); }
+    break;
+
+  case 31:
+                { paramValue = (yyvsp[0].text); }
+    break;
+
+  case 32:
+                { paramValue = (yyvsp[0].text); }
+    break;
+
+  case 33:
+                { paramValue = (yyvsp[0].text); }
     break;
 
 

@@ -1,0 +1,91 @@
+%{
+    //Compilar_con: flex --header-file=scanner.h -o scanner.cpp scanner.l
+    //Importaciones y codigo:
+    #include <iostream>
+    #include "parser.h"
+
+    int yylex();
+    void yyerror(const char *s);
+    int linea=0;
+    int columna = 0;
+    int anterior = 0;
+
+%}
+%option case-insensitive
+%option noyywrap
+
+
+letra       [a-zA-Z]
+digito      [0-9]
+entero      ("-")?{digito}+
+numero      {entero}("."{digito}+)?
+id          {letra}({letra}|{entero}|"_")*
+password    ({letra}|{entero}|[!$@+*])+
+cadena      "\""[^"\""]*"\""
+extension   "."{id}
+diagonal    "/"
+ruta        ({diagonal}{id})*({diagonal}{id}{extension})
+directorio  ({diagonal}{id})+
+
+
+%%
+"="         { return IGUAL; }
+
+"exit"      { return EXIT; }
+"mkdisk"    { return MKDISK; }
+"rmdisk"    { return RMDISK; }
+"mount"     { return MOUNT; }
+"unmount"   { return UNMOUNT; }
+"login"     { return LOGIN; }
+"mkgrp"     { return MKGRP; }
+"rmgrp"     { return RMGRP; }
+"rmusr"     { return RMUSR; }
+"chmod"     { return CHMOD; }
+"touch"     { return TOUCH; }
+"cat"       { return CAT; }
+"rm"        { return RM; }
+"edit"      { return EDIT; }
+"ren"       { return REN; }
+"mkdir"     { return MKDIR; }
+"cp"        { return CP; }
+"mv"        { return MV; }
+"find"      { return FIND; }
+"chown"     { return CHOWN; }
+"chgrp"     { return CHGRP; }
+"pouse"     { return POUSE; }
+"exec"      { return EXEC; }
+"rep"       { return REP; }
+
+
+"-size"     { strcpy(yylval.text, yytext); return PARAM_SIZE; }
+"-f"        { strcpy(yylval.text, yytext); return PARAM_F; }
+"-u"        { strcpy(yylval.text, yytext); return PARAM_U; }
+"-path"     { strcpy(yylval.text, yytext); return PARAM_PATH; }
+"-type"     { strcpy(yylval.text, yytext); return PARAM_TYPE; }
+"-delete"   { strcpy(yylval.text, yytext); return PARAM_DELETE; }
+"-name"     { strcpy(yylval.text, yytext); return PARAM_NAME; }
+"-add"      { strcpy(yylval.text, yytext); return PARAM_ADD; }
+"-id"       { strcpy(yylval.text, yytext); return PARAM_ID; }
+"-fs"       { strcpy(yylval.text, yytext); return PARAM_FS; }
+"-user"     { strcpy(yylval.text, yytext); return PARAM_USER; }
+"-pwd"      { strcpy(yylval.text, yytext); return PARAM_PWD; }
+"-usr"      { strcpy(yylval.text, yytext); return PARAM_USR; }
+"-grp"      { strcpy(yylval.text, yytext); return PARAM_GRP; }
+"-ugo"      { strcpy(yylval.text, yytext); return PARAM_UGO; }
+"-r"        { strcpy(yylval.text, yytext); return PARAM_R; }
+"-cont"     { strcpy(yylval.text, yytext); return PARAM_CONT; }
+"-stdin"    { strcpy(yylval.text, yytext); return PARAM_STDIN; }
+"-filen"    { strcpy(yylval.text, yytext); return PARAM_STDIN; }
+"-p"        { strcpy(yylval.text, yytext); return PARAM_P; }
+"-dest"     { strcpy(yylval.text, yytext); return PARAM_DEST; }
+"-ruta"     { strcpy(yylval.text, yytext); return PARAM_RUTA; }
+"-root"     { strcpy(yylval.text, yytext); return PARAM_ROOT; }
+
+{numero}    {strcpy(yylval.text, yytext); return NUMERO;}
+{cadena}    {strcpy(yylval.text, yytext); return CADENA;}
+{id}        {strcpy(yylval.text, yytext); return ID;}
+{ruta}      {strcpy(yylval.text, yytext); return RUTA;}
+[[:blank:]] {}
+.           {strcpy(yylval.text, yytext); return DESCONOCIDO; }
+
+%%

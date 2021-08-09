@@ -8,10 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/parser.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/scanner.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/main.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o"
+  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o"
+  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o"
+  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o"
+  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o"
+  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o"
+  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

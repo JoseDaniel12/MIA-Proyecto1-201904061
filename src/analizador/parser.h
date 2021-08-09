@@ -50,10 +50,10 @@ extern int yydebug;
   enum yytokentype
   {
     DESCONOCIDO = 258,
-    ENTERO = 259,
+    NUMERO = 259,
     CADENA = 260,
-    CARACTER = 261,
-    ID = 262,
+    ID = 261,
+    RUTA = 262,
     EXIT = 263,
     MKDISK = 264,
     RMDISK = 265,
@@ -109,10 +109,7 @@ extern int yydebug;
 union YYSTYPE
 {
 
-	int ival;
-	float fval;
 	char text[400];
-	class Nodo *nodito;
 
 
 };

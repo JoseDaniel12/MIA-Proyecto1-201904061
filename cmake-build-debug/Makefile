@@ -129,101 +129,149 @@ MIA-Proyecto1-201904061/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/build
 .PHONY : MIA-Proyecto1-201904061/fast
 
-Command.o: Command.cpp.o
-.PHONY : Command.o
+src/analizador/parser.o: src/analizador/parser.cpp.o
+.PHONY : src/analizador/parser.o
 
 # target to build an object file
-Command.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o
-.PHONY : Command.cpp.o
+src/analizador/parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o
+.PHONY : src/analizador/parser.cpp.o
 
-Command.i: Command.cpp.i
-.PHONY : Command.i
+src/analizador/parser.i: src/analizador/parser.cpp.i
+.PHONY : src/analizador/parser.i
 
 # target to preprocess a source file
-Command.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.i
-.PHONY : Command.cpp.i
+src/analizador/parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.i
+.PHONY : src/analizador/parser.cpp.i
 
-Command.s: Command.cpp.s
-.PHONY : Command.s
+src/analizador/parser.s: src/analizador/parser.cpp.s
+.PHONY : src/analizador/parser.s
 
 # target to generate assembly for a file
-Command.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.s
-.PHONY : Command.cpp.s
+src/analizador/parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.s
+.PHONY : src/analizador/parser.cpp.s
 
-analizador/parser.o: analizador/parser.cpp.o
-.PHONY : analizador/parser.o
+src/analizador/scanner.o: src/analizador/scanner.cpp.o
+.PHONY : src/analizador/scanner.o
 
 # target to build an object file
-analizador/parser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o
-.PHONY : analizador/parser.cpp.o
+src/analizador/scanner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o
+.PHONY : src/analizador/scanner.cpp.o
 
-analizador/parser.i: analizador/parser.cpp.i
-.PHONY : analizador/parser.i
+src/analizador/scanner.i: src/analizador/scanner.cpp.i
+.PHONY : src/analizador/scanner.i
 
 # target to preprocess a source file
-analizador/parser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.i
-.PHONY : analizador/parser.cpp.i
+src/analizador/scanner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.i
+.PHONY : src/analizador/scanner.cpp.i
 
-analizador/parser.s: analizador/parser.cpp.s
-.PHONY : analizador/parser.s
+src/analizador/scanner.s: src/analizador/scanner.cpp.s
+.PHONY : src/analizador/scanner.s
 
 # target to generate assembly for a file
-analizador/parser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.s
-.PHONY : analizador/parser.cpp.s
+src/analizador/scanner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.s
+.PHONY : src/analizador/scanner.cpp.s
 
-analizador/scanner.o: analizador/scanner.cpp.o
-.PHONY : analizador/scanner.o
+src/comandos/Command.o: src/comandos/Command.cpp.o
+.PHONY : src/comandos/Command.o
 
 # target to build an object file
-analizador/scanner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o
-.PHONY : analizador/scanner.cpp.o
+src/comandos/Command.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o
+.PHONY : src/comandos/Command.cpp.o
 
-analizador/scanner.i: analizador/scanner.cpp.i
-.PHONY : analizador/scanner.i
+src/comandos/Command.i: src/comandos/Command.cpp.i
+.PHONY : src/comandos/Command.i
 
 # target to preprocess a source file
-analizador/scanner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.i
-.PHONY : analizador/scanner.cpp.i
+src/comandos/Command.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.i
+.PHONY : src/comandos/Command.cpp.i
 
-analizador/scanner.s: analizador/scanner.cpp.s
-.PHONY : analizador/scanner.s
+src/comandos/Command.s: src/comandos/Command.cpp.s
+.PHONY : src/comandos/Command.s
 
 # target to generate assembly for a file
-analizador/scanner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.s
-.PHONY : analizador/scanner.cpp.s
+src/comandos/Command.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.s
+.PHONY : src/comandos/Command.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/comandos/Mkdisk.o: src/comandos/Mkdisk.cpp.o
+.PHONY : src/comandos/Mkdisk.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/comandos/Mkdisk.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o
+.PHONY : src/comandos/Mkdisk.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/comandos/Mkdisk.i: src/comandos/Mkdisk.cpp.i
+.PHONY : src/comandos/Mkdisk.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/comandos/Mkdisk.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.i
+.PHONY : src/comandos/Mkdisk.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/comandos/Mkdisk.s: src/comandos/Mkdisk.cpp.s
+.PHONY : src/comandos/Mkdisk.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/comandos/Mkdisk.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.s
+.PHONY : src/comandos/Mkdisk.cpp.s
+
+src/comandos/Param.o: src/comandos/Param.cpp.o
+.PHONY : src/comandos/Param.o
+
+# target to build an object file
+src/comandos/Param.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o
+.PHONY : src/comandos/Param.cpp.o
+
+src/comandos/Param.i: src/comandos/Param.cpp.i
+.PHONY : src/comandos/Param.i
+
+# target to preprocess a source file
+src/comandos/Param.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.i
+.PHONY : src/comandos/Param.cpp.i
+
+src/comandos/Param.s: src/comandos/Param.cpp.s
+.PHONY : src/comandos/Param.s
+
+# target to generate assembly for a file
+src/comandos/Param.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s
+.PHONY : src/comandos/Param.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -234,18 +282,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MIA-Proyecto1-201904061"
-	@echo "... Command.o"
-	@echo "... Command.i"
-	@echo "... Command.s"
-	@echo "... analizador/parser.o"
-	@echo "... analizador/parser.i"
-	@echo "... analizador/parser.s"
-	@echo "... analizador/scanner.o"
-	@echo "... analizador/scanner.i"
-	@echo "... analizador/scanner.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/analizador/parser.o"
+	@echo "... src/analizador/parser.i"
+	@echo "... src/analizador/parser.s"
+	@echo "... src/analizador/scanner.o"
+	@echo "... src/analizador/scanner.i"
+	@echo "... src/analizador/scanner.s"
+	@echo "... src/comandos/Command.o"
+	@echo "... src/comandos/Command.i"
+	@echo "... src/comandos/Command.s"
+	@echo "... src/comandos/Mkdisk.o"
+	@echo "... src/comandos/Mkdisk.i"
+	@echo "... src/comandos/Mkdisk.s"
+	@echo "... src/comandos/Param.o"
+	@echo "... src/comandos/Param.i"
+	@echo "... src/comandos/Param.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

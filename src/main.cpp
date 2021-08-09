@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 #include "./analizador/scanner.h"
 #include "./analizador/parser.h"
-#include "Command.h"
+#include "comandos/Command.h"
 
 using namespace std;
 

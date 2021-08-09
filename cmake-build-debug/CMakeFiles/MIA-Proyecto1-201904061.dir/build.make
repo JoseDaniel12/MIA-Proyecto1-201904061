@@ -66,75 +66,105 @@ include CMakeFiles/MIA-Proyecto1-201904061.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
-CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/main.cpp
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/main.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.i
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.i
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/main.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.s
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.s
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o: ../analizador/scanner.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/scanner.cpp
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o: ../src/analizador/scanner.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/scanner.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.i
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.i
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/scanner.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.s
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.s
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o: ../analizador/parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/parser.cpp
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: ../src/analizador/parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/parser.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.i
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.i
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/parser.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.s
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.s
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
-CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o: ../Command.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.cpp
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o: ../src/comandos/Command.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.i
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.i
 
-CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.s
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.s
+
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o: ../src/comandos/Mkdisk.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp
+
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.i
+
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.s
+
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o: CMakeFiles/MIA-Proyecto1-201904061.dir/flags.make
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o: ../src/comandos/Param.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o -c /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp
+
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp > CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.i
+
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp -o CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s
 
 # Object files for target MIA-Proyecto1-201904061
 MIA__Proyecto1__201904061_OBJECTS = \
-"CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o" \
-"CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o" \
-"CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o" \
-"CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o"
+"CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o" \
+"CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o" \
+"CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o" \
+"CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o" \
+"CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o" \
+"CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o"
 
 # External object files for target MIA-Proyecto1-201904061
 MIA__Proyecto1__201904061_EXTERNAL_OBJECTS =
 
-MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/main.cpp.o
-MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/scanner.cpp.o
-MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/analizador/parser.cpp.o
-MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/Command.cpp.o
+MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o
+MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o
+MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o
+MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o
+MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o
+MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o
 MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/build.make
 MIA-Proyecto1-201904061: CMakeFiles/MIA-Proyecto1-201904061.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable MIA-Proyecto1-201904061"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable MIA-Proyecto1-201904061"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MIA-Proyecto1-201904061.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

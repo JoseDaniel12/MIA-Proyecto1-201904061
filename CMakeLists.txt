@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(
         MIA-Proyecto1-201904061
-        main.cpp
-        analizador/scanner.cpp
-        analizador/scanner.h
-        analizador/parser.cpp
-        analizador/parser.h
-        Command.cpp
-        Command.h
-)
+        src/main.cpp
+        src/analizador/scanner.cpp
+        src/analizador/scanner.h
+        src/analizador/parser.cpp
+        src/analizador/parser.h
+        src/comandos/Command.cpp
+        src/comandos/Command.h
+        src/comandos/Mkdisk.cpp src/comandos/Mkdisk.h src/comandos/Param.cpp src/comandos/Param.h src/structs.h)

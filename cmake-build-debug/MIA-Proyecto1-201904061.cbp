@@ -82,25 +82,40 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.cpp">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/Command.h">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/parser.cpp">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/parser.h">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/scanner.cpp">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/analizador/scanner.h">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/main.cpp">
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/CMakeLists.txt">
