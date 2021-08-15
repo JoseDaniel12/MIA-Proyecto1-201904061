@@ -14,12 +14,15 @@ using namespace std;
 
 class Mkdisk: public Command {
 public:
+    vector<string> admisableParams = {"-SIZE", "-F", "-U", "-PATH"};
+    vector<string> obligatoryParams = {"-SIZE", "-PATH"};
+    void run() override;
+
+    Mkdisk(const vector<Param>& parametros);
     int size;
     char f = 'B';
-    char u = 'm';
+    char u = 'M';
     string  path;
-    void run() override;
-    Mkdisk(const vector<Param>& parametros);
 };
 
 

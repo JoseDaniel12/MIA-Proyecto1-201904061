@@ -5,8 +5,11 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: \
  ../src/analizador/parser.cpp \
  ../src/analizador/scanner.h \
  ../src/comandos/Command.h \
+ ../src/comandos/Fdisk.h \
  ../src/comandos/Mkdisk.h \
- ../src/comandos/Param.h
+ ../src/comandos/Param.h \
+ ../src/comandos/Rmdisk.h \
+ ../src/structs.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o: \
  ../src/analizador/parser.h \
  ../src/analizador/scanner.cpp
@@ -14,6 +17,12 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o: \
  ../src/comandos/Command.cpp \
  ../src/comandos/Command.h \
  ../src/comandos/Param.h
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o: \
+ ../src/comandos/Command.h \
+ ../src/comandos/Fdisk.cpp \
+ ../src/comandos/Fdisk.h \
+ ../src/comandos/Param.h \
+ ../src/structs.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o: \
  ../src/comandos/Command.h \
  ../src/comandos/Mkdisk.cpp \
@@ -23,8 +32,12 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o: \
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o: \
  ../src/comandos/Param.cpp \
  ../src/comandos/Param.h
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.o: \
+ ../src/comandos/Command.h \
+ ../src/comandos/Param.h \
+ ../src/comandos/Rmdisk.cpp \
+ ../src/comandos/Rmdisk.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o: \
- ../src/analizador/parser.h \
  ../src/analizador/scanner.h \
  ../src/comandos/Command.h \
  ../src/comandos/Param.h \

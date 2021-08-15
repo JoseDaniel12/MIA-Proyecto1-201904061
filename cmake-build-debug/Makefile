@@ -201,6 +201,30 @@ src/comandos/Command.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.s
 .PHONY : src/comandos/Command.cpp.s
 
+src/comandos/Fdisk.o: src/comandos/Fdisk.cpp.o
+.PHONY : src/comandos/Fdisk.o
+
+# target to build an object file
+src/comandos/Fdisk.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o
+.PHONY : src/comandos/Fdisk.cpp.o
+
+src/comandos/Fdisk.i: src/comandos/Fdisk.cpp.i
+.PHONY : src/comandos/Fdisk.i
+
+# target to preprocess a source file
+src/comandos/Fdisk.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.i
+.PHONY : src/comandos/Fdisk.cpp.i
+
+src/comandos/Fdisk.s: src/comandos/Fdisk.cpp.s
+.PHONY : src/comandos/Fdisk.s
+
+# target to generate assembly for a file
+src/comandos/Fdisk.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.s
+.PHONY : src/comandos/Fdisk.cpp.s
+
 src/comandos/Mkdisk.o: src/comandos/Mkdisk.cpp.o
 .PHONY : src/comandos/Mkdisk.o
 
@@ -249,6 +273,30 @@ src/comandos/Param.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s
 .PHONY : src/comandos/Param.cpp.s
 
+src/comandos/Rmdisk.o: src/comandos/Rmdisk.cpp.o
+.PHONY : src/comandos/Rmdisk.o
+
+# target to build an object file
+src/comandos/Rmdisk.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.o
+.PHONY : src/comandos/Rmdisk.cpp.o
+
+src/comandos/Rmdisk.i: src/comandos/Rmdisk.cpp.i
+.PHONY : src/comandos/Rmdisk.i
+
+# target to preprocess a source file
+src/comandos/Rmdisk.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.i
+.PHONY : src/comandos/Rmdisk.cpp.i
+
+src/comandos/Rmdisk.s: src/comandos/Rmdisk.cpp.s
+.PHONY : src/comandos/Rmdisk.s
+
+# target to generate assembly for a file
+src/comandos/Rmdisk.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.s
+.PHONY : src/comandos/Rmdisk.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -291,12 +339,18 @@ help:
 	@echo "... src/comandos/Command.o"
 	@echo "... src/comandos/Command.i"
 	@echo "... src/comandos/Command.s"
+	@echo "... src/comandos/Fdisk.o"
+	@echo "... src/comandos/Fdisk.i"
+	@echo "... src/comandos/Fdisk.s"
 	@echo "... src/comandos/Mkdisk.o"
 	@echo "... src/comandos/Mkdisk.i"
 	@echo "... src/comandos/Mkdisk.s"
 	@echo "... src/comandos/Param.o"
 	@echo "... src/comandos/Param.i"
 	@echo "... src/comandos/Param.s"
+	@echo "... src/comandos/Rmdisk.o"
+	@echo "... src/comandos/Rmdisk.i"
+	@echo "... src/comandos/Rmdisk.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,9 +1,7 @@
 #include <iostream>
-#include <FlexLexer.h>
 #include <string>
 #include <bits/stdc++.h>
 #include "./analizador/scanner.h"
-#include "./analizador/parser.h"
 #include "comandos/Command.h"
 
 using namespace std;
@@ -20,7 +18,14 @@ int main() {
         strcpy(entradaCharArray, entrada.c_str());
         YY_BUFFER_STATE buffer = yy_scan_string(entradaCharArray);
         if (yyparse() == 0) {
+            int status;
+            cout << "_____________________________________" << resAnalizer->commandName << "_____________________________________" << endl;
             resAnalizer->run();
+            cout << "__________________________________________________________________________";
+            for (int i = 0; i < resAnalizer->commandName.size(); i++) {
+                cout << "_";
+            }
+            cout << "\n";
         } else {
             cout << "ERROR: Comando no valido" << endl;
         }

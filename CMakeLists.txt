@@ -12,4 +12,13 @@ add_executable(
         src/analizador/parser.h
         src/comandos/Command.cpp
         src/comandos/Command.h
-        src/comandos/Mkdisk.cpp src/comandos/Mkdisk.h src/comandos/Param.cpp src/comandos/Param.h src/structs.h)
+        src/comandos/Mkdisk.cpp
+        src/comandos/Mkdisk.h
+        src/comandos/Param.cpp
+        src/comandos/Param.h
+        src/structs.h
+        src/comandos/Rmdisk.cpp
+        src/comandos/Rmdisk.h
+        src/comandos/Fdisk.cpp
+        src/comandos/Fdisk.h
+)

@@ -100,6 +100,12 @@
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
@@ -110,6 +116,12 @@
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rmdisk.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rmdisk.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp">
