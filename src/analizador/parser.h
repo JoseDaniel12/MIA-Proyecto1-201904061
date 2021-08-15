@@ -57,50 +57,51 @@ extern int yydebug;
     EXIT = 263,
     MKDISK = 264,
     RMDISK = 265,
-    MOUNT = 266,
-    UNMOUNT = 267,
-    LOGIN = 268,
-    MKGRP = 269,
-    RMGRP = 270,
-    RMUSR = 271,
-    CHMOD = 272,
-    TOUCH = 273,
-    CAT = 274,
-    RM = 275,
-    EDIT = 276,
-    REN = 277,
-    MKDIR = 278,
-    CP = 279,
-    MV = 280,
-    FIND = 281,
-    CHOWN = 282,
-    CHGRP = 283,
-    POUSE = 284,
-    EXEC = 285,
-    REP = 286,
-    PARAM_SIZE = 287,
-    PARAM_F = 288,
-    PARAM_U = 289,
-    PARAM_PATH = 290,
-    PARAM_TYPE = 291,
-    PARAM_DELETE = 292,
-    PARAM_NAME = 293,
-    PARAM_ADD = 294,
-    PARAM_ID = 295,
-    PARAM_FS = 296,
-    PARAM_USER = 297,
-    PARAM_PWD = 298,
-    PARAM_USR = 299,
-    PARAM_GRP = 300,
-    PARAM_UGO = 301,
-    PARAM_R = 302,
-    PARAM_CONT = 303,
-    PARAM_STDIN = 304,
-    PARAM_P = 305,
-    PARAM_DEST = 306,
-    PARAM_RUTA = 307,
-    PARAM_ROOT = 308,
-    IGUAL = 309
+    FDISK = 266,
+    MOUNT = 267,
+    UNMOUNT = 268,
+    LOGIN = 269,
+    MKGRP = 270,
+    RMGRP = 271,
+    RMUSR = 272,
+    CHMOD = 273,
+    TOUCH = 274,
+    CAT = 275,
+    RM = 276,
+    EDIT = 277,
+    REN = 278,
+    MKDIR = 279,
+    CP = 280,
+    MV = 281,
+    FIND = 282,
+    CHOWN = 283,
+    CHGRP = 284,
+    POUSE = 285,
+    EXEC = 286,
+    REP = 287,
+    PARAM_SIZE = 288,
+    PARAM_F = 289,
+    PARAM_U = 290,
+    PARAM_PATH = 291,
+    PARAM_TYPE = 292,
+    PARAM_DELETE = 293,
+    PARAM_NAME = 294,
+    PARAM_ADD = 295,
+    PARAM_ID = 296,
+    PARAM_FS = 297,
+    PARAM_USER = 298,
+    PARAM_PWD = 299,
+    PARAM_USR = 300,
+    PARAM_GRP = 301,
+    PARAM_UGO = 302,
+    PARAM_R = 303,
+    PARAM_CONT = 304,
+    PARAM_STDIN = 305,
+    PARAM_P = 306,
+    PARAM_DEST = 307,
+    PARAM_RUTA = 308,
+    PARAM_ROOT = 309,
+    IGUAL = 310
   };
 #endif
 
@@ -118,23 +119,9 @@ typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
-/* Location type.  */
-#if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
-typedef struct YYLTYPE YYLTYPE;
-struct YYLTYPE
-{
-  int first_line;
-  int first_column;
-  int last_line;
-  int last_column;
-};
-# define YYLTYPE_IS_DECLARED 1
-# define YYLTYPE_IS_TRIVIAL 1
-#endif
-
 
 extern YYSTYPE yylval;
-extern YYLTYPE yylloc;
+
 int yyparse (void);
 
 #endif /* !YY_YY_PARSER_H_INCLUDED  */

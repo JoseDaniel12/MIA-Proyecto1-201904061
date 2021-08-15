@@ -8,6 +8,8 @@
     #include <vector>
     #include "../comandos/Command.h"
     #include "../comandos/Mkdisk.h"
+    #include "../comandos/Rmdisk.h"
+    #include "../comandos/Fdisk.h"
     #include "../comandos/Param.h"
 
     extern int yylineno;
@@ -24,12 +26,15 @@
     void yyerror(const char* mens) {
     	std::cout << "";
     }
-%}
 
-//Salidas del parser:
-%defines "parser.h"
-%output "parser.cpp"
-%locations
+    string toUpper(string s) {
+    	string res = "";
+	for (int i = 0; i < s.length(); i++) {
+		res += toupper(s[i]);
+	}
+	return res;
+    }
+%}
 
 //Tipos de tokens:
 %union {
@@ -38,8 +43,8 @@
 
 %token<text> DESCONOCIDO NUMERO CADENA ID RUTA
 
-%token<text> EXIT MKDISK RMDISK MOUNT UNMOUNT LOGIN MKGRP RMGRP RMUSR CHMOD TOUCH CAT RM EDIT REN MKDIR CP MV FIND CHOWN
-%token<text> CHGRP POUSE EXEC REP
+%token<text> EXIT MKDISK RMDISK FDISK MOUNT UNMOUNT LOGIN MKGRP RMGRP RMUSR CHMOD TOUCH CAT
+%token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP
 
 %token<text> PARAM_SIZE PARAM_F PARAM_U PARAM_PATH PARAM_TYPE PARAM_DELETE PARAM_NAME PARAM_ADD PARAM_ID PARAM_FS
 %token<text> PARAM_USER PARAM_PWD PARAM_USR PARAM_GRP PARAM_UGO PARAM_R PARAM_CONT PARAM_STDIN PARAM_P
@@ -55,7 +60,8 @@
 
 command:
 	MKDISK params_declaration	{ resAnalizer = new Mkdisk(paramVector); paramVector.clear(); }
-	|RMDISK params_declaration	{}
+	|RMDISK params_declaration	{ resAnalizer = new Rmdisk(paramVector); paramVector.clear(); }
+	|FDISK params_declaration	{ resAnalizer = new Fdisk(paramVector); paramVector.clear(); }
 	|EXIT				{}
 
 ;
@@ -66,13 +72,13 @@ params_declaration:
 ;
 
 param_declaration:
-	param_name IGUAL param_value	{ paramVector.push_back(*new Param(paramName, paramValue)); }
+	param_name IGUAL param_value	{ paramVector.push_back(*new Param(toUpper(paramName), paramValue)); }
 ;
 
 param_name:
 	PARAM_SIZE  	{ paramName = $1; }
-	|PARAM_U	{ paramName = $1; }
-	|PARAM_F	{ paramName = $1; }
+	|PARAM_U	{ paramName = toUpper($1); }
+	|PARAM_F	{ paramName = toUpper($1); }
 	|PARAM_PATH	{ paramName = $1; }
 	|PARAM_TYPE	{ paramName = $1; }
 	|PARAM_DELETE	{ paramName = $1; }

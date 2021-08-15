@@ -34,6 +34,7 @@ directorio  ({diagonal}{id})+
 "exit"      { return EXIT; }
 "mkdisk"    { return MKDISK; }
 "rmdisk"    { return RMDISK; }
+"fdisk"     { return FDISK; }
 "mount"     { return MOUNT; }
 "unmount"   { return UNMOUNT; }
 "login"     { return LOGIN; }
