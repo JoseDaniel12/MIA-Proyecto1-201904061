@@ -77,8 +77,8 @@ param_declaration:
 
 param_name:
 	PARAM_SIZE  	{ paramName = $1; }
-	|PARAM_U	{ paramName = toUpper($1); }
-	|PARAM_F	{ paramName = toUpper($1); }
+	|PARAM_U	{ paramName = $1; }
+	|PARAM_F	{ paramName = $1; }
 	|PARAM_PATH	{ paramName = $1; }
 	|PARAM_TYPE	{ paramName = $1; }
 	|PARAM_DELETE	{ paramName = $1; }

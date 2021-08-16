@@ -17,10 +17,12 @@ public:
 
     Fdisk(const vector<Param>& parametros);
     static vector<PartitionHole> getNotLogicalHoles(MBR mbr);
+    static vector<PartitionHole> getLogicalHoles(vector<EBR> ebrs, int startPartition, int endPartition);
     [[nodiscard]] int getSartPartition(vector<PartitionHole> holes, char diskFit) const;
     void createNonLogicalPartition();
     void createLogicalPartition();
     static void orderPartitions(Partition parts[4]);
+    static vector<EBR> orderEbrs(vector<EBR> ebrs);
     void deletePartition();
     bool create = false;
     int size;

@@ -74,7 +74,7 @@ void Mkdisk::run() {
     for (auto & i : mbr.mbr_partition) {
         i.part_status = '0';
         i.part_size = 0;
-        i.part_fit = 'f';
+        i.part_fit = 'F';
         i.part_start = tam;
         strcpy(i.part_name,"");
     }

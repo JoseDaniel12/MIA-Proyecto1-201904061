@@ -64,6 +64,109 @@ void Fdisk::run() {
 
 }
 
+void Fdisk::createLogicalPartition() {
+    //Verifica si el disco existe y de ser asi obtiene el primer EBR
+    int sizeBytes =  convertToBytes(size, u);
+    MBR mbr;
+    FILE* file = fopen(path.c_str(), "rb+");
+    if (file == nullptr) {
+        cout << "Error: No existe el disco." << endl;
+        return;
+    }
+    fread(&mbr, sizeof(MBR), 1, file);
+
+    //Obtener una lista con todos los EBR
+    Partition extendedPartition;
+    vector<EBR> ebrs;
+    EBR ebr;
+    for (auto & partition : mbr.mbr_partition) {
+        if (partition.part_status == '1' && partition.part_type == 'E') {
+            extendedPartition = partition;
+            fseek(file, partition.part_start, SEEK_SET);
+            fread(&ebr, sizeof(EBR), 1, file);
+            ebrs.push_back(ebr);
+            break;
+        }
+    }
+
+    while (ebr.part_next != -1) {
+        EBR nextEbr;
+        fseek(file, ebr.part_next, SEEK_SET);
+        fread(&nextEbr, sizeof(EBR), 1, file);
+        ebr = nextEbr;
+        ebrs.push_back(ebr);
+    }
+
+    //Verificar que hay espacio
+    int espacioUtilizado = 0;
+    for (auto & e: ebrs) {
+        if (e.part_status == '1') {
+            espacioUtilizado += e.part_size;
+        }
+    }
+    if (extendedPartition.part_size < espacioUtilizado) {
+        cout << "Error: No hay espacio suficinete en la particn extendida." << endl;
+        return;
+    }
+
+    //Se llenan y escriben los datos del embr para la pariticon logica
+    int startByte = getSartPartition(getLogicalHoles(ebrs, extendedPartition.part_start, extendedPartition.part_start + extendedPartition.part_size), extendedPartition.part_fit);
+    if (startByte == -1) {
+        cout << "Error: Vacios muy pequeños para crear la particion logica." << endl;
+        return;
+    }
+    EBR newEbr;
+    newEbr.part_status  = '1';
+    newEbr.part_fit = f;
+    newEbr.part_start = startByte;
+    newEbr.part_size = sizeBytes;
+    strcpy(newEbr.part_name, name.c_str());
+    if (ebrs.size() == 1 && ebrs[0].part_status == '0') {
+        ebrs[0] = newEbr;
+    } else {
+        ebrs.push_back(newEbr);
+    }
+    ebrs = orderEbrs(ebrs);
+    for (int i = 0; i < (ebrs.size() - 1); i++) {
+        ebrs[i].part_next = ebrs[i + 1].part_start;
+    }
+    if (!ebrs.empty()) {
+        ebrs[ebrs.size() - 1].part_next = -1;
+    }
+
+    for (auto & e : ebrs) {
+        fseek(file, e.part_start, SEEK_SET);
+        fwrite(&e, sizeof(EBR), 1, file);
+    }
+    fclose(file);
+
+    for (auto & e : ebrs) {
+        if (e.part_start == newEbr.part_start) {
+            cout << "Particion logica creada con exito, su ebr tiene las propiedades:" << endl;
+            cout << "Part_status: " << e.part_status << endl;
+            cout << "Part_fit: " << e.part_fit << endl;
+            cout << "Part_start: " << e.part_start << endl;
+            cout << "Part_size: " << e.part_size << endl;
+            cout << "Part_next: " << e.part_next << endl;
+            cout << "Part_name: " << e.part_name << endl;
+            break;
+        }
+    }
+}
+
+vector<EBR> Fdisk::orderEbrs(vector<EBR> ebrs) {
+    for (int i = 0; i < ebrs.size() - 1; i++) {
+        for (int j = 0; j < ebrs.size() - 1 - j; j++) {
+            if (ebrs[j].part_start > ebrs[j + 1].part_start) {
+                EBR temp =  ebrs[j];
+                ebrs[j] = ebrs[j + 1];
+                ebrs[j + 1] = temp;
+            }
+        }
+    }
+    return ebrs;
+}
+
 void Fdisk::createNonLogicalPartition() {
     //Verifica si el disco existe y de ser asi obtiene el mbr
     int sizeBytes =  convertToBytes(size, u);
@@ -112,7 +215,6 @@ void Fdisk::createNonLogicalPartition() {
         return;
     }
 
-
     //Verifica que el nombre no exista en la otras particiones
     for (auto & partition : mbr.mbr_partition) {
         if (partition.part_name == name) {
@@ -144,6 +246,17 @@ void Fdisk::createNonLogicalPartition() {
     strcpy(particionSeleccionada->part_name, name.c_str());
     orderPartitions(mbr.mbr_partition);
 
+    //Se crea el primer ebr en caso de ser particion extendida
+    if (type == 'E') {
+        EBR ebr;
+        ebr.part_status = '0';
+        ebr.part_start = startByte;
+        ebr.part_size = particionSeleccionada->part_size;
+        ebr.part_next = -1;
+        fseek(file, startByte, SEEK_SET);
+        fwrite(&ebr, sizeof(ebr), 1, file);
+    }
+
     //Se guarda la nueva informacion
     fseek(file, 0, SEEK_SET);
     fwrite(&mbr, sizeof(MBR), 1, file);
@@ -159,8 +272,6 @@ void Fdisk::createNonLogicalPartition() {
 
 }
 
-void Fdisk::createLogicalPartition() {}
-
 void Fdisk::orderPartitions(Partition partitions[4]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3 - j; j++) {
@@ -171,6 +282,39 @@ void Fdisk::orderPartitions(Partition partitions[4]) {
             }
         }
     }
+}
+
+vector<PartitionHole> Fdisk::getLogicalHoles(vector<EBR> ebrs, int startPartition, int endPartition) {
+    vector<PartitionHole> holes;
+    if (ebrs.empty()) {
+        return holes;
+    } else if (ebrs.size() == 1 && ebrs[0].part_status == '0') {
+        PartitionHole hole;
+        hole.start =  startPartition;
+        hole.size = endPartition;
+        holes.push_back(hole);
+        return holes;
+    }
+    for (int i = 0; i < ebrs.size(); i++) {
+        if (ebrs[i].part_next != -1 && (ebrs[i].part_start + ebrs[i].part_size) != ebrs[i].part_next) {
+            PartitionHole hole;
+            hole.start = ebrs[i].part_start + ebrs[i].part_size;
+            hole.size = ebrs[i].part_next - hole.start;
+            holes.push_back(hole);
+        }
+        if (i == 0 && ebrs[0].part_start != startPartition) {
+            PartitionHole hole;
+            hole.start = startPartition;
+            hole.size = ebrs[0].part_start - startPartition;
+            holes.push_back(hole);
+        } else if (i == ebrs.size() - 1 && ebrs[i].part_start + ebrs[i].part_size != endPartition) {
+            PartitionHole hole;
+            hole.start = ebrs[i].part_start + ebrs[i].part_size;
+            hole.size = endPartition - hole.start;
+            holes.push_back(hole);
+        }
+    }
+    return holes;
 }
 
 vector<PartitionHole> Fdisk::getNotLogicalHoles(MBR mbr) {
@@ -198,16 +342,14 @@ vector<PartitionHole> Fdisk::getNotLogicalHoles(MBR mbr) {
         if (mbr.mbr_partition[i].part_status == '1') {
             revisado++;
             int nextIndex = i + 1;
-            while (mbr.mbr_partition[nextIndex].part_status == '1' && nextIndex < 4) {
-                if (mbr.mbr_partition[nextIndex].part_start - (mbr.mbr_partition[i].part_start + mbr.mbr_partition[i].part_size) != 0) {
-                    PartitionHole hole;
-                    hole.start = mbr.mbr_partition[i].part_start + mbr.mbr_partition[i].part_size;
-                    hole.size = mbr.mbr_partition[nextIndex].part_start - hole.start;
-                    holes.push_back(hole);
-                } else {
-                    break;
-                }
+            while (mbr.mbr_partition[nextIndex].part_status != '1' && nextIndex < 4) {
                 nextIndex++;
+            }
+            if (nextIndex < 4 && mbr.mbr_partition[nextIndex].part_start - (mbr.mbr_partition[i].part_start + mbr.mbr_partition[i].part_size) != 0) {
+                PartitionHole hole;
+                hole.start = mbr.mbr_partition[i].part_start + mbr.mbr_partition[i].part_size;
+                hole.size = mbr.mbr_partition[nextIndex].part_start - hole.start;
+                holes.push_back(hole);
             }
             if (revisado == 1 && mbr.mbr_partition[revisado - 1].part_start != start) {
                 PartitionHole hole;
