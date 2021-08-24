@@ -14,23 +14,21 @@ string
 Param.h
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
 
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp
-cstring
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
+string
 -
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.cpp
 iostream
 -
-Fdisk.h
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.h
+Umount.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.h
 
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.h
 Command.h
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
 ../structs.h
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h
-
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
-string
--
 
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h
 time.h

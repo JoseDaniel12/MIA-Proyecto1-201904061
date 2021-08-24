@@ -15,11 +15,18 @@ Fdisk::Fdisk(const vector<Param> &parametros): Command(parametros) {
         runnable = false;
         return;
     }
-    if (getParamPos(parametros, "-SIZE") == -1 && getParamPos(parametros, "-DELETE") == -1) {
+    if (hasParams(parametros, {"-ADD", "-DELETE"})) {
         runnable = false;
         return;
     }
-    if (getParamPos(parametros, "-SIZE") != -1 && getParamPos(parametros, "-DELETE") != -1) {
+
+    if (hasParams(parametros, {"-DELETE"})) {
+        isDelete = true;
+    } else if (hasParams(parametros, {"-ADD"})) {
+        isAdd = true;
+    } else if (hasParams(parametros, {"-SIZE"})) {
+        isCreate = true;
+    } else {
         runnable = false;
         return;
     }
@@ -27,23 +34,23 @@ Fdisk::Fdisk(const vector<Param> &parametros): Command(parametros) {
     for (const Param& p: parametros) {
         if (p.name == "-SIZE") {
             size = stoi(p.value);
-            create = true;
         } else if (p.name == "-U") {
-            u = p.value.c_str()[0];
+            u = toUpper(p.value.c_str())[0];
         } else if (p.name == "-PATH") {
             path = rootPath + quitarComillas(p.value);
         } else if (p.name == "-TYPE") {
-            type = p.value.c_str()[0];
+            type = toUpper(p.value.c_str())[0];
         }  else if (p.name == "-F") {
-            f = p.value.c_str()[0];
+            f = toUpper(p.value.c_str())[0];
         } else if (p.name == "-DELETE") {
-            pdelete = p.value;
+            pdelete = toUpper(p.value);
         } else if (p.name == "-NAME") {
             name  = p.value;
         } else if (p.name == "-ADD") {
             add = stoi(p.value);
         }
     }
+
 
 }
 
@@ -52,14 +59,16 @@ void Fdisk::run() {
         return;
     }
 
-    if (create) {
+    if (isCreate) {
         if (type == 'P' || type == 'E') {
             createNonLogicalPartition();
         } else if (type == 'L') {
             createLogicalPartition();
         }
-    } else {
-
+    } else if (isDelete) {
+        deletePartition();
+    } else if (isAdd) {
+        changeSpacePartition();
     }
 
 }
@@ -88,7 +97,6 @@ void Fdisk::createLogicalPartition() {
             break;
         }
     }
-
     while (ebr.part_next != -1) {
         EBR nextEbr;
         fseek(file, ebr.part_next, SEEK_SET);
@@ -121,7 +129,7 @@ void Fdisk::createLogicalPartition() {
     newEbr.part_start = startByte;
     newEbr.part_size = sizeBytes;
     strcpy(newEbr.part_name, name.c_str());
-    if (ebrs.size() == 1 && ebrs[0].part_status == '0') {
+    if (ebrs[0].part_status == '0') {
         ebrs[0] = newEbr;
     } else {
         ebrs.push_back(newEbr);
@@ -156,7 +164,7 @@ void Fdisk::createLogicalPartition() {
 
 vector<EBR> Fdisk::orderEbrs(vector<EBR> ebrs) {
     for (int i = 0; i < ebrs.size() - 1; i++) {
-        for (int j = 0; j < ebrs.size() - 1 - j; j++) {
+        for (int j = 0; j < ebrs.size() - 1 - i; j++) {
             if (ebrs[j].part_start > ebrs[j + 1].part_start) {
                 EBR temp =  ebrs[j];
                 ebrs[j] = ebrs[j + 1];
@@ -274,8 +282,8 @@ void Fdisk::createNonLogicalPartition() {
 
 void Fdisk::orderPartitions(Partition partitions[4]) {
     for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3 - j; j++) {
-            if (partitions[j].part_size > partitions[j + 1].part_size || partitions[j].part_status == '0') {
+        for (int j = 0; j < 3 - i; j++) {
+            if (partitions[j].part_start > partitions[j + 1].part_start || partitions[j].part_status == '0') {
                 Partition temp =  partitions[j];
                 partitions[j] = partitions[j + 1];
                 partitions[j + 1] = temp;
@@ -302,10 +310,11 @@ vector<PartitionHole> Fdisk::getLogicalHoles(vector<EBR> ebrs, int startPartitio
             hole.size = ebrs[i].part_next - hole.start;
             holes.push_back(hole);
         }
-        if (i == 0 && ebrs[0].part_start != startPartition) {
+
+        if (i == 0 && ebrs.size() > 1 && ebrs[0].part_status == '0' && ebrs[0].part_next != -1) {
             PartitionHole hole;
             hole.start = startPartition;
-            hole.size = ebrs[0].part_start - startPartition;
+            hole.size = ebrs[0].part_next - hole.start;
             holes.push_back(hole);
         } else if (i == ebrs.size() - 1 && ebrs[i].part_start + ebrs[i].part_size != endPartition) {
             PartitionHole hole;
@@ -385,4 +394,196 @@ int Fdisk::getSartPartition(vector<PartitionHole> holes, char diskFit) const {
     }
     cout << "Error: No hay vacios con el espacio nesesario para crear la particion." << endl;
     return -1;
+}
+
+void Fdisk::deletePartition() const {
+    //Verifica si el disco existe y de ser asi obtiene el mbr
+    MBR mbr;
+    FILE* file = fopen(path.c_str(), "rb+");
+    if (file == nullptr) {
+        cout << "Error: No existe el disco." << endl;
+        return;
+    }
+    fseek(file, 0, SEEK_SET);
+    fread(&mbr, sizeof(MBR), 1, file);
+
+    //Elimina si es una particion pirmaria o extendia
+    for (auto & partition : mbr.mbr_partition) {
+        if (partition.part_name == name) {
+            cout << "Se elimino particion con los siguientes datos: " << endl;
+            cout << "Part_status: " << partition.part_status << endl;
+            cout << "Part_type: " << partition.part_type << endl;
+            cout << "Part_fit: " << partition.part_fit << endl;
+            cout << "Part_start: " << partition.part_start << endl;
+            cout << "Part_size: " << partition.part_size << endl;
+            cout << "Part_name: " << partition.part_name << endl;
+            mbr.mbr_partition->part_status = '0';
+            if (pdelete == "FULL") {
+                char endChar ='\0';
+                fseek(file, partition.part_start, SEEK_SET);
+                fwrite(&endChar, endChar, partition.part_size, file);
+            }
+
+            return;
+        }
+    }
+
+    //Elimina particion en caso de ser logica
+    Partition* extendedPartition = nullptr;
+    vector<EBR> ebrs;
+    for (auto & partition : mbr.mbr_partition) {
+        if (partition.part_status == '1' && partition.part_type == 'E') {
+            extendedPartition = &partition;
+            EBR ebr;
+            fseek(file, partition.part_start, SEEK_SET);
+            fread(&ebr, sizeof(EBR), 1, file);
+            ebrs.push_back(ebr);
+            while (ebr.part_next != -1) {
+                EBR nextEbr;
+                fseek(file, ebr.part_next, SEEK_SET);
+                fread(&nextEbr, sizeof(EBR), 1, file);
+                ebrs.push_back(nextEbr);
+                ebr = nextEbr;
+            }
+        }
+    }
+
+    if (extendedPartition == nullptr) {
+        return;
+    } else {
+        int indicePorBorrar = -1;
+        for (int i = 0; i < ebrs.size(); i++) {
+            if (ebrs[i].part_name == name) {
+                indicePorBorrar = i;
+            }
+        }
+        if (indicePorBorrar == -1) {
+            return;
+        } else {
+            if (pdelete == "FULL") {
+                char endChar ='\0';
+                if (indicePorBorrar != 0) {
+                    fseek(file, ebrs[indicePorBorrar].part_start, SEEK_SET);
+                    fwrite(&endChar, endChar, ebrs[indicePorBorrar].part_size, file);
+                } else {
+                    fseek(file, ebrs[indicePorBorrar].part_start + (int)sizeof(EBR), SEEK_SET);
+                    fwrite(&endChar, endChar, ebrs[indicePorBorrar].part_start  + ebrs[indicePorBorrar].part_size - sizeof(EBR), file);
+                }
+
+            }
+            cout << "Se elimino particion logica con el sigueinte EBR:" << endl;
+            cout << "Part_sartus: " << ebrs[indicePorBorrar].part_status << endl;
+            cout << "Part_fit: " << ebrs[indicePorBorrar].part_fit << endl;
+            cout << "Part_start: " << ebrs[indicePorBorrar].part_start << endl;
+            cout << "Part_size: " << ebrs[indicePorBorrar].part_size << endl;
+            cout << "Part_next: " << ebrs[indicePorBorrar].part_next << endl;
+            cout << "Part_name: " << ebrs[indicePorBorrar].part_name << endl;
+            ebrs[indicePorBorrar].part_status  = '0';
+            if (ebrs.size() == 1) {
+                ebrs[indicePorBorrar].part_start = extendedPartition->part_start;
+                ebrs[indicePorBorrar].part_size = extendedPartition->part_size;
+            } else {
+                if (indicePorBorrar != 0) {
+                    ebrs[indicePorBorrar - 1].part_next = ebrs[indicePorBorrar].part_next;
+                    ebrs.erase(ebrs.begin() + indicePorBorrar);
+                }
+            }
+        }
+        for (auto & e :ebrs) {
+            fseek(file, e.part_start, SEEK_SET);
+            fwrite(&e, sizeof(EBR), 1, file);
+        }
+    }
+
+    fclose(file);
+}
+
+void Fdisk::changeSpacePartition() const {
+    //Verifica si el disco existe y de ser asi obtiene el mbr
+    MBR mbr;
+    FILE* file = fopen(path.c_str(), "rb+");
+    if (file == nullptr) {
+        cout << "Error: No existe el disco." << endl;
+        return;
+    }
+    fseek(file, 0, SEEK_SET);
+    fread(&mbr, sizeof(MBR), 1, file);
+
+
+    //Se modifica espacio si es una particion pirmaria o extendia
+    vector<PartitionHole> nonLogicalHoles = getNotLogicalHoles(mbr);
+    for (auto & p : mbr.mbr_partition) {
+        if (p.part_name == name) {
+            if (add >= 0) {
+                for (auto & h : nonLogicalHoles) {
+                    if (p.part_start + p.part_size == h.start && add <= h.size) {
+                        p.part_size += add;
+                    }
+                }
+            } else {
+                if (p.part_size + add >= 0) {
+                    p.part_size += add;
+                }
+            }
+            fseek(file, 0, SEEK_SET);
+            fwrite(&mbr, sizeof(mbr), 1, file);
+            cout << "Se cambio el tamaño de la particion \'" << name << "\' ahora sus datos son: " << endl;
+            cout << "Part_sartus: " << p.part_status << endl;
+            cout << "Part_type: " << p.part_type << endl;
+            cout << "Part_fit: " << p.part_fit << endl;
+            cout << "Part_start: " << p.part_start << endl;
+            cout << "Part_size: " << p.part_size << endl;
+            cout << "Part_name: " << p.part_name << endl;
+            return;
+        }
+    }
+
+    //Se modifica espacio si es una particion logica
+    Partition* extendedPartition = nullptr;
+    vector<EBR> ebrs;
+    for (auto & partition : mbr.mbr_partition) {
+        if (partition.part_status == '1' && partition.part_type == 'E') {
+            extendedPartition = &partition;
+            EBR ebr;
+            fseek(file, partition.part_start, SEEK_SET);
+            fread(&ebr, sizeof(EBR), 1, file);
+            ebrs.push_back(ebr);
+            while (ebr.part_next != -1) {
+                EBR nextEbr;
+                fseek(file, ebr.part_next, SEEK_SET);
+                fread(&nextEbr, sizeof(EBR), 1, file);
+                ebrs.push_back(nextEbr);
+                ebr = nextEbr;
+            }
+        }
+    }
+
+    if (!ebrs.empty()) {
+        vector<PartitionHole> logicalHoles = getLogicalHoles(ebrs, extendedPartition->part_start, extendedPartition->part_start + extendedPartition->part_size);
+        for (auto & e : ebrs) {
+            if (e.part_name == name) {
+                if (add >= 0) {
+                    for (auto & h : logicalHoles) {
+                        if (e.part_start + e.part_size == h.start && add <= h.size) {
+                            e.part_size += add;
+                        }
+                    }
+                } else {
+                    if (e.part_size + add >= 0) {
+                        e.part_size += add;
+                    }
+                }
+                fseek(file, e.part_start, SEEK_SET);
+                fwrite(&e, sizeof(e), 1, file);
+                cout << "Se cambio el tamaño de la particion  logica \'" << name << "\' ahora sus datos son: " << endl;
+                cout << "Part_status: " << e.part_status << endl;
+                cout << "Part_fit: " << e.part_fit << endl;
+                cout << "Part_start: " << e.part_start << endl;
+                cout << "Part_size: " << e.part_size << endl;
+                cout << "Part_next: " << e.part_next << endl;
+                cout << "Part_name: " << e.part_name << endl;
+                return;
+            }
+        }
+    }
 }

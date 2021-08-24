@@ -3,11 +3,14 @@
 #include <bits/stdc++.h>
 #include "./analizador/scanner.h"
 #include "comandos/Command.h"
+#include "structs.h"
 
 using namespace std;
 
 extern int yyparse();
 extern Command* resAnalizer;
+
+vector<MountedPartition> mountedPartitions;
 
 int main() {
     string entrada;

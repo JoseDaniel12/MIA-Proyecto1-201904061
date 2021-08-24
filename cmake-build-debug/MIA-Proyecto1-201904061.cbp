@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
@@ -112,6 +118,12 @@
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mount.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mount.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
@@ -122,6 +134,12 @@
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rmdisk.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp">

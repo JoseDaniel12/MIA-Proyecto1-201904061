@@ -129,6 +129,30 @@ MIA-Proyecto1-201904061/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/build
 .PHONY : MIA-Proyecto1-201904061/fast
 
+src/Entidades/Disco.o: src/Entidades/Disco.cpp.o
+.PHONY : src/Entidades/Disco.o
+
+# target to build an object file
+src/Entidades/Disco.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.o
+.PHONY : src/Entidades/Disco.cpp.o
+
+src/Entidades/Disco.i: src/Entidades/Disco.cpp.i
+.PHONY : src/Entidades/Disco.i
+
+# target to preprocess a source file
+src/Entidades/Disco.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.i
+.PHONY : src/Entidades/Disco.cpp.i
+
+src/Entidades/Disco.s: src/Entidades/Disco.cpp.s
+.PHONY : src/Entidades/Disco.s
+
+# target to generate assembly for a file
+src/Entidades/Disco.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.s
+.PHONY : src/Entidades/Disco.cpp.s
+
 src/analizador/parser.o: src/analizador/parser.cpp.o
 .PHONY : src/analizador/parser.o
 
@@ -249,6 +273,30 @@ src/comandos/Mkdisk.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.s
 .PHONY : src/comandos/Mkdisk.cpp.s
 
+src/comandos/Mount.o: src/comandos/Mount.cpp.o
+.PHONY : src/comandos/Mount.o
+
+# target to build an object file
+src/comandos/Mount.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.o
+.PHONY : src/comandos/Mount.cpp.o
+
+src/comandos/Mount.i: src/comandos/Mount.cpp.i
+.PHONY : src/comandos/Mount.i
+
+# target to preprocess a source file
+src/comandos/Mount.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.i
+.PHONY : src/comandos/Mount.cpp.i
+
+src/comandos/Mount.s: src/comandos/Mount.cpp.s
+.PHONY : src/comandos/Mount.s
+
+# target to generate assembly for a file
+src/comandos/Mount.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.s
+.PHONY : src/comandos/Mount.cpp.s
+
 src/comandos/Param.o: src/comandos/Param.cpp.o
 .PHONY : src/comandos/Param.o
 
@@ -297,6 +345,30 @@ src/comandos/Rmdisk.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.s
 .PHONY : src/comandos/Rmdisk.cpp.s
 
+src/comandos/Umount.o: src/comandos/Umount.cpp.o
+.PHONY : src/comandos/Umount.o
+
+# target to build an object file
+src/comandos/Umount.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Umount.cpp.o
+.PHONY : src/comandos/Umount.cpp.o
+
+src/comandos/Umount.i: src/comandos/Umount.cpp.i
+.PHONY : src/comandos/Umount.i
+
+# target to preprocess a source file
+src/comandos/Umount.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Umount.cpp.i
+.PHONY : src/comandos/Umount.cpp.i
+
+src/comandos/Umount.s: src/comandos/Umount.cpp.s
+.PHONY : src/comandos/Umount.s
+
+# target to generate assembly for a file
+src/comandos/Umount.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Umount.cpp.s
+.PHONY : src/comandos/Umount.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -330,6 +402,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MIA-Proyecto1-201904061"
+	@echo "... src/Entidades/Disco.o"
+	@echo "... src/Entidades/Disco.i"
+	@echo "... src/Entidades/Disco.s"
 	@echo "... src/analizador/parser.o"
 	@echo "... src/analizador/parser.i"
 	@echo "... src/analizador/parser.s"
@@ -345,12 +420,18 @@ help:
 	@echo "... src/comandos/Mkdisk.o"
 	@echo "... src/comandos/Mkdisk.i"
 	@echo "... src/comandos/Mkdisk.s"
+	@echo "... src/comandos/Mount.o"
+	@echo "... src/comandos/Mount.i"
+	@echo "... src/comandos/Mount.s"
 	@echo "... src/comandos/Param.o"
 	@echo "... src/comandos/Param.i"
 	@echo "... src/comandos/Param.s"
 	@echo "... src/comandos/Rmdisk.o"
 	@echo "... src/comandos/Rmdisk.i"
 	@echo "... src/comandos/Rmdisk.s"
+	@echo "... src/comandos/Umount.o"
+	@echo "... src/comandos/Umount.i"
+	@echo "... src/comandos/Umount.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

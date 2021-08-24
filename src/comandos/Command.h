@@ -21,7 +21,7 @@ public:
     vector<string> obligatoryParams = {};
     Command(vector<Param> params);
     virtual void run();
-    int getParamPos(const vector<Param>& params, const string& name);
+    static string toUpper(const string& cadena);
     bool missingParams(vector<Param> params, vector<string> obligatoryParams);
     bool inadmisableParams(vector<Param> params,vector<string> admisableParams);
     bool repeatedParams(vector<Param> params);
@@ -29,6 +29,7 @@ public:
     string getDirectory(string path);
     string quitarComillas(string s);
     int convertToBytes(int bytes, char unit);
+    static bool hasParams(const vector<Param> &params, const vector<string> &paramNames);
 };
 
 #endif //ARCHIVOSP1_COMMAND_H

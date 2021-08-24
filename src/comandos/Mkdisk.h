@@ -18,7 +18,7 @@ public:
     vector<string> obligatoryParams = {"-SIZE", "-PATH"};
     void run() override;
 
-    Mkdisk(const vector<Param>& parametros);
+    explicit Mkdisk(const vector<Param>& parametros);
     int size;
     char f = 'B';
     char u = 'M';

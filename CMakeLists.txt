@@ -21,4 +21,4 @@ add_executable(
         src/comandos/Rmdisk.h
         src/comandos/Fdisk.cpp
         src/comandos/Fdisk.h
-)
+        src/comandos/Mount.cpp src/comandos/Mount.h src/Entidades/Disco.cpp src/Entidades/Disco.h src/comandos/Umount.cpp src/comandos/Umount.h)

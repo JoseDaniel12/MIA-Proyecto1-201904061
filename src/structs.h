@@ -40,5 +40,11 @@ typedef struct {
     int size;
 } PartitionHole;
 
+typedef struct {
+    std::string id;
+    std::string path;
+    Partition partition;
+} MountedPartition;
+
 
 #endif //MIA_PROYECTO1_201904061_STRUCTS_H

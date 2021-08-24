@@ -8,7 +8,6 @@
 
 #include "Command.h"
 #include "../structs.h"
-
 class Fdisk : public Command {
 public:
     vector<string> admisableParams = {"-SIZE", "-U", "-PATH", "-TYPE", "-F", "-DELETE", "-NAME", "-ADD"};
@@ -23,8 +22,11 @@ public:
     void createLogicalPartition();
     static void orderPartitions(Partition parts[4]);
     static vector<EBR> orderEbrs(vector<EBR> ebrs);
-    void deletePartition();
-    bool create = false;
+    void deletePartition() const;
+    void changeSpacePartition() const;
+    bool isCreate = false;
+    bool isDelete = false;
+    bool isAdd = false;
     int size;
     char u = 'K';
     string path;

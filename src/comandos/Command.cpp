@@ -15,15 +15,18 @@ Command::Command(vector<Param> params) {
 void Command::run() {
 }
 
-int Command::getParamPos(const vector<Param>& params, const string& name) {
-    int cont = 0;
-    for (const Param& p : params) {
-        if (name == p.name) {
-            return cont;
+bool Command::hasParams(const vector<Param>& params, const vector<string>& paramNames) {
+    bool answer = true;
+    for (const string& name : paramNames) {
+        bool founded = false;
+        for (const Param& p: params) {
+            if (p.name == name) {
+                founded = true;
+            }
         }
-        cont++;
+        answer = answer && founded;
     }
-    return -1;
+    return answer;
 }
 
 bool Command::missingParams(vector<Param> params, vector<string> obligatoryParams) {
@@ -108,4 +111,12 @@ int Command::convertToBytes(int bytes, char unit) {
         return  bytes * 1024 * 1024;
     }
     return -1;
+}
+
+string Command::toUpper(const string& cadena) {
+    string res;
+    for (char i : cadena) {
+        res += (char)toupper(i);
+    }
+    return res;
 }

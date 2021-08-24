@@ -59,7 +59,7 @@ extern int yydebug;
     RMDISK = 265,
     FDISK = 266,
     MOUNT = 267,
-    UNMOUNT = 268,
+    UMOUNT = 268,
     LOGIN = 269,
     MKGRP = 270,
     RMGRP = 271,

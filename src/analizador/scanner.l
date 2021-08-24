@@ -19,7 +19,7 @@ letra       [a-zA-Z]
 digito      [0-9]
 entero      ("-")?{digito}+
 numero      {entero}("."{digito}+)?
-id          {letra}({letra}|{entero}|"_")*
+id          ({letra}|{entero})({letra}|{entero}|"_")*
 password    ({letra}|{entero}|[!$@+*])+
 cadena      "\""[^"\""]*"\""
 extension   "."{id}
@@ -36,7 +36,7 @@ directorio  ({diagonal}{id})+
 "rmdisk"    { return RMDISK; }
 "fdisk"     { return FDISK; }
 "mount"     { return MOUNT; }
-"unmount"   { return UNMOUNT; }
+"umount"    { return UMOUNT; }
 "login"     { return LOGIN; }
 "mkgrp"     { return MKGRP; }
 "rmgrp"     { return RMGRP; }
