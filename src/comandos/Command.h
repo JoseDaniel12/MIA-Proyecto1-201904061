@@ -27,6 +27,8 @@ public:
     bool repeatedParams(vector<Param> params);
     bool correctParams(vector<Param> params, vector<string> admisableParams, vector<string> obligatoryParams);
     string getDirectory(string path);
+    string getFileName(string path);
+    static string getExtension(const string& path);
     string quitarComillas(string s);
     int convertToBytes(int bytes, char unit);
     static bool hasParams(const vector<Param> &params, const vector<string> &paramNames);

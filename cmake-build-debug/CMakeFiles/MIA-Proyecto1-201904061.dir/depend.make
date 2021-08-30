@@ -4,6 +4,8 @@
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.o: \
  ../src/Entidades/Disco.cpp \
  ../src/Entidades/Disco.h \
+ ../src/comandos/Command.h \
+ ../src/comandos/Param.h \
  ../src/structs.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: \
  ../src/analizador/parser.cpp \
@@ -11,8 +13,10 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: \
  ../src/comandos/Command.h \
  ../src/comandos/Fdisk.h \
  ../src/comandos/Mkdisk.h \
+ ../src/comandos/Mkfs.h \
  ../src/comandos/Mount.h \
  ../src/comandos/Param.h \
+ ../src/comandos/Rep.h \
  ../src/comandos/Rmdisk.h \
  ../src/comandos/Umount.h \
  ../src/structs.h
@@ -32,6 +36,11 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o: \
  ../src/comandos/Mkdisk.h \
  ../src/comandos/Param.h \
  ../src/structs.h
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.o: \
+ ../src/comandos/Command.h \
+ ../src/comandos/Mkfs.cpp \
+ ../src/comandos/Mkfs.h \
+ ../src/comandos/Param.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.o: \
  ../src/Entidades/Disco.h \
  ../src/comandos/Command.h \
@@ -42,6 +51,13 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.o: \
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o: \
  ../src/comandos/Param.cpp \
  ../src/comandos/Param.h
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.o: \
+ ../src/Entidades/Disco.h \
+ ../src/comandos/Command.h \
+ ../src/comandos/Param.h \
+ ../src/comandos/Rep.cpp \
+ ../src/comandos/Rep.h \
+ ../src/structs.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.o: \
  ../src/comandos/Command.h \
  ../src/comandos/Param.h \

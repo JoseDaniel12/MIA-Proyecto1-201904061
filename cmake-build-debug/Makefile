@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/162/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/163/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/162/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/163/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/163/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -78,7 +78,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/162/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/163/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -273,6 +273,30 @@ src/comandos/Mkdisk.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.s
 .PHONY : src/comandos/Mkdisk.cpp.s
 
+src/comandos/Mkfs.o: src/comandos/Mkfs.cpp.o
+.PHONY : src/comandos/Mkfs.o
+
+# target to build an object file
+src/comandos/Mkfs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.o
+.PHONY : src/comandos/Mkfs.cpp.o
+
+src/comandos/Mkfs.i: src/comandos/Mkfs.cpp.i
+.PHONY : src/comandos/Mkfs.i
+
+# target to preprocess a source file
+src/comandos/Mkfs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.i
+.PHONY : src/comandos/Mkfs.cpp.i
+
+src/comandos/Mkfs.s: src/comandos/Mkfs.cpp.s
+.PHONY : src/comandos/Mkfs.s
+
+# target to generate assembly for a file
+src/comandos/Mkfs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.s
+.PHONY : src/comandos/Mkfs.cpp.s
+
 src/comandos/Mount.o: src/comandos/Mount.cpp.o
 .PHONY : src/comandos/Mount.o
 
@@ -320,6 +344,30 @@ src/comandos/Param.s: src/comandos/Param.cpp.s
 src/comandos/Param.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s
 .PHONY : src/comandos/Param.cpp.s
+
+src/comandos/Rep.o: src/comandos/Rep.cpp.o
+.PHONY : src/comandos/Rep.o
+
+# target to build an object file
+src/comandos/Rep.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.o
+.PHONY : src/comandos/Rep.cpp.o
+
+src/comandos/Rep.i: src/comandos/Rep.cpp.i
+.PHONY : src/comandos/Rep.i
+
+# target to preprocess a source file
+src/comandos/Rep.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.i
+.PHONY : src/comandos/Rep.cpp.i
+
+src/comandos/Rep.s: src/comandos/Rep.cpp.s
+.PHONY : src/comandos/Rep.s
+
+# target to generate assembly for a file
+src/comandos/Rep.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.s
+.PHONY : src/comandos/Rep.cpp.s
 
 src/comandos/Rmdisk.o: src/comandos/Rmdisk.cpp.o
 .PHONY : src/comandos/Rmdisk.o
@@ -420,12 +468,18 @@ help:
 	@echo "... src/comandos/Mkdisk.o"
 	@echo "... src/comandos/Mkdisk.i"
 	@echo "... src/comandos/Mkdisk.s"
+	@echo "... src/comandos/Mkfs.o"
+	@echo "... src/comandos/Mkfs.i"
+	@echo "... src/comandos/Mkfs.s"
 	@echo "... src/comandos/Mount.o"
 	@echo "... src/comandos/Mount.i"
 	@echo "... src/comandos/Mount.s"
 	@echo "... src/comandos/Param.o"
 	@echo "... src/comandos/Param.i"
 	@echo "... src/comandos/Param.s"
+	@echo "... src/comandos/Rep.o"
+	@echo "... src/comandos/Rep.i"
+	@echo "... src/comandos/Rep.s"
 	@echo "... src/comandos/Rmdisk.o"
 	@echo "... src/comandos/Rmdisk.i"
 	@echo "... src/comandos/Rmdisk.s"

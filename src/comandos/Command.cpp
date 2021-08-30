@@ -94,6 +94,26 @@ string Command::getDirectory(string path) {
     return res;
 }
 
+string Command::getFileName(string path) {
+    string delimiter = "/";
+    size_t pos = 0;
+    string res;
+    while((pos = path.find(delimiter))!=string::npos){
+        path.erase(0,pos + delimiter.length());
+    }
+    delimiter = ".";
+    pos = path.find(delimiter);
+    res = path.substr(0,pos);
+    return res;
+}
+
+string Command::getExtension(const string& path) {
+    string delimiter = ".";
+    int pos = (int)path.find(delimiter);
+    string res = path.substr(pos + 1,path.size() - 1);
+    return res;
+}
+
 string Command::quitarComillas(string s) {
     if ((s[0] == '\'' || s[0] == '\"') &&
     (s[s.length()-1] == '\'' || s[s.length()-1] == '\"')) {

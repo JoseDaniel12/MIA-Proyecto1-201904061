@@ -12,7 +12,9 @@
     #include "../comandos/Fdisk.h"
     #include "../comandos/Mount.h"
     #include "../comandos/Umount.h"
+    #include "../comandos/Mkfs.h"
     #include "../comandos/Param.h"
+    #include "../comandos/Rep.h"
 
     extern int yylineno;
     extern int columna;
@@ -45,7 +47,7 @@
 
 %token<text> DESCONOCIDO NUMERO CADENA ID RUTA
 
-%token<text> EXIT MKDISK RMDISK FDISK MOUNT UMOUNT LOGIN MKGRP RMGRP RMUSR CHMOD TOUCH CAT
+%token<text> EXIT MKDISK RMDISK FDISK MOUNT UMOUNT MKFS LOGIN MKGRP RMGRP RMUSR CHMOD TOUCH CAT
 %token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP
 
 %token<text> PARAM_SIZE PARAM_F PARAM_U PARAM_PATH PARAM_TYPE PARAM_DELETE PARAM_NAME PARAM_ADD PARAM_ID PARAM_FS
@@ -66,6 +68,8 @@ command:
 	|FDISK params_declaration	{ resAnalizer = new Fdisk(paramVector); paramVector.clear(); }
 	|MOUNT params_declaration	{ resAnalizer = new Mount(paramVector); paramVector.clear(); }
 	|UMOUNT params_declaration	{ resAnalizer = new Umount(paramVector); paramVector.clear(); }
+	|MKFS params_declaration	{ resAnalizer = new Mkfs(paramVector); paramVector.clear(); }
+	|REP params_declaration		{ resAnalizer = new Rep(paramVector); paramVector.clear(); }
 	|EXIT				{}
 
 ;

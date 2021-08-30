@@ -37,6 +37,7 @@ directorio  ({diagonal}{id})+
 "fdisk"     { return FDISK; }
 "mount"     { return MOUNT; }
 "umount"    { return UMOUNT; }
+"mkfs"      { return MKFS; }
 "login"     { return LOGIN; }
 "mkgrp"     { return MKGRP; }
 "rmgrp"     { return RMGRP; }
