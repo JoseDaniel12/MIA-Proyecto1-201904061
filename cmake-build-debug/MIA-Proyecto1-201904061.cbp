@@ -106,6 +106,12 @@
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>

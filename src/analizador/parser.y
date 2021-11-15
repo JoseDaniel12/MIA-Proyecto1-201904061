@@ -15,6 +15,7 @@
     #include "../comandos/Mkfs.h"
     #include "../comandos/Param.h"
     #include "../comandos/Rep.h"
+    #include "../comandos/Exec.h"
 
     extern int yylineno;
     extern int columna;
@@ -70,6 +71,7 @@ command:
 	|UMOUNT params_declaration	{ resAnalizer = new Umount(paramVector); paramVector.clear(); }
 	|MKFS params_declaration	{ resAnalizer = new Mkfs(paramVector); paramVector.clear(); }
 	|REP params_declaration		{ resAnalizer = new Rep(paramVector); paramVector.clear(); }
+	|EXEC params_declaration	{ resAnalizer = new Exec(paramVector); paramVector.clear(); }
 	|EXIT				{}
 
 ;

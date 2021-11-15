@@ -225,6 +225,30 @@ src/comandos/Command.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.s
 .PHONY : src/comandos/Command.cpp.s
 
+src/comandos/Exec.o: src/comandos/Exec.cpp.o
+.PHONY : src/comandos/Exec.o
+
+# target to build an object file
+src/comandos/Exec.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o
+.PHONY : src/comandos/Exec.cpp.o
+
+src/comandos/Exec.i: src/comandos/Exec.cpp.i
+.PHONY : src/comandos/Exec.i
+
+# target to preprocess a source file
+src/comandos/Exec.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.i
+.PHONY : src/comandos/Exec.cpp.i
+
+src/comandos/Exec.s: src/comandos/Exec.cpp.s
+.PHONY : src/comandos/Exec.s
+
+# target to generate assembly for a file
+src/comandos/Exec.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.s
+.PHONY : src/comandos/Exec.cpp.s
+
 src/comandos/Fdisk.o: src/comandos/Fdisk.cpp.o
 .PHONY : src/comandos/Fdisk.o
 
@@ -462,6 +486,9 @@ help:
 	@echo "... src/comandos/Command.o"
 	@echo "... src/comandos/Command.i"
 	@echo "... src/comandos/Command.s"
+	@echo "... src/comandos/Exec.o"
+	@echo "... src/comandos/Exec.i"
+	@echo "... src/comandos/Exec.s"
 	@echo "... src/comandos/Fdisk.o"
 	@echo "... src/comandos/Fdisk.i"
 	@echo "... src/comandos/Fdisk.s"

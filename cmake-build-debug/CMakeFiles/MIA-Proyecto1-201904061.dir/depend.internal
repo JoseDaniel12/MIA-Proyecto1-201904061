@@ -11,6 +11,7 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.h
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
+ /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.h
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.h
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.h
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.h
@@ -24,6 +25,12 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
+ /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
+CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o
+ /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.h
+ /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
+ /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.cpp
+ /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.h
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o
  /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h

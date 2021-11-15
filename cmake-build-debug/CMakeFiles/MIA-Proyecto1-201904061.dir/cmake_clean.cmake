@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o"
+  "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.o"

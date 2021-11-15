@@ -6,32 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.cpp
-utility
--
-vector
--
-cstring
--
-iostream
--
-fstream
--
-Disco.h
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.h
-../structs.h
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h
-
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.h
-string
--
-vector
--
-../structs.h
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h
-../comandos/Command.h
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
-
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
 vector
 -
@@ -40,11 +14,17 @@ string
 Param.h
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
 
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.cpp
+iostream
+-
+Mkfs.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.h
+
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.h
+Command.h
+/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h
+
 /home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h
 string
--
-
-/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h
-time.h
 -
 

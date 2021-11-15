@@ -2,7 +2,11 @@
 // Created by jose on 24/08/21.
 //
 
+#include <iostream>
+
 #include "Mkfs.h"
+
+using namespace std;
 
 Mkfs::Mkfs(const vector<Param> &parametros):Command(parametros) {
     commandName = "MKFS";
@@ -13,5 +17,5 @@ Mkfs::Mkfs(const vector<Param> &parametros):Command(parametros) {
 }
 
 void Mkfs::run() {
-
+    cout << "Formateo realizado con exito" << endl;
 }
