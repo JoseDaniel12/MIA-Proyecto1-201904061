@@ -5,8 +5,12 @@
 #ifndef MIA_PROYECTO1_201904061_MKFS_H
 #define MIA_PROYECTO1_201904061_MKFS_H
 
+#include <string>
 
 #include "Command.h"
+#include "../structs.h"
+
+extern vector<MountedPartition> mountedPartitions;
 
 class Mkfs : public Command {
 public:
@@ -15,6 +19,9 @@ public:
     void run() override;
 
     explicit Mkfs(const vector<Param> &parametros);
+    string id;
+    string type;
+    string fs;
 
 };
 

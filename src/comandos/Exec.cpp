@@ -44,6 +44,7 @@ void Exec::run() {
         YY_BUFFER_STATE buffer = yy_scan_string(linea.c_str());
         if (yyparse() == 0) {
             cout << "\n//=====================================" << resAnalizer->commandName << "=====================================\\\\" << endl;
+            cout << "Comando analizando: " << linea << endl;
             resAnalizer->run();
             cout << "\\\\==========================================================================";
             for (int i = 0; i < resAnalizer->commandName.size(); i++) {

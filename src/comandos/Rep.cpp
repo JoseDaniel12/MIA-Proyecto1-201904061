@@ -24,7 +24,7 @@ Rep::Rep(const vector<Param>& parametros) : Command(parametros) {
         } else if (p.name == "-PATH") {
             path = rootPath + quitarComillas(p.value);
         } else if (p.name == "-ID") {
-            id = p.value;
+            id = quitarComillas(p.value);
         } else if (p.name == "-RUTA") {
             ruta = rootPath + quitarComillas(p.value);
         } else if (p.name == "-ROOT") {

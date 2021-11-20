@@ -19,7 +19,7 @@ public:
     void run() override;
 
     explicit Mkdisk(const vector<Param>& parametros);
-    int size;
+    int size = 0;
     char f = 'B';
     char u = 'M';
     string  path;

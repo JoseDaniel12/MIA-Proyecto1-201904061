@@ -9,6 +9,7 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.o: \
  ../src/structs.h
 CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: \
  ../src/analizador/parser.cpp \
+ ../src/analizador/parser.h \
  ../src/analizador/scanner.h \
  ../src/comandos/Command.h \
  ../src/comandos/Exec.h \

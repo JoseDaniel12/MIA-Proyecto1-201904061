@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.7.6.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,8 +31,9 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
 #ifndef YY_YY_PARSER_H_INCLUDED
 # define YY_YY_PARSER_H_INCLUDED
@@ -44,66 +45,71 @@
 extern int yydebug;
 #endif
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    DESCONOCIDO = 258,
-    NUMERO = 259,
-    CADENA = 260,
-    ID = 261,
-    RUTA = 262,
-    EXIT = 263,
-    MKDISK = 264,
-    RMDISK = 265,
-    FDISK = 266,
-    MOUNT = 267,
-    UMOUNT = 268,
-    MKFS = 269,
-    LOGIN = 270,
-    MKGRP = 271,
-    RMGRP = 272,
-    RMUSR = 273,
-    CHMOD = 274,
-    TOUCH = 275,
-    CAT = 276,
-    RM = 277,
-    EDIT = 278,
-    REN = 279,
-    MKDIR = 280,
-    CP = 281,
-    MV = 282,
-    FIND = 283,
-    CHOWN = 284,
-    CHGRP = 285,
-    POUSE = 286,
-    EXEC = 287,
-    REP = 288,
-    PARAM_SIZE = 289,
-    PARAM_F = 290,
-    PARAM_U = 291,
-    PARAM_PATH = 292,
-    PARAM_TYPE = 293,
-    PARAM_DELETE = 294,
-    PARAM_NAME = 295,
-    PARAM_ADD = 296,
-    PARAM_ID = 297,
-    PARAM_FS = 298,
-    PARAM_USER = 299,
-    PARAM_PWD = 300,
-    PARAM_USR = 301,
-    PARAM_GRP = 302,
-    PARAM_UGO = 303,
-    PARAM_R = 304,
-    PARAM_CONT = 305,
-    PARAM_STDIN = 306,
-    PARAM_P = 307,
-    PARAM_DEST = 308,
-    PARAM_RUTA = 309,
-    PARAM_ROOT = 310,
-    IGUAL = 311
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    DESCONOCIDO = 258,             /* DESCONOCIDO  */
+    NUMERO = 259,                  /* NUMERO  */
+    CADENA = 260,                  /* CADENA  */
+    ID = 261,                      /* ID  */
+    RUTA = 262,                    /* RUTA  */
+    EXIT = 263,                    /* EXIT  */
+    MKDISK = 264,                  /* MKDISK  */
+    RMDISK = 265,                  /* RMDISK  */
+    FDISK = 266,                   /* FDISK  */
+    MOUNT = 267,                   /* MOUNT  */
+    UMOUNT = 268,                  /* UMOUNT  */
+    MKFS = 269,                    /* MKFS  */
+    LOGIN = 270,                   /* LOGIN  */
+    MKGRP = 271,                   /* MKGRP  */
+    RMGRP = 272,                   /* RMGRP  */
+    RMUSR = 273,                   /* RMUSR  */
+    CHMOD = 274,                   /* CHMOD  */
+    TOUCH = 275,                   /* TOUCH  */
+    CAT = 276,                     /* CAT  */
+    RM = 277,                      /* RM  */
+    EDIT = 278,                    /* EDIT  */
+    REN = 279,                     /* REN  */
+    MKDIR = 280,                   /* MKDIR  */
+    CP = 281,                      /* CP  */
+    MV = 282,                      /* MV  */
+    FIND = 283,                    /* FIND  */
+    CHOWN = 284,                   /* CHOWN  */
+    CHGRP = 285,                   /* CHGRP  */
+    POUSE = 286,                   /* POUSE  */
+    EXEC = 287,                    /* EXEC  */
+    REP = 288,                     /* REP  */
+    PARAM_SIZE = 289,              /* PARAM_SIZE  */
+    PARAM_F = 290,                 /* PARAM_F  */
+    PARAM_U = 291,                 /* PARAM_U  */
+    PARAM_PATH = 292,              /* PARAM_PATH  */
+    PARAM_TYPE = 293,              /* PARAM_TYPE  */
+    PARAM_DELETE = 294,            /* PARAM_DELETE  */
+    PARAM_NAME = 295,              /* PARAM_NAME  */
+    PARAM_ADD = 296,               /* PARAM_ADD  */
+    PARAM_ID = 297,                /* PARAM_ID  */
+    PARAM_FS = 298,                /* PARAM_FS  */
+    PARAM_USER = 299,              /* PARAM_USER  */
+    PARAM_PWD = 300,               /* PARAM_PWD  */
+    PARAM_USR = 301,               /* PARAM_USR  */
+    PARAM_GRP = 302,               /* PARAM_GRP  */
+    PARAM_UGO = 303,               /* PARAM_UGO  */
+    PARAM_R = 304,                 /* PARAM_R  */
+    PARAM_CONT = 305,              /* PARAM_CONT  */
+    PARAM_STDIN = 306,             /* PARAM_STDIN  */
+    PARAM_P = 307,                 /* PARAM_P  */
+    PARAM_DEST = 308,              /* PARAM_DEST  */
+    PARAM_RUTA = 309,              /* PARAM_RUTA  */
+    PARAM_ROOT = 310,              /* PARAM_ROOT  */
+    IGUAL = 311                    /* IGUAL  */
   };
+  typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */

@@ -12,12 +12,11 @@ using namespace std;
 
 typedef  struct {
     char part_status;
-    char part_type = 'p';
-    char part_fit = 'f';
-    int part_start;
+    char part_type ;
+    char part_fit;
+    int part_start ;
     int part_size;
     char part_name[16];
-
 } Partition;
 
 typedef struct {

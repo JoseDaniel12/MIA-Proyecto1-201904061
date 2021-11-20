@@ -11,18 +11,23 @@
 using namespace  std;
 
 Rmdisk::Rmdisk(const vector<Param>& parametros):Command(parametros) {
+    // Se verifica que no hayan parametros extra, que falten o repetidos
     if (!correctParams(parametros,admisableParams, obligatoryParams)) {
         runnable = false;
         return;
     }
+
+    // De no haber errores se recogen los parametros
     path = rootPath + quitarComillas(parametros[0].value);
 }
 
 void Rmdisk::run() {
+    // Si hay errores el comando no se ejecuta
     if (!runnable) {
         return;
     }
 
+    // Abre el archivo y pide confimacion para eliminar, si no existe error de lo contrario lo borra
     FILE* file = fopen(path.c_str(), "r");
     if (file) {
         string input;

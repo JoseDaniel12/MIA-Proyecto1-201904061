@@ -9,8 +9,6 @@
 #include <fstream>
 
 #include "Disco.h"
-#include "../structs.h"
-
 using namespace std;
 
 Disco::Disco(string pathDisco) {
@@ -19,16 +17,16 @@ Disco::Disco(string pathDisco) {
 
 bool Disco::existeDisco() const {
     FILE* file = fopen(path.c_str(), "rb+");
-    fclose(file);
     if (file == nullptr) {
         return false;
     }
+    fclose(file);
     return true;
 }
 
 bool Disco::getMBR(MBR* destino) const {
     FILE* file = fopen(path.c_str(), "rb+");
-    if  (file != nullptr) {
+    if (file != nullptr) {
         MBR mbr;
         fseek(file,0,SEEK_SET);
         fread(&mbr, sizeof(MBR), 1, file);
@@ -44,7 +42,9 @@ vector<Partition> Disco::getNonLogialPartitions() const {
     MBR mbr;
     if (getMBR(&mbr)) {
         for (auto & p : mbr.mbr_partition) {
-            partitions.push_back(p);
+            if (p.part_status == '1') {
+                partitions.push_back(p);
+            }
         }
     }
     return partitions;
@@ -65,25 +65,30 @@ vector<Partition> Disco::getPrimaryPartitions() const {
 
 bool Disco::getExtendedPartition(Partition* destino) const {
     vector<Partition> partitions = getNonLogialPartitions();
-    for (auto &p : partitions)
-        if (p.part_type == 'E') {
+    for (auto &p: partitions) {
+        if (p.part_type == 'E' && p.part_status == '1') {
             *destino = p;
             return true;
         }
+    }
     return false;
 }
 
-vector<EBR> Disco::getEbrs() const {
+vector<EBR> Disco::getEbrs() const { // AQI HAY ERROR
     FILE* file = fopen(path.c_str(), "rb+");
     vector<EBR> ebrs;
-    MBR mbr;
-    getMBR(&mbr);
+
     Partition extendedPartition;
-    getExtendedPartition(&extendedPartition);
+    bool extendidaEncontrada = getExtendedPartition(&extendedPartition);
+    if (!extendidaEncontrada) {
+        return ebrs;
+    }
+
     EBR ebr;
     fseek(file, extendedPartition.part_start, SEEK_SET);
     fread(&ebr, sizeof(EBR), 1, file);
     ebrs.push_back(ebr);
+
     while (ebr.part_next != -1) {
         EBR nextEbr;
         fseek(file, ebr.part_next, SEEK_SET);
@@ -260,7 +265,7 @@ void Disco::generarReporteDisco(const string &directory, const string &fileName,
             dotText += "<BR/> Nombre: " +  nombre + "\n";
             dotText += "<BR/> Inicio: " + to_string(p.part_start) + "\n";
             dotText += "<BR/> Fin: " + to_string(p.part_start + p.part_size) + "\n";
-            dotText += "<BR/> Porcentaje: " + truncar((p.part_size / (float)mbr.mbr_tamano) * 100) + "\n";
+            dotText += "<BR/> Porcentaje: " + truncar(((float)p.part_size / (float)mbr.mbr_tamano) * 100) + "\n";
             dotText += "</TD> \n\n";
         } else if (p.part_type == 'E') {
             vector<EBR> ebrs = getEbrs();
@@ -284,8 +289,8 @@ void Disco::generarReporteDisco(const string &directory, const string &fileName,
 
     Partition extendedParition;
     bool hayExtendida = getExtendedPartition(&extendedParition);
-    dotText += "<TR> \n";
     if (hayExtendida) {
+        dotText += "<TR> \n";
         vector<EBR> ebrs = getEbrs();
         for (auto & e : ebrs) {
             for (int i = 0; i < logicalHoles.size(); i++) {
@@ -316,16 +321,17 @@ void Disco::generarReporteDisco(const string &directory, const string &fileName,
             dotText += "<BR/> Porcentaje: " + truncar((float)e.part_size / (float)mbr.mbr_tamano * 100) + "\n";
             dotText += "</TD> \n\n";
         }
+        for (auto & logicalHole : logicalHoles) {
+            dotText += "<TD> \n";
+            dotText += "_LIBRE_ \n";
+            dotText += "<BR/> Inicio: " +  to_string(logicalHole.start) + "\n";
+            dotText += "<BR/> Fin: " + to_string(logicalHole.start + logicalHole.size) + "\n";
+            dotText += "<BR/> Porcentaje: " +  truncar((float)logicalHole.size / (float)mbr.mbr_tamano * 100) + "\n";
+            dotText += "</TD> \n\n";
+        }
+        dotText += "</TR> \n";
     }
-    for (auto & logicalHole : logicalHoles) {
-        dotText += "<TD> \n";
-        dotText += "_LIBRE_ \n";
-        dotText += "<BR/> Inicio: " +  to_string(logicalHole.start) + "\n";
-        dotText += "<BR/> Fin: " + to_string(logicalHole.start + logicalHole.size) + "\n";
-        dotText += "<BR/> Porcentaje: " +  truncar((float)logicalHole.size / (float)mbr.mbr_tamano * 100) + "\n";
-        dotText += "</TD> \n\n";
-    }
-    dotText += "</TR> \n";
+
 
     dotText += "</TABLE>>] \n";
     dotText += "}";
@@ -367,12 +373,14 @@ void Disco::generarReporteMbr(const string& directory, const string& fileName, c
     dotText += "</td></tr>\n";
     for (int i = 0; i < 4; i++) {
         Partition p = mbr.mbr_partition[i];
-        dotText += "<tr><td>part_status_" + to_string(i) + "</td> <td>" + p.part_status + "</td></tr>\n";
-        dotText += "<tr><td>part_type_" + to_string(i) + "</td> <td>" + p.part_type + "</td></tr>\n";
-        dotText += "<tr><td>part_fit_" + to_string(i) + "</td> <td>" + p.part_fit + "</td></tr>\n";
-        dotText += "<tr><td>part_stax_" + to_string(i) + "</td> <td>" + to_string(p.part_start) + "</td></tr>\n";
-        dotText += "<tr><td>part_siz_" + to_string(i) + "</td> <td>" + to_string(p.part_size) + "</td></tr>\n";
-        dotText += "<tr><td>part_name_" + to_string(i) + "</td> <td>" + p.part_name + "</td></tr>\n";
+        if (p.part_status == '1') {
+            dotText += "<tr><td>part_status_" + to_string(i) + "</td> <td>" + p.part_status + "</td></tr>\n";
+            dotText += "<tr><td>part_type_" + to_string(i) + "</td> <td>" + p.part_type + "</td></tr>\n";
+            dotText += "<tr><td>part_fit_" + to_string(i) + "</td> <td>" + p.part_fit + "</td></tr>\n";
+            dotText += "<tr><td>part_stax_" + to_string(i) + "</td> <td>" + to_string(p.part_start) + "</td></tr>\n";
+            dotText += "<tr><td>part_siz_" + to_string(i) + "</td> <td>" + to_string(p.part_size) + "</td></tr>\n";
+            dotText += "<tr><td>part_name_" + to_string(i) + "</td> <td>" + p.part_name + "</td></tr>\n";
+        }
     }
     dotText += "</table>>] \n\n";
 

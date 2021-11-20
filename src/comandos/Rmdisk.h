@@ -11,9 +11,9 @@ class Rmdisk : public Command  {
 public:
     vector<string> admisableParams = {"-PATH"};
     vector<string> obligatoryParams = {"-PATH"};
-    virtual void run() override;
+    void run() override;
 
-    Rmdisk(const vector<Param>& parametros);
+    explicit Rmdisk(const vector<Param>& parametros);
     string path;
 
 };
