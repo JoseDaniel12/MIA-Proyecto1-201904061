@@ -43,7 +43,7 @@ directorio  ({diagonal}{id})+
 "rmgrp"     { return RMGRP; }
 "rmusr"     { return RMUSR; }
 "chmod"     { return CHMOD; }
-"touch"     { return TOUCH; }
+"mkfile"    { return MKFILE; }
 "cat"       { return CAT; }
 "rm"        { return RM; }
 "edit"      { return EDIT; }

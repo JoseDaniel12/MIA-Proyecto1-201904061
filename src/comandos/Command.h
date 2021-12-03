@@ -9,6 +9,9 @@
 #include <string>
 
 #include "Param.h"
+#include "../structs.h"
+
+extern vector<MountedPartition> mountedPartitions;
 
 using  namespace  std;
 
@@ -32,6 +35,13 @@ public:
     string quitarComillas(string s);
     int convertToBytes(int bytes, char unit);
     static bool hasParams(const vector<Param> &params, const vector<string> &paramNames);
+    void getMounted(string id, MountedPartition* destinoMp);
+
+    vector<string> getPathSeparado(string path);
+    Inodo getInodoByIndex(int indice, MountedPartition mp);
+    BloqueDePunteros getBloqueDePunteroByIndex(int indice, MountedPartition mp);
+    vector<int> getIndicesBloquesCarpetaDeInodo(Inodo inodo, MountedPartition mp);
+    int existePathSimulado(string pathSimulado, MountedPartition mp, int indice_inodo = 0);
 };
 
 #endif //ARCHIVOSP1_COMMAND_H

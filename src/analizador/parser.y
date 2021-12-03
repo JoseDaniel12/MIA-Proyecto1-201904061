@@ -16,6 +16,8 @@
     #include "../comandos/Param.h"
     #include "../comandos/Rep.h"
     #include "../comandos/Exec.h"
+    #include "../comandos/Usuarios/Login.h"
+    #include "../comandos/Archivos/MkFile.h"
 
     extern int yylineno;
     extern int columna;
@@ -48,7 +50,7 @@
 
 %token<text> DESCONOCIDO NUMERO CADENA ID RUTA
 
-%token<text> EXIT MKDISK RMDISK FDISK MOUNT UMOUNT MKFS LOGIN MKGRP RMGRP RMUSR CHMOD TOUCH CAT
+%token<text> EXIT MKDISK RMDISK FDISK MOUNT UMOUNT MKFS LOGIN MKGRP RMGRP RMUSR CHMOD MKFILE CAT
 %token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP
 
 %token<text> PARAM_SIZE PARAM_F PARAM_U PARAM_PATH PARAM_TYPE PARAM_DELETE PARAM_NAME PARAM_ADD PARAM_ID PARAM_FS
@@ -72,6 +74,8 @@ command:
 	|MKFS params_declaration	{ resAnalizer = new Mkfs(paramVector); paramVector.clear(); }
 	|REP params_declaration		{ resAnalizer = new Rep(paramVector); paramVector.clear(); }
 	|EXEC params_declaration	{ resAnalizer = new Exec(paramVector); paramVector.clear(); }
+	|LOGIN params_declaration	{ resAnalizer = new Login(paramVector); paramVector.clear(); }
+	|MKFILE params_declaration   { resAnalizer = new MkFile(paramVector); paramVector.clear(); }
 	|EXIT				{}
 
 ;
@@ -83,6 +87,7 @@ params_declaration:
 
 param_declaration:
 	param_name IGUAL param_value	{ paramVector.push_back(*new Param(toUpper(paramName), paramValue)); }
+	|PARAM_R	                    { paramVector.push_back(*new Param(toUpper($1), "-R")); }
 ;
 
 param_name:
@@ -101,7 +106,6 @@ param_name:
 	|PARAM_USR	{ paramName = $1; }
 	|PARAM_GRP	{ paramName = $1; }
 	|PARAM_UGO	{ paramName = $1; }
-	|PARAM_R	{ paramName = $1; }
 	|PARAM_CONT	{ paramName = $1; }
 	|PARAM_STDIN	{ paramName = $1; }
 	|PARAM_P	{ paramName = $1; }

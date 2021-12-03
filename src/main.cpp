@@ -9,8 +9,10 @@ using namespace std;
 
 extern int yyparse();
 extern Command* resAnalizer;
+Usuario usuario = Usuario();
 
 vector<MountedPartition> mountedPartitions;
+
 
 int main() {
     string entrada;

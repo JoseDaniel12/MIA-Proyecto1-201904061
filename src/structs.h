@@ -12,9 +12,9 @@ using namespace std;
 
 typedef  struct {
     char part_status;
-    char part_type ;
+    char part_type;
     char part_fit;
-    int part_start ;
+    int part_start;
     int part_size;
     char part_name[16];
 } Partition;
@@ -68,6 +68,10 @@ typedef struct {
     int s_block_start;
 } SuperBloque;
 
+struct Journaling {
+    char command[100] = "-";
+};
+
 typedef struct {
     int i_uid;
     int i_gid;
@@ -78,7 +82,34 @@ typedef struct {
     int i_block[15];
     int i_type;
     int i_perm;
-} TablaInodos;
+} Inodo;
 
+struct ContentDeCarpetaArchvio {
+    char b_name[12] = "";   // Nombre de la carpeta o archivo
+    int b_inodo = -1;       // Apuntador hacia un inodo asociado al archivo o carpeta
+};
+
+struct BloqueDeCarpeta {
+    ContentDeCarpetaArchvio b_content[4];  // Array con el contenido de la carpeta
+};
+
+struct BloqueDeArchivo {
+    char b_content[64]; // Array con el contenido del archivo
+};
+
+struct BloqueDePunteros {
+    int b_pointers[16]; // Array con apuntadores hacia bloques (de archivos o corpteas)
+};
+
+
+struct Usuario {
+    int uid = 1;
+    int gid = 1;
+    char tipo = 'U';
+    string grupo = "root";
+    string contrasena = "123";
+    bool logeado = false;
+    MountedPartition mountedPartition;
+};
 
 #endif //MIA_PROYECTO1_201904061_STRUCTS_H
