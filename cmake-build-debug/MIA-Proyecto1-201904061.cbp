@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug"/>
+				<Option working_dir="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug"/>
+				<Option working_dir="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug"/>
+				<Option working_dir="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MIA-Proyecto1-201904061">
-				<Option output="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/MIA-Proyecto1-201904061" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug"/>
+				<Option output="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/MIA-Proyecto1-201904061" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 MIA-Proyecto1-201904061"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 MIA-Proyecto1-201904061"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MIA-Proyecto1-201904061/fast">
-				<Option output="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/MIA-Proyecto1-201904061" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug"/>
+				<Option output="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/MIA-Proyecto1-201904061" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,98 +75,116 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 MIA-Proyecto1-201904061/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 MIA-Proyecto1-201904061/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jose/Desktop/MIA-Proyecto1-201904061/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/Entidades/Disco.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/Entidades/Disco.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/parser.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/parser.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/scanner.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/scanner.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Archivos/MkFile.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Archivos/MkFile.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Command.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Command.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Exec.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Exec.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Fdisk.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdir.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdir.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mount.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mount.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdisk.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkfs.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkfs.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rep.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mount.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rep.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mount.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rmdisk.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Param.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rmdisk.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Param.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rep.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rep.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rmdisk.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/structs.h">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rmdisk.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
-		<Unit filename="/home/jose/CLionProjects/MIA-Proyecto1-201904061/CMakeLists.txt">
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Umount.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Umount.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Usuarios/Login.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Usuarios/Login.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/main.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/structs.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

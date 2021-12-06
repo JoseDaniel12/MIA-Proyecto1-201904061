@@ -7,6 +7,7 @@
 #include <cstring>
 
 #include "Mkfs.h"
+#include "../structs.h"
 
 using namespace std;
 
@@ -85,19 +86,17 @@ void Mkfs::run() {
 
     // Creacion del Bitmap de Inodos
     char bitmapInodos[n];
-    string contenidoBitmapINodos = "11";
+    bitmapInodos[0] = bitmapInodos[1] = '1';
     for (int i = 2; i < n; i++) {
-        contenidoBitmapINodos  += "0";
+        bitmapInodos[i] = '0';
     }
-    strcpy(bitmapInodos, contenidoBitmapINodos.c_str());
 
     // Creacion del Bitmap de Bloques
     char bitmapBloques[3 * n];
-    string contenidoBitmapBloques = "11";
+    bitmapBloques[0] = bitmapBloques[1] = '1';
     for (int i = 2; i < 3 * n; i++) {
-        contenidoBitmapBloques += "0";
+        bitmapBloques[i] = '0';
     }
-    strcpy(bitmapBloques, contenidoBitmapBloques.c_str());
 
     // Creacion del Journaling
     Journaling journaling;
@@ -111,19 +110,15 @@ void Mkfs::run() {
     fwrite(&superBloque, sizeof(SuperBloque), 1, file);
     // 2. Journaling
     if (superBloque.s_filesystem_type == 3) {
-        for (int i = 0; i < 64; i++) {
-            fwrite(&journaling, sizeof(Journaling), 1, file);
-        }
+        fseek(file, 100 * 64, SEEK_CUR);
+        //fwrite(&journaling, sizeof(Journaling), 1, file);
     }
     // 3. Bitmap de inodos
     fwrite(&bitmapInodos, n, 1, file);
     // 4. Bitmap de bloques
     fwrite(&bitmapBloques, 3 * n, 1, file);
     // 5. Inodos
-    Inodo inodo;
-    for (int i = 0; i < 15; i++) {
-        inodo.i_block[i] = -1;
-    }
+    Inodo inodo = getNewInodo();
     for (int i = 0; i < n; i++) {
         fwrite(&inodo, sizeof(Inodo), 1, file);
     }
@@ -145,11 +140,8 @@ void Mkfs::run() {
     strcpy(carpetaRaiz.b_content[1].b_name, "..");
 
     // Creacion del inodo de la carpeta raiz y padre (la misma carpeta)
-    Inodo inodoCarpetaRaiz;
-    for (int i = 0; i < 15; i++) {
-        inodoCarpetaRaiz.i_block[i] = -1;
-    }
-    inodoCarpetaRaiz.i_type = 0;
+    Inodo inodoCarpetaRaiz = getNewInodo();
+    inodoCarpetaRaiz.i_type = '0';
     inodoCarpetaRaiz.i_uid = 1;
     inodoCarpetaRaiz.i_gid = 1;
     inodoCarpetaRaiz.i_size = 0;
@@ -188,10 +180,8 @@ void Mkfs::run() {
     // ___________________________________ Escritura Carpeta y Archivo ___________________________________
 
     // Escritura de los Inodos
-    fseek(file, superBloque.s_inode_start, SEEK_SET); // Mover el puntero al inicio de la tabla de inodos
-    fwrite(&inodoCarpetaRaiz, sizeof(Inodo), 1, file);
-    fseek(file, sizeof(Inodo), SEEK_CUR);
-    fwrite(&inodoArchivoUsers, sizeof(Inodo), 1, file);
+    escribirInodo(inodoCarpetaRaiz, 0, *mountedPartition);
+    escribirInodo(inodoArchivoUsers, 1, *mountedPartition);
 
     // Escritura de los Bloques
     fseek(file, superBloque.s_block_start, SEEK_SET); // Mover el puntero al inicio de la tabla de bloques

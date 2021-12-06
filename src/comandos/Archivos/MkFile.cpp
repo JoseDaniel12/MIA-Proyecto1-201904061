@@ -37,13 +37,14 @@ void MkFile::run() {
     }
 
     string directorio = getDirectory(path);
-    string file_name = getFileName(path);
+    string file_name = getFileName(path) + ".txt";
 
     MountedPartition mp;
     getMounted(id, &mp);
 
     int indice_inodo = existePathSimulado(path, mp);
-    cout << "El indice del inodo de la ruta es: " << indice_inodo << endl;
+    crearArchivo(1, cont, mp);
+    cout << leerArchivo(1, mp) << endl;
 
-
+    cout << "Archivo creado con exito" << endl;
 }

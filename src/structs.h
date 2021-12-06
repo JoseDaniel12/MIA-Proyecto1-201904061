@@ -80,7 +80,7 @@ typedef struct {
     time_t i_ctime;
     int i_mtime;
     int i_block[15];
-    int i_type;
+    char i_type;
     int i_perm;
 } Inodo;
 

@@ -38,10 +38,17 @@ public:
     void getMounted(string id, MountedPartition* destinoMp);
 
     vector<string> getPathSeparado(string path);
+    Inodo getNewInodo();
     Inodo getInodoByIndex(int indice, MountedPartition mp);
     BloqueDePunteros getBloqueDePunteroByIndex(int indice, MountedPartition mp);
     vector<int> getIndicesBloquesCarpetaDeInodo(Inodo inodo, MountedPartition mp);
     int existePathSimulado(string pathSimulado, MountedPartition mp, int indice_inodo = 0);
+    string getBitmap(MountedPartition mp, bool de_inodos = true);
+    int getIndiceForNewInodo(MountedPartition mp);
+    void escribirBloqueDeArchivo(BloqueDeArchivo bloque, int indice_bloque, MountedPartition mp);
+    void escribirInodo(Inodo inodo, int indice_inodo, MountedPartition mp);
+    bool crearArchivo(int indice_inodo, string texto, MountedPartition mp);
+    string leerArchivo(int indice_inodo, MountedPartition mp);
 };
 
 #endif //ARCHIVOSP1_COMMAND_H

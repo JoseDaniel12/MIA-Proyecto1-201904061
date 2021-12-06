@@ -4,33 +4,27 @@ set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
 
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/Entidades/Disco.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/parser.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/analizador/scanner.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Command.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Exec.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mkfs.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Mount.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Param.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rep.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Rmdisk.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/comandos/Umount.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Umount.cpp.o"
-  "/home/jose/CLionProjects/MIA-Proyecto1-201904061/src/main.cpp" "/home/jose/CLionProjects/MIA-Proyecto1-201904061/cmake-build-debug/CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/Entidades/Disco.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/Entidades/Disco.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/parser.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/scanner.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Archivos/MkFile.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/MkFile.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/MkFile.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Command.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Exec.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdir.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdir.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdir.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkfs.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mount.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mount.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Param.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rep.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rmdisk.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rmdisk.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Umount.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Umount.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Umount.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Usuarios/Login.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Usuarios/Login.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Usuarios/Login.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/main.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links.

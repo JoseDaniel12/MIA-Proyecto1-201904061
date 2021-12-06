@@ -176,6 +176,90 @@ vector<string> Command::getPathSeparado(string path) {
     return res;
 }
 
+Inodo Command::getNewInodo() {
+    Inodo inodo;
+    for (int i  = 0; i < 15; i++) {
+        inodo.i_block[i] = -1;
+    }
+    return inodo;
+}
+
+string Command::getBitmap(MountedPartition mp, bool de_inodos) {
+    FILE *file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
+    fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
+
+    // Se recoge el super bloque
+    SuperBloque sp;
+    fread(&sp, sizeof(SuperBloque), 1, file);
+
+    // Se mueve el puntero al area de inodos
+    fseek(file, sp.s_bm_inode_start, SEEK_SET);
+
+    int tamano_bm = -1;
+    if (de_inodos) {
+        tamano_bm = sp.s_bm_block_start - sp.s_bm_inode_start;
+    } else {
+        tamano_bm = sp.s_inode_start - sp.s_bm_block_start;
+    }
+
+    char bm_inodos[tamano_bm];
+    fread(&bm_inodos, tamano_bm, 1, file);
+    return bm_inodos;
+}
+
+
+int Command::getIndiceForNewInodo(MountedPartition mp) {
+    string bm_inodos = getBitmap(mp);
+    for (int i = 0; i < bm_inodos.length(); i++) {
+        if (bm_inodos[i] == '0') {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void Command::escribirBloqueDeArchivo(BloqueDeArchivo bloque, int indice_bloque, MountedPartition mp) {
+    FILE* file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
+    fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
+
+    // Se recoge el super bloque
+    SuperBloque sp;
+    fread(&sp, sizeof (SuperBloque), 1, file);
+
+    int tamano_bm_bloques = sp.s_inode_start - sp.s_bm_block_start;
+    char bitmap_bloques[tamano_bm_bloques];
+    fseek(file, sp.s_bm_block_start, SEEK_SET); // Se mueve el puntero al bitmap de bloques
+    fread(&bitmap_bloques, tamano_bm_bloques, 1, file); // Se lee el bitmap de bloques
+    bitmap_bloques[indice_bloque] = '1'; // Se marca en el bitmap de bloques que se creo un bloque
+    fwrite(&bitmap_bloques, tamano_bm_bloques, 1, file); // Se escribe el nuevo bitmap de bloques
+
+    fseek(file, sp.s_block_start, SEEK_SET); // Se mueve el puntero al area de bloques
+    fseek(file, indice_bloque * sizeof(BloqueDeArchivo), SEEK_CUR); // Se mueve el puntero al inicio del bloque por escribir
+    fwrite(&bloque, 64, 1, file); //Se escribe el bloque
+    fclose(file);
+}
+
+void Command::escribirInodo(Inodo inodo, int indice_inodo, MountedPartition mp) {
+    FILE* file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
+    fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
+
+    // Se recoge el super bloque
+    SuperBloque sp;
+    fread(&sp, sizeof(SuperBloque), 1, file);
+
+    int tamano_bm_inodos = sp.s_bm_block_start - sp.s_bm_inode_start;
+    char bitmap_inodos[tamano_bm_inodos];
+    fseek(file, sp.s_bm_inode_start, SEEK_SET); // Se mueve el puntero al bitmap de inodos
+    fread(&bitmap_inodos, tamano_bm_inodos, 1, file); // Se lee el bitmap de inodos
+    bitmap_inodos[indice_inodo] = '1'; // Se marca en el bitmap de inodos que se creo un inodo
+    fwrite(&bitmap_inodos, tamano_bm_inodos, 1, file); // Se escribe el nuevo bitmap de inodos
+
+    fseek(file, sp.s_inode_start, SEEK_SET); // Se mueve el puntero al area de inodos
+    fseek(file, indice_inodo * sizeof(Inodo), SEEK_CUR); // Se mueve el puntero al inicio del inodo por escribir
+    fwrite(&inodo, sizeof(Inodo), 1, file); //Se escribe el inodo
+    fclose(file);
+}
+
 Inodo Command::getInodoByIndex(int indice, MountedPartition mp) {
     FILE* file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
     fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
@@ -203,17 +287,34 @@ BloqueDePunteros Command::getBloqueDePunteroByIndex(int indice, MountedPartition
 
     BloqueDePunteros bloqueDePunteros;
     fseek(file, sp.s_block_start, SEEK_SET); // Se mueve el puntero al area de los bloques
-    fseek(file, indice * 64, SEEK_CUR); // Se mueve el puntero al inicio del inodo indicado
+    fseek(file, indice * 64, SEEK_CUR); // Se mueve el puntero al inicio del bloque indicado
     fread(&bloqueDePunteros, sizeof(Inodo), 1, file); // Se recoge el bloque indicado
 
     fclose(file);
     return bloqueDePunteros;
 }
 
+BloqueDeArchivo getBloqueDeArchivoByIndex(int indice_bloque, MountedPartition mp) {
+    FILE* file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
+    fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
+
+    // Se recoge el super bloque
+    SuperBloque sp;
+    fread(&sp, sizeof (SuperBloque), 1, file);
+
+    BloqueDeArchivo bloqueDeArchivo;
+    fseek(file, sp.s_block_start, SEEK_SET); // Se mueve el puntero al area de los bloques
+    fseek(file, indice_bloque * 64, SEEK_CUR); // Se mueve el puntero al inicio del bloque indicado
+    fread(&bloqueDeArchivo, sizeof(BloqueDeArchivo), 1, file); // Se recoge el bloque indicado
+
+    fclose(file);
+    return bloqueDeArchivo;
+}
+
 
 vector<int> Command::getIndicesBloquesCarpetaDeInodo(Inodo inodo, MountedPartition mp) {
     vector<int> apuntadores;
-    if (inodo.i_type == 0) { // Si el tipo de inodo es de tipo de carpeta se procede a buscar los apuntadores
+    if (inodo.i_type == '0') { // Si el tipo de inodo es de tipo de carpeta se procede a buscar los apuntadores
         for (int i = 0; i < 15; i++) {
             if (inodo.i_block[i] != -1) {
                 if (i < 12) {   // Apuntador Directo a Bloque
@@ -290,11 +391,12 @@ int Command::existePathSimulado(string pathSimulado, MountedPartition mp, int in
             if (bloqueDeCarpeta.b_content[j].b_name == path_separado[0]) {
                 // Se crea el path hijo para seguir buscando sin la primera carpeta padre
                 vector<string> path_hijo_separado = path_separado;
-                path_hijo_separado.erase(path_separado.begin());
+                path_hijo_separado.erase(path_hijo_separado.begin());
 
                 // Si el path queda vacio quiere decir que se llego al final por lo que se retorna
-                // el inodo que cotiene la carpeta
+                // el inodo que cotiene la carpeta o archivo
                 if (path_hijo_separado.size() == 0) {
+                    fclose(file);
                     return indice_inodo;
                 }
 
@@ -312,6 +414,49 @@ int Command::existePathSimulado(string pathSimulado, MountedPartition mp, int in
             }
         }
     }
+    fclose(file);
     return -1;
 }
 
+bool Command::crearArchivo(int indice_inodo, string texto, MountedPartition mp) {
+    Inodo inodo = getInodoByIndex(indice_inodo, mp);
+    if (inodo.i_type != '1') {
+        return false;
+    }
+    int bytes_escritos = 0;
+    for (int i = 0; i < 15; i++) {
+        if (bytes_escritos >= texto.length()) {
+            break;
+        }
+        if (i < 12) {
+            if (inodo.i_block[i] == -1) {
+                BloqueDeArchivo bloqueDeArchivo;
+                int indice_bloque_archvios = getIndiceForNewInodo(mp);
+                strcpy(bloqueDeArchivo.b_content, texto.substr(bytes_escritos, 64).c_str());
+                bytes_escritos += 64 + 1;
+                inodo.i_block[i] = indice_bloque_archvios;
+                escribirBloqueDeArchivo(bloqueDeArchivo, indice_bloque_archvios, mp);
+            }
+        }
+    }
+    escribirInodo(inodo, indice_inodo, mp);
+    return true;
+}
+
+string Command::leerArchivo(int indice_inodo, MountedPartition mp) {
+    indice_inodo = 1;
+    Inodo inodo = getInodoByIndex(indice_inodo, mp);
+    if (inodo.i_type != '1') {
+        return "";
+    }
+    string contenido;
+    for (int i = 0; i < 15; i++) {
+        if (i < 12) {
+            if (inodo.i_block[i] != -1) {
+                BloqueDeArchivo bloqueDeArchivo = getBloqueDeArchivoByIndex(inodo.i_block[i], mp);
+                contenido += bloqueDeArchivo.b_content;
+            }
+        }
+    }
+    return contenido;
+}

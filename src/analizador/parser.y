@@ -75,8 +75,8 @@ command:
 	|REP params_declaration		{ resAnalizer = new Rep(paramVector); paramVector.clear(); }
 	|EXEC params_declaration	{ resAnalizer = new Exec(paramVector); paramVector.clear(); }
 	|LOGIN params_declaration	{ resAnalizer = new Login(paramVector); paramVector.clear(); }
-	|MKFILE params_declaration   { resAnalizer = new MkFile(paramVector); paramVector.clear(); }
-	|EXIT				{}
+	|MKFILE params_declaration  { resAnalizer = new MkFile(paramVector); paramVector.clear(); }
+	|EXIT				        {}
 
 ;
 
