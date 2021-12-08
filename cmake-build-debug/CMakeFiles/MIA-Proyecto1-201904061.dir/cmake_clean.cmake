@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o.d"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.o.d"
+  "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/Cat.cpp.o"
+  "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/Cat.cpp.o.d"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/MkFile.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/MkFile.cpp.o.d"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o"

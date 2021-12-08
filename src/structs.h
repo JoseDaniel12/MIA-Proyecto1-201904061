@@ -84,13 +84,13 @@ typedef struct {
     int i_perm;
 } Inodo;
 
-struct ContentDeCarpetaArchvio {
+struct ContentDeCarpeta {
     char b_name[12] = "";   // Nombre de la carpeta o archivo
     int b_inodo = -1;       // Apuntador hacia un inodo asociado al archivo o carpeta
 };
 
 struct BloqueDeCarpeta {
-    ContentDeCarpetaArchvio b_content[4];  // Array con el contenido de la carpeta
+    ContentDeCarpeta b_content[4];  // Array con el contenido de la carpeta
 };
 
 struct BloqueDeArchivo {

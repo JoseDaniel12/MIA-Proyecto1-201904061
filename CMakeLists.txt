@@ -21,4 +21,4 @@ add_executable(
         src/comandos/Rmdisk.h
         src/comandos/Fdisk.cpp
         src/comandos/Fdisk.h
-        src/comandos/Mount.cpp src/comandos/Mount.h src/Entidades/Disco.cpp src/Entidades/Disco.h src/comandos/Umount.cpp src/comandos/Umount.h src/comandos/Mkfs.cpp src/comandos/Mkfs.h src/comandos/Rep.cpp src/comandos/Rep.h src/comandos/Exec.cpp src/comandos/Exec.h src/comandos/Usuarios/Login.cpp src/comandos/Usuarios/Login.h src/comandos/Archivos/MkFile.cpp src/comandos/Archivos/MkFile.h src/comandos/Mkdir.cpp src/comandos/Mkdir.h)
+        src/comandos/Mount.cpp src/comandos/Mount.h src/Entidades/Disco.cpp src/Entidades/Disco.h src/comandos/Umount.cpp src/comandos/Umount.h src/comandos/Mkfs.cpp src/comandos/Mkfs.h src/comandos/Rep.cpp src/comandos/Rep.h src/comandos/Exec.cpp src/comandos/Exec.h src/comandos/Usuarios/Login.cpp src/comandos/Usuarios/Login.h src/comandos/Archivos/MkFile.cpp src/comandos/Archivos/MkFile.h src/comandos/Mkdir.cpp src/comandos/Mkdir.h src/comandos/Archivos/Cat.cpp src/comandos/Archivos/Cat.h)

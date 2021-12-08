@@ -201,6 +201,30 @@ src/analizador/scanner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/scanner.cpp.s
 .PHONY : src/analizador/scanner.cpp.s
 
+src/comandos/Archivos/Cat.o: src/comandos/Archivos/Cat.cpp.o
+.PHONY : src/comandos/Archivos/Cat.o
+
+# target to build an object file
+src/comandos/Archivos/Cat.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/Cat.cpp.o
+.PHONY : src/comandos/Archivos/Cat.cpp.o
+
+src/comandos/Archivos/Cat.i: src/comandos/Archivos/Cat.cpp.i
+.PHONY : src/comandos/Archivos/Cat.i
+
+# target to preprocess a source file
+src/comandos/Archivos/Cat.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/Cat.cpp.i
+.PHONY : src/comandos/Archivos/Cat.cpp.i
+
+src/comandos/Archivos/Cat.s: src/comandos/Archivos/Cat.cpp.s
+.PHONY : src/comandos/Archivos/Cat.s
+
+# target to generate assembly for a file
+src/comandos/Archivos/Cat.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/Cat.cpp.s
+.PHONY : src/comandos/Archivos/Cat.cpp.s
+
 src/comandos/Archivos/MkFile.o: src/comandos/Archivos/MkFile.cpp.o
 .PHONY : src/comandos/Archivos/MkFile.o
 
@@ -555,6 +579,9 @@ help:
 	@echo "... src/analizador/scanner.o"
 	@echo "... src/analizador/scanner.i"
 	@echo "... src/analizador/scanner.s"
+	@echo "... src/comandos/Archivos/Cat.o"
+	@echo "... src/comandos/Archivos/Cat.i"
+	@echo "... src/comandos/Archivos/Cat.s"
 	@echo "... src/comandos/Archivos/MkFile.o"
 	@echo "... src/comandos/Archivos/MkFile.i"
 	@echo "... src/comandos/Archivos/MkFile.s"

@@ -100,6 +100,12 @@
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/scanner.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Archivos/Cat.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Archivos/Cat.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Archivos/MkFile.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>

@@ -7,7 +7,6 @@
 #include <cstring>
 
 #include "Mkfs.h"
-#include "../structs.h"
 
 using namespace std;
 
@@ -42,6 +41,7 @@ void Mkfs::run() {
         if (mp.id == id) {
             if (mp.partition.part_type == 'P' || mp.partition.part_type == 'L') {
                 mountedPartition = &mp;
+                break;
             } else {
                 cout << "Error: Solo se puede montar un sistema de archivos en una partición primaria o lógica." << endl;
                 return;
@@ -78,7 +78,7 @@ void Mkfs::run() {
     } else if (superBloque.s_filesystem_type == 3) {
         superBloque.s_bm_inode_start = mountedPartition->partition.part_start + sizeof(SuperBloque) + (100 * 64);
     } else {
-        superBloque.s_bm_inode_start = -1;
+        cout << "ERROR: Ocurrio un error al ubicar el bitma de inodos en el Mkfs." << endl;
     }
     superBloque.s_bm_block_start = superBloque.s_bm_inode_start + n;
     superBloque.s_inode_start = superBloque.s_bm_block_start + 3 * n;
@@ -94,7 +94,7 @@ void Mkfs::run() {
     // Creacion del Bitmap de Bloques
     char bitmapBloques[3 * n];
     bitmapBloques[0] = bitmapBloques[1] = '1';
-    for (int i = 2; i < 3 * n; i++) {
+    for (int i = 2; i < 2 * n; i++) {
         bitmapBloques[i] = '0';
     }
 
@@ -131,8 +131,8 @@ void Mkfs::run() {
     // _______________________________________ Carpeta Raiz _______________________________________
 
     // Creacion del bloque carpeta raiz y padre (la misma carpeta)
-    BloqueDeCarpeta carpetaRaiz;
-    ContentDeCarpetaArchvio contenidoCarpetaRaiz;
+    BloqueDeCarpeta carpetaRaiz = getNewBloqueDeCarpeta();
+    ContentDeCarpeta contenidoCarpetaRaiz;
     strcpy(contenidoCarpetaRaiz.b_name, ".");
     contenidoCarpetaRaiz.b_inodo = 0;
     carpetaRaiz.b_content[0] = contenidoCarpetaRaiz;
@@ -153,14 +153,8 @@ void Mkfs::run() {
 
     // _______________________________________ Archivo Users _______________________________________
 
-    // Bloque del archivo users
-    BloqueDeArchivo archivoUsers;
-
     // Inodo del archivo users
-    Inodo inodoArchivoUsers;
-    for (int i = 0; i < 15; i++) {
-        inodoArchivoUsers.i_block[i] = -1;
-    }
+    Inodo inodoArchivoUsers = getNewInodo();
     inodoArchivoUsers.i_uid = 1;
     inodoArchivoUsers.i_gid = 1;
     inodoArchivoUsers.i_size = 0;
@@ -171,6 +165,10 @@ void Mkfs::run() {
     inodoArchivoUsers.i_mtime = inodoArchivoUsers.i_ctime;
     inodoArchivoUsers.i_atime = inodoArchivoUsers.i_ctime;
 
+    // Bloque del archivo users
+    BloqueDeArchivo archivoUsers;
+    strcpy(archivoUsers.b_content, "usetsFileContent");
+
     // Se crea el contenido de la carpeta que apunta la indoo del archivo y se enlazan
     strcpy(contenidoCarpetaRaiz.b_name, "users.txt");
     contenidoCarpetaRaiz.b_inodo = 1;
@@ -178,7 +176,6 @@ void Mkfs::run() {
 
 
     // ___________________________________ Escritura Carpeta y Archivo ___________________________________
-
     // Escritura de los Inodos
     escribirInodo(inodoCarpetaRaiz, 0, *mountedPartition);
     escribirInodo(inodoArchivoUsers, 1, *mountedPartition);
@@ -186,7 +183,6 @@ void Mkfs::run() {
     // Escritura de los Bloques
     fseek(file, superBloque.s_block_start, SEEK_SET); // Mover el puntero al inicio de la tabla de bloques
     fwrite(&carpetaRaiz, 64, 1, file);
-    fseek(file, 64, SEEK_CUR);
     fwrite(&archivoUsers, 64, 1, file);
     fclose(file);
 

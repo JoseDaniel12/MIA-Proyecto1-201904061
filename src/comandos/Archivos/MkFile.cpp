@@ -36,15 +36,20 @@ void MkFile::run() {
         return;
     }
 
-    string directorio = getDirectory(path);
-    string file_name = getFileName(path) + ".txt";
+    string folder_path = getDirectory(path);
+    string file_name = getFileName(path)  + "." + getExtension(path);
 
     MountedPartition mp;
     getMounted(id, &mp);
+    int indice_inodo_foler = existePathSimulado(folder_path, mp);
+    crearArchivo(indice_inodo_foler, file_name, cont, mp);
 
-    int indice_inodo = existePathSimulado(path, mp);
-    crearArchivo(1, cont, mp);
-    cout << leerArchivo(1, mp) << endl;
+    string a = getBitmap(mp, true).substr(0, 5).c_str();
+    string b = getBitmap(mp, false).substr(0, 5).c_str();
+
+
+    int indice_inodo_archivo =  existePathSimulado(path, mp);
+    cout << leerArchivo(indice_inodo_archivo, mp) << endl;
 
     cout << "Archivo creado con exito" << endl;
 }
