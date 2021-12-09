@@ -23,7 +23,6 @@ public:
     string id;
     string type;
     string fs;
-
 };
 
 

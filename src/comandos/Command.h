@@ -38,6 +38,7 @@ public:
     void getMounted(string id, MountedPartition* destinoMp);
 
     vector<string> getPathSeparado(string path);
+    string getPathUnido(vector<string> path_separado);
     Inodo getNewInodo();
     BloqueDeCarpeta getNewBloqueDeCarpeta();
     Inodo getInodoByIndex(int indice, MountedPartition mp);
@@ -52,6 +53,7 @@ public:
     void escribirBloqueDeCarpeta(BloqueDeCarpeta bloque, int indice_bloque, MountedPartition mp);
     void escribirInodo(Inodo inodo, int indice_inodo, MountedPartition mp);
     bool crearArchivo(int indice_inodo, string nombre_archivo, string texto, MountedPartition mp);
+    bool crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp);
     string leerArchivo(int indice_inodo, MountedPartition mp);
 };
 

@@ -176,6 +176,14 @@ vector<string> Command::getPathSeparado(string path) {
     return res;
 }
 
+string Command::getPathUnido(vector<string> path_separado) {
+    string path_unido;
+    for (auto nombre: path_separado) {
+        path_unido += "/" + nombre;
+    }
+    return path_unido;
+}
+
 Inodo Command::getNewInodo() {
     Inodo inodo;
     for (int i = 0; i < 15; i++) {
@@ -423,7 +431,7 @@ vector<int> Command::getIndicesBloquesCarpetaDeInodo(Inodo inodo, MountedPartiti
 
 
 int Command::existePathSimulado(string pathSimulado, MountedPartition mp, int indice_inodo) {
-    if (pathSimulado == "/") {
+    if (pathSimulado == "") {
         return 0;
     }
 
@@ -463,10 +471,7 @@ int Command::existePathSimulado(string pathSimulado, MountedPartition mp, int in
                 }
 
                 // De lo contario se unifica el path hijo
-                string path_hijo_unido = "/";
-                for (auto nombre: path_hijo_separado) {
-                    path_hijo_unido += "/" + nombre;
-                }
+                string path_hijo_unido = getPathUnido(path_hijo_separado);
 
                 // y se sique buscando de forma recursiva con el path hijo
                 int res_busqueda = existePathSimulado(path_hijo_unido, mp, bloqueDeCarpeta.b_content[j].b_inodo);
@@ -489,8 +494,8 @@ bool Command::crearArchivo(int indice_inodo_carpeta, string nombre_archivo, stri
     // Vincular el inodo de Carpeta con el inodo del Archvio a crear
     Inodo inodo_carpeta = getInodoByIndex(indice_inodo_carpeta, mp); // Se obtiene la carpeta donde ira el archvio
     // Se recorren los apuntadores del inodo de la carpeta para ver donde vincular con el archivo a crear
+    bool archivo_enlazado = false;
     for (int i = 0; i < 15; i++) {
-        bool archivo_enlazado = false;
         if (i < 12) {
             if (inodo_carpeta.i_block[i] != -1) { // Si ya existe el bloque de carpeta para meter el archivo
                 BloqueDeCarpeta bloqueDeCarpeta = getBloqueDeCarpetaByIndex(inodo_carpeta.i_block[i], mp); // se recoge el bloque existente por su indice
@@ -523,14 +528,15 @@ bool Command::crearArchivo(int indice_inodo_carpeta, string nombre_archivo, stri
 
     int bytes_escritos = 0;
     for (int i = 0; i < 15; i++) {
-        if (bytes_escritos >= texto.length()) {
+        if (bytes_escritos >= texto.length() - 1) {
             break;
         }
         if (i < 12) {
             if (inodo_archivo.i_block[i] == -1) {
                 BloqueDeArchivo bloqueDeArchivo;
                 int indice_bloque_archvios = getIndiceForNewBloque(mp);
-                strcpy(bloqueDeArchivo.b_content, texto.substr(bytes_escritos, 64).c_str());
+                string sub_cadena = texto.substr(bytes_escritos, 64).c_str();
+                strcpy(bloqueDeArchivo.b_content, sub_cadena.c_str());
                 bytes_escritos += 64 + 1;
                 inodo_archivo.i_block[i] = indice_bloque_archvios;
                 escribirBloqueDeArchivo(bloqueDeArchivo, indice_bloque_archvios, mp);
@@ -556,4 +562,55 @@ string Command::leerArchivo(int indice_inodo_archivo, MountedPartition mp) {
         }
     }
     return contenido;
+}
+
+
+bool Command::crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp) {
+    Inodo inodo_carpeta_padre = getInodoByIndex(indice_inodo_carpeta_padre, mp); // Se obtiene el inodo de la carpeta padre a la que se va crear
+
+    int indice_inodo_carpeta_nueva = getIndiceForNewInodo(mp); // Se obtiene indice para el inodo de la nueva carpeta
+    int indice_bloque_carpeta = getIndiceForNewBloque(mp); // Se obtine indice para el primer bloque de carpeta de la nueva carpeta
+
+    Inodo inodo_carpeta_nueva = getNewInodo();  // Se crea el inodo de la carpeta nueva
+    inodo_carpeta_nueva.i_type = '0'; // Se indica que es un inodo de carpeta
+    inodo_carpeta_nueva.i_block[0] = indice_bloque_carpeta;
+    BloqueDeCarpeta bloque_carpeta_nueva = getNewBloqueDeCarpeta(); // Se crea el primer bloque de carpeta para el indo de la carpeta nueva
+    strcpy(bloque_carpeta_nueva.b_content[0].b_name, ".");  // Se pone nombre del enlace a la misma carpeta neuva
+    bloque_carpeta_nueva.b_content[0].b_inodo = indice_inodo_carpeta_nueva; // Se apunta al inodo de la misma carpeta nueva
+    strcpy(bloque_carpeta_nueva.b_content[1].b_name, "..");  // Se pone nombre del enlace a la carpeta padre
+    bloque_carpeta_nueva.b_content[1].b_inodo = indice_inodo_carpeta_padre; // Se apunta al inodo de la carpeta padre
+    escribirInodo(inodo_carpeta_nueva, indice_inodo_carpeta_nueva, mp); // Se escribe el inodo de la carpeta nueva
+    escribirBloqueDeCarpeta(bloque_carpeta_nueva, indice_bloque_carpeta, mp); // Se escibe el primer bloque de la carpeta nueva
+
+    ContentDeCarpeta contendor_carpeta; // Se crea el contenido de blqoue que contedra el indo de la nueva carpeta
+    strcpy(contendor_carpeta.b_name, nombre_carpeta.c_str()); // se le pone el nombre de la nueva caerpta
+    contendor_carpeta.b_inodo =  indice_inodo_carpeta_nueva; // se vicula el contendor con el indoo de la nueva carpeta
+    bool nueva_carpeta_enlazada = false;
+    for (int i = 0; i < 15; i++) {
+        if (i < 12) {
+            if (inodo_carpeta_padre.i_block[i] != -1) { // Si ya existe el bloque de carpeta para meter la carpeta nueva
+                BloqueDeCarpeta bloqueDeCarpeta = getBloqueDeCarpetaByIndex(inodo_carpeta_padre.i_block[i], mp); // se recoge el bloque existente por su indice
+                for (int j = 0; j < 4; j++) { // Se recoren los contenidos del bloque de carpeta
+                    if (bloqueDeCarpeta.b_content[j].b_inodo == -1) { // Se ve si hay un contido dispoible para la nueva carpeta
+                        bloqueDeCarpeta.b_content[j] = contendor_carpeta; // Al bloque de carpeta se le pone el contendor de la nueva carpeta
+                        escribirBloqueDeCarpeta( bloqueDeCarpeta, inodo_carpeta_padre.i_block[i], mp); // Se escribe el bloque de carpeta modificado
+                        nueva_carpeta_enlazada = true; // Se marca que el archivo ya se enlazo para parar de iterar
+                        break;
+                    }
+                }
+            } else { // Si no existe bloque de carpeta para meter la nueva carpeta
+                indice_bloque_carpeta = getIndiceForNewBloque(mp); // Se obtiene el indice para un nuevo bloque de carpeta
+                inodo_carpeta_padre.i_block[i] = indice_bloque_carpeta; // Se vicula el inodo de la carpeta padre con el nuevo bloque que contendra la nueva carpeta
+                BloqueDeCarpeta bloqueDeCarpeta = getNewBloqueDeCarpeta(); // Se crea el nuevo bloque que contendra la carpeta
+                bloqueDeCarpeta.b_content[0] = contendor_carpeta; // Al nuevo bloque de carpeta se le mete como contenido el indo de la nueva carpeta
+                escribirInodo(inodo_carpeta_padre, indice_inodo_carpeta_padre, mp); // Se escribe el indo de la carpeta modificado
+                escribirBloqueDeCarpeta(bloqueDeCarpeta, indice_bloque_carpeta, mp); // Se escribe el blqoue de carpeta que contendra la nueva
+                nueva_carpeta_enlazada = true; // Se marca que el archivo ya se enlazo para parar de iterar
+            }
+        }
+        if (nueva_carpeta_enlazada) {
+            break;
+        }
+    }
+    return true;
 }

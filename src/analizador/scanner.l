@@ -24,8 +24,9 @@ password    ({letra}|{entero}|[!$@+*])+
 cadena      "\""[^"\""]*"\""
 extension   "."{id}
 diagonal    "/"
-ruta        ({diagonal}{id})*({diagonal}{id}{extension})
+ruta        ({diagonal}{id})*({diagonal}{id}{extension})?
 directorio  ({diagonal}{id})+
+filen       "-file"{digito}+
 
 
 %%
@@ -87,6 +88,7 @@ directorio  ({diagonal}{id})+
 {cadena}    {strcpy(yylval.text, yytext); return CADENA;}
 {id}        {strcpy(yylval.text, yytext); return ID;}
 {ruta}      {strcpy(yylval.text, yytext); return RUTA;}
+{filen}     {strcpy(yylval.text, yytext); return FILEN;}
 [[:blank:]] {}
 .           {strcpy(yylval.text, yytext); return DESCONOCIDO; }
 

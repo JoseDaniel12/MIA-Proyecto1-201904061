@@ -325,4 +325,6 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Usuarios/../Command.h \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Usuarios/../../structs.h \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Archivos/MkFile.h \
- /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Archivos/../Command.h
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Archivos/../Command.h \
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Archivos/Cat.h \
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Mkdir.h

@@ -5,9 +5,17 @@
 #ifndef MIA_PROYECTO1_201904061_MKDIR_H
 #define MIA_PROYECTO1_201904061_MKDIR_H
 
+#include "Command.h"
 
-class Mkdir {
+class Mkdir : public Command {
+public:
+    vector<string> admisableParams = {"-PATH", "-P"};
+    vector<string> obligatoryParams = {"-PATH"};
+    void run() override;
 
+    explicit Mkdir(const vector<Param> &parametros);
+    string path;
+    string param_p;
 };
 
 
