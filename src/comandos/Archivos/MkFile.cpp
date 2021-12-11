@@ -3,6 +3,9 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <filesystem>
+
 #include "MkFile.h"
 
 using namespace std;
@@ -24,7 +27,7 @@ MkFile::MkFile(vector<Param> parametros) : Command(parametros) {
         } else if (p.name == "-CONT") {
             cont = quitarComillas(p.value);
         } else if (p.name == "-STDIN") {
-            pStdin = quitarComillas(p.value);
+            pStdin = true;
         }
     }
 }
@@ -32,6 +35,39 @@ MkFile::MkFile(vector<Param> parametros) : Command(parametros) {
 void MkFile::run() {
     if (!runnable) {
         return;
+    }
+
+    if (!usuario_montado.logeado) {
+        cout << "Error: no se puede ejcutar el comando pues no hay nigun usuario logeado" << endl;
+        return;
+    }
+
+    string contenido_archivo = "";
+    if (cont != "") {
+        if (filesystem::exists(rootPath + cont)) {
+            ifstream archivo_con_contenido(rootPath + cont);
+            string linea;
+            while (getline (archivo_con_contenido, linea)) {
+                contenido_archivo += linea += "\n";
+            }
+            contenido_archivo = contenido_archivo.substr(0, contenido_archivo.length() - 1);
+            archivo_con_contenido.close();
+        } else  {
+            cout << "Error: no se el conteido para instar el archivo en la ruta indicada." << endl;
+            return;
+        }
+    } else if (pStdin) {
+        cout << "Ingrese el contenido del archivo: ";
+        cin >> contenido_archivo;
+    } else {
+        while (contenido_archivo.length() < size) {
+            for (int i = 0; i < 9; i++) {
+                if (contenido_archivo.length() >= size) {
+                    break;
+                }
+                contenido_archivo += to_string(i);
+            }
+        }
     }
 
     string folder_path = getDirectory(path);
@@ -63,7 +99,7 @@ void MkFile::run() {
         return;
     }
 
-    escribirEnArchivo(indice_inodo_archivo, cont, usuario_montado.mountedPartition); // Se escribe en el archivo creado
+    escribirEnArchivo(indice_inodo_archivo, contenido_archivo, usuario_montado.mountedPartition); // Se escribe en el archivo creado
 
     cout << "Archivo creado con exito" << endl;
 }

@@ -1205,13 +1205,50 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Archivos/MkFile.cpp.o: ../sr
   /usr/include/c++/9/bits/ostream.tcc \
   /usr/include/c++/9/istream \
   /usr/include/c++/9/bits/istream.tcc \
+  /usr/include/c++/9/fstream \
+  /usr/include/c++/9/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \
+  /usr/include/c++/9/bits/fstream.tcc \
+  /usr/include/c++/9/filesystem \
+  /usr/include/c++/9/bits/fs_fwd.h \
+  /usr/include/c++/9/chrono \
+  /usr/include/c++/9/ratio \
+  /usr/include/c++/9/ctime \
+  /usr/include/c++/9/bits/parse_numbers.h \
+  /usr/include/c++/9/bits/fs_path.h \
+  /usr/include/c++/9/utility \
+  /usr/include/c++/9/bits/stl_relops.h \
+  /usr/include/c++/9/locale \
+  /usr/include/c++/9/bits/locale_facets_nonio.h \
+  /usr/include/x86_64-linux-gnu/c++/9/bits/time_members.h \
+  /usr/include/x86_64-linux-gnu/c++/9/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/9/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/9/bits/locale_conv.h \
+  /usr/include/c++/9/bits/unique_ptr.h \
+  /usr/include/c++/9/tuple \
+  /usr/include/c++/9/array \
+  /usr/include/c++/9/bits/uses_allocator.h \
+  /usr/include/c++/9/bits/invoke.h \
+  /usr/include/c++/9/iomanip \
+  /usr/include/c++/9/bits/quoted_string.h \
+  /usr/include/c++/9/sstream \
+  /usr/include/c++/9/bits/sstream.tcc \
+  /usr/include/c++/9/codecvt \
+  /usr/include/c++/9/ext/concurrence.h \
+  /usr/include/c++/9/bits/shared_ptr.h \
+  /usr/include/c++/9/bits/shared_ptr_base.h \
+  /usr/include/c++/9/bits/allocated_ptr.h \
+  /usr/include/c++/9/bits/refwrap.h \
+  /usr/include/c++/9/ext/aligned_buffer.h \
+  /usr/include/c++/9/bits/fs_dir.h \
+  /usr/include/c++/9/bits/fs_ops.h \
   ../src/comandos/Archivos/MkFile.h \
   ../src/comandos/Command.h \
   /usr/include/c++/9/vector \
   /usr/include/c++/9/bits/stl_construct.h \
   /usr/include/c++/9/bits/stl_uninitialized.h \
-  /usr/include/c++/9/utility \
-  /usr/include/c++/9/bits/stl_relops.h \
   /usr/include/c++/9/bits/stl_vector.h \
   /usr/include/c++/9/bits/stl_bvector.h \
   /usr/include/c++/9/bits/vector.tcc \

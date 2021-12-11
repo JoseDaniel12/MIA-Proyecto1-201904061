@@ -20,9 +20,9 @@ public:
     explicit MkFile(vector<Param> parametros);
     string path;
     bool r;
-    int size;
+    int size = 0;
     string cont;
-    string pStdin;
+    bool pStdin;
 };
 
 
