@@ -104,12 +104,11 @@ struct BloqueDePunteros {
 
 struct Usuario {
     int uid = 1;
-    int gid = 1;
-    char tipo = 'U';
-    string grupo = "root";
+    string nombre = "root";
     string contrasena = "123";
-    bool logeado = false;
+    string grupo = "root";
     MountedPartition mountedPartition;
+    bool logeado = false;
 };
 
 #endif //MIA_PROYECTO1_201904061_STRUCTS_H

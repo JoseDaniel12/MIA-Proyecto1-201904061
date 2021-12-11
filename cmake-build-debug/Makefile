@@ -393,6 +393,54 @@ src/comandos/Mkfs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkfs.cpp.s
 .PHONY : src/comandos/Mkfs.cpp.s
 
+src/comandos/Mkgrp.o: src/comandos/Mkgrp.cpp.o
+.PHONY : src/comandos/Mkgrp.o
+
+# target to build an object file
+src/comandos/Mkgrp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkgrp.cpp.o
+.PHONY : src/comandos/Mkgrp.cpp.o
+
+src/comandos/Mkgrp.i: src/comandos/Mkgrp.cpp.i
+.PHONY : src/comandos/Mkgrp.i
+
+# target to preprocess a source file
+src/comandos/Mkgrp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkgrp.cpp.i
+.PHONY : src/comandos/Mkgrp.cpp.i
+
+src/comandos/Mkgrp.s: src/comandos/Mkgrp.cpp.s
+.PHONY : src/comandos/Mkgrp.s
+
+# target to generate assembly for a file
+src/comandos/Mkgrp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkgrp.cpp.s
+.PHONY : src/comandos/Mkgrp.cpp.s
+
+src/comandos/Mkuser.o: src/comandos/Mkuser.cpp.o
+.PHONY : src/comandos/Mkuser.o
+
+# target to build an object file
+src/comandos/Mkuser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkuser.cpp.o
+.PHONY : src/comandos/Mkuser.cpp.o
+
+src/comandos/Mkuser.i: src/comandos/Mkuser.cpp.i
+.PHONY : src/comandos/Mkuser.i
+
+# target to preprocess a source file
+src/comandos/Mkuser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkuser.cpp.i
+.PHONY : src/comandos/Mkuser.cpp.i
+
+src/comandos/Mkuser.s: src/comandos/Mkuser.cpp.s
+.PHONY : src/comandos/Mkuser.s
+
+# target to generate assembly for a file
+src/comandos/Mkuser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkuser.cpp.s
+.PHONY : src/comandos/Mkuser.cpp.s
+
 src/comandos/Mount.o: src/comandos/Mount.cpp.o
 .PHONY : src/comandos/Mount.o
 
@@ -441,6 +489,30 @@ src/comandos/Param.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Param.cpp.s
 .PHONY : src/comandos/Param.cpp.s
 
+src/comandos/Pause.o: src/comandos/Pause.cpp.o
+.PHONY : src/comandos/Pause.o
+
+# target to build an object file
+src/comandos/Pause.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Pause.cpp.o
+.PHONY : src/comandos/Pause.cpp.o
+
+src/comandos/Pause.i: src/comandos/Pause.cpp.i
+.PHONY : src/comandos/Pause.i
+
+# target to preprocess a source file
+src/comandos/Pause.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Pause.cpp.i
+.PHONY : src/comandos/Pause.cpp.i
+
+src/comandos/Pause.s: src/comandos/Pause.cpp.s
+.PHONY : src/comandos/Pause.s
+
+# target to generate assembly for a file
+src/comandos/Pause.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Pause.cpp.s
+.PHONY : src/comandos/Pause.cpp.s
+
 src/comandos/Rep.o: src/comandos/Rep.cpp.o
 .PHONY : src/comandos/Rep.o
 
@@ -464,6 +536,30 @@ src/comandos/Rep.s: src/comandos/Rep.cpp.s
 src/comandos/Rep.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Rep.cpp.s
 .PHONY : src/comandos/Rep.cpp.s
+
+src/comandos/Reportes/tree.o: src/comandos/Reportes/tree.cpp.o
+.PHONY : src/comandos/Reportes/tree.o
+
+# target to build an object file
+src/comandos/Reportes/tree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Reportes/tree.cpp.o
+.PHONY : src/comandos/Reportes/tree.cpp.o
+
+src/comandos/Reportes/tree.i: src/comandos/Reportes/tree.cpp.i
+.PHONY : src/comandos/Reportes/tree.i
+
+# target to preprocess a source file
+src/comandos/Reportes/tree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Reportes/tree.cpp.i
+.PHONY : src/comandos/Reportes/tree.cpp.i
+
+src/comandos/Reportes/tree.s: src/comandos/Reportes/tree.cpp.s
+.PHONY : src/comandos/Reportes/tree.s
+
+# target to generate assembly for a file
+src/comandos/Reportes/tree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Reportes/tree.cpp.s
+.PHONY : src/comandos/Reportes/tree.cpp.s
 
 src/comandos/Rmdisk.o: src/comandos/Rmdisk.cpp.o
 .PHONY : src/comandos/Rmdisk.o
@@ -603,15 +699,27 @@ help:
 	@echo "... src/comandos/Mkfs.o"
 	@echo "... src/comandos/Mkfs.i"
 	@echo "... src/comandos/Mkfs.s"
+	@echo "... src/comandos/Mkgrp.o"
+	@echo "... src/comandos/Mkgrp.i"
+	@echo "... src/comandos/Mkgrp.s"
+	@echo "... src/comandos/Mkuser.o"
+	@echo "... src/comandos/Mkuser.i"
+	@echo "... src/comandos/Mkuser.s"
 	@echo "... src/comandos/Mount.o"
 	@echo "... src/comandos/Mount.i"
 	@echo "... src/comandos/Mount.s"
 	@echo "... src/comandos/Param.o"
 	@echo "... src/comandos/Param.i"
 	@echo "... src/comandos/Param.s"
+	@echo "... src/comandos/Pause.o"
+	@echo "... src/comandos/Pause.i"
+	@echo "... src/comandos/Pause.s"
 	@echo "... src/comandos/Rep.o"
 	@echo "... src/comandos/Rep.i"
 	@echo "... src/comandos/Rep.s"
+	@echo "... src/comandos/Reportes/tree.o"
+	@echo "... src/comandos/Reportes/tree.i"
+	@echo "... src/comandos/Reportes/tree.s"
 	@echo "... src/comandos/Rmdisk.o"
 	@echo "... src/comandos/Rmdisk.i"
 	@echo "... src/comandos/Rmdisk.s"

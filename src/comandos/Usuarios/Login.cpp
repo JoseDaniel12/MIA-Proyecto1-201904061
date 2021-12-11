@@ -3,6 +3,9 @@
 //
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
 
 #include "Login.h"
 
@@ -16,7 +19,7 @@ Login::Login(vector<Param> parametros) : Command(parametros) {
     }
 
     for (const Param& p: parametros) {
-        if (p.name == "-USER") {
+        if (p.name == "-USR") {
             user = quitarComillas(p.value);
         } else if (p.name == "-PWD") {
             pwd = quitarComillas(p.value);
@@ -31,53 +34,35 @@ void Login::run() {
         return;
     }
 
-    if (usuario.logeado) {
+    if (usuario_montado.logeado) {
         cout << "Error: Debe cerrar la sesion activa para logearse." << endl;
         return;
     }
 
-    MountedPartition* mountedPartition;
-    for (auto & mp : mountedPartitions) {
-        if (mp.id == id) {
-            mountedPartition = &mp;
+    MountedPartition mountedPartition;
+    int existe_mounted = getMounted(id, &mountedPartition);
+
+    if (!existe_mounted) {
+        cout << "Error: No se encontro particion montada con ese id." << endl;
+    }
+
+    string contenidoUsers = leerArchivo(1, mountedPartition);
+    vector<vector<string>> registros = getRegistrosArchivoUsuarios(contenidoUsers);
+
+    for (auto registro : registros) {
+        if (registro[0] == "1" && registro[1] == "U" && registro[3] == user && registro[4] == pwd) {
+            usuario_montado.nombre = user;
+            usuario_montado.contrasena = pwd;
+            usuario_montado.grupo = registro[2];
+            usuario_montado.mountedPartition = mountedPartition;
+            usuario_montado.logeado = true;
         }
     }
 
-    if (mountedPartition == nullptr) {
-        cout << "Error: No se encontro particion montada con ese id." << endl;
+    if (!usuario_montado.logeado) {
+        cout << "Error: los datos de usuario son errones, no se pudo iniciar sesion." << endl;
         return;
     }
-
-    FILE* file =  fopen(mountedPartition->path.c_str(), "rb+");
-
-    // Lectura de Super Bloque
-    SuperBloque superBloque;
-    fseek(file, mountedPartition->partition.part_start, SEEK_SET);
-    fread(&superBloque, sizeof(SuperBloque), 1, file);
-
-    // Lectura Inodo carpeta root
-    Inodo inodo_carpeta_root;
-    fseek(file, superBloque.s_inode_start, SEEK_SET);        // Mover el puntero al inicio de la tabla de inodos
-    fread(&inodo_carpeta_root, sizeof(Inodo), 1, file);   // Leer el inodo
-
-    // Lectura del bloque de carpeta root
-    BloqueDeCarpeta bloque_carpeta_root;
-    fseek(file, superBloque.s_block_start, SEEK_SET);                   // Mover el puntero al inicio de la tabla de inodos
-    fread(&bloque_carpeta_root, sizeof(BloqueDeCarpeta), 1, file);   // Leer el inodo
-
-    // Lectura bloque
-    BloqueDeArchivo bloqueUsuarios;
-    fseek(file, superBloque.s_block_start, SEEK_SET);  // Mover el puntero al inicio de la tabla de bloques
-    fseek(file, 64, SEEK_CUR);                     // Mover el puntero al segundo bloque que corresponde al archivo de users.txt
-    fread(&bloqueUsuarios, sizeof(BloqueDeArchivo), 1, file); // Leer el bloque
-    fclose(file);
-
-
-
-
-
-
-
 
     cout << "Se ha inidciado seccion con exito" << endl;
 }

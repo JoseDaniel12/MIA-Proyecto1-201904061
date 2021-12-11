@@ -43,7 +43,8 @@ void MkFile::run() {
     MountedPartition mp;
     getMounted(id, &mp);
     int indice_inodo_foler = existePathSimulado(folder_path, mp);
-    crearArchivo(indice_inodo_foler, file_name, cont, mp);
+    int indice_inodo_archivo = crearArchivo(indice_inodo_foler, file_name, mp);
+    escribirEnArchivo(indice_inodo_archivo, cont, mp); // Se escribe en el archivo creado
 
     cout << "Archivo creado con exito" << endl;
 }

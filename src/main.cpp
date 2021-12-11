@@ -9,7 +9,7 @@ using namespace std;
 
 extern int yyparse();
 extern Command* resAnalizer;
-Usuario usuario = Usuario();
+Usuario usuario_montado = Usuario();
 
 vector<MountedPartition> mountedPartitions;
 

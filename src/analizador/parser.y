@@ -20,6 +20,8 @@
     #include "../comandos/Archivos/MkFile.h"
     #include "../comandos/Archivos/Cat.h"
     #include "../comandos/Mkdir.h"
+    #include "../comandos/Pause.h"
+    #include "../comandos/Mkuser.h"
 
     extern int yylineno;
     extern int columna;
@@ -50,14 +52,14 @@
 	char text[400];
 }
 
-%token<text> DESCONOCIDO NUMERO CADENA ID RUTA FILEN
+%token<text> DESCONOCIDO NUMERO CADENA ID RUTA FILEN COLOCHO DOSPTS
 
 %token<text> EXIT MKDISK RMDISK FDISK MOUNT UMOUNT MKFS LOGIN MKGRP RMGRP RMUSR CHMOD MKFILE CAT
-%token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP
+%token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP MKUSR
 
 %token<text> PARAM_SIZE PARAM_F PARAM_U PARAM_PATH PARAM_TYPE PARAM_DELETE PARAM_NAME PARAM_ADD PARAM_ID PARAM_FS
 %token<text> PARAM_USER PARAM_PWD PARAM_USR PARAM_GRP PARAM_UGO PARAM_R PARAM_CONT PARAM_STDIN PARAM_P
-%token<text> PARAM_DEST PARAM_RUTA PARAM_ROOT
+%token<text> PARAM_DEST PARAM_RUTA PARAM_ROOT PAUSE
 
 
 //Precedencias:
@@ -80,8 +82,11 @@ command:
 	|MKFILE params_declaration  { resAnalizer = new MkFile(paramVector); paramVector.clear(); }
 	|CAT params_declaration     { resAnalizer = new Cat(paramVector); paramVector.clear(); }
 	|MKDIR params_declaration   { resAnalizer = new Mkdir(paramVector); paramVector.clear(); }
+	|PAUSE params_declaration   { resAnalizer = new Pause(paramVector); paramVector.clear(); }
+	|PAUSE                      { resAnalizer = new Pause(paramVector); paramVector.clear(); }
+	|MKUSR params_declaration   { resAnalizer = new Mkuser(paramVector); paramVector.clear(); }
 	|EXIT				        {}
-
+	|
 ;
 
 params_declaration:
@@ -90,8 +95,13 @@ params_declaration:
 ;
 
 param_declaration:
-	param_name IGUAL param_value	{ paramVector.push_back(*new Param(toUpper(paramName), paramValue)); }
-	|PARAM_R	                    { paramVector.push_back(*new Param(toUpper($1), "-R")); }
+	param_name signo_asignacion param_value	{ paramVector.push_back(*new Param(toUpper(paramName), paramValue)); }
+	|PARAM_R	                            { paramVector.push_back(*new Param(toUpper($1), "-R")); }
+;
+
+signo_asignacion:
+    COLOCHO DOSPTS COLOCHO
+    |IGUAL
 ;
 
 param_name:

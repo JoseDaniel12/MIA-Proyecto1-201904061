@@ -138,8 +138,8 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o: \
  /usr/include/c++/9/bits/basic_ios.tcc \
  /usr/include/c++/9/bits/ostream.tcc /usr/include/c++/9/istream \
  /usr/include/c++/9/bits/istream.tcc /usr/include/string.h \
- /usr/include/strings.h /usr/include/c++/9/stdlib.h \
- /usr/include/c++/9/vector /usr/include/c++/9/bits/stl_construct.h \
+ /usr/include/strings.h /usr/include/c++/9/vector \
+ /usr/include/c++/9/bits/stl_construct.h \
  /usr/include/c++/9/bits/stl_uninitialized.h /usr/include/c++/9/utility \
  /usr/include/c++/9/bits/stl_relops.h \
  /usr/include/c++/9/bits/stl_vector.h \
@@ -160,10 +160,8 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o: \
  /usr/include/c++/9/bits/enable_special_members.h \
  /usr/include/c++/9/bits/unordered_map.h \
  /usr/include/c++/9/bits/erase_if.h \
- /usr/include/c++/9/pstl/execution_defs.h \
+ /usr/include/c++/9/pstl/execution_defs.h /usr/include/c++/9/sstream \
+ /usr/include/c++/9/bits/sstream.tcc \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Command.h \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Param.h \
- /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/../structs.h \
- /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/../Entidades/Disco.h \
- /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/../Entidades/../structs.h \
- /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/../Entidades/../comandos/Command.h
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/../structs.h

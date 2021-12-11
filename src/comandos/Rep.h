@@ -24,6 +24,13 @@ public:
     string ruta;
     int root;
 
+    string ReportTree(MountedPartition _MountedPartition, string _root);
+    string getDotTree(int _index_inode, int _start_inodes, int _start_blocks, string _path, int _index_root);
+    string getDot_inode_tree(Inodo _inode, int _index_inode);
+    string getDot_folder_block_tree(int _start_blocks, int _index_block, string _path);
+    string getDot_file_block_tree(int _start_blocks, int _index_block, string _path);
+
+
 };
 
 #endif //MIA_PROYECTO1_201904061_REP_H

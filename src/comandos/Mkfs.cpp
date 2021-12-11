@@ -167,7 +167,10 @@ void Mkfs::run() {
 
     // Bloque del archivo users
     BloqueDeArchivo archivoUsers;
-    strcpy(archivoUsers.b_content, "usetsFileContent");
+    string contenidoUsers = "";
+    contenidoUsers += "1, G, root\n";
+    contenidoUsers += "1, U, root, root, 123";
+    strcpy(archivoUsers.b_content, contenidoUsers.c_str());
 
     // Se crea el contenido de la carpeta que apunta la indoo del archivo y se enlazan
     strcpy(contenidoCarpetaRaiz.b_name, "users.txt");

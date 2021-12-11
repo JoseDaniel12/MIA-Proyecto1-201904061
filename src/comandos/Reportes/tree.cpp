@@ -1,83 +1,21 @@
 //
-// Created by jose on 29/08/21.
+// Created by jose on 9/12/21.
 //
 
 #include <iostream>
-#include <filesystem>
+#include <fstream>
+#include <string.h>
 
-#include "Rep.h"
-#include "../Entidades/Disco.h"
+#include "../../structs.h"
 
+using std::string;
 
-using namespace std;
-using std::filesystem::is_directory;
+string getDotTree(int _index_inode, int _start_inodes, int _start_blocks, string _path, int _index_root);
+string getDot_inode_tree(Inodo _inode, int _index_inode);
+string getDot_folder_block_tree(int _start_blocks, int _index_block, string _path);
+string getDot_file_block_tree(int _start_blocks, int _index_block, string _path);
 
-Rep::Rep(const vector<Param>& parametros) : Command(parametros) {
-    commandName = "REP";
-    if (!correctParams(parametros, admisableParams, obligatoryParams)) {
-        runnable = false;
-        return;
-    }
-
-    for (const Param& p: parametros) {
-        if (p.name == "-NAME") {
-            name = toUpper(p.value);
-        } else if (p.name == "-PATH") {
-            path = rootPath + quitarComillas(p.value);
-        } else if (p.name == "-ID") {
-            id = quitarComillas(p.value);
-        } else if (p.name == "-RUTA") {
-            ruta = rootPath + quitarComillas(p.value);
-        } else if (p.name == "-ROOT") {
-            root  = stoi(p.value);
-        }
-    }
-}
-
-void Rep::run() {
-    if (!runnable) {
-        return;
-    }
-
-    bool particionMontada = false;
-    for (auto & mp : mountedPartitions) {
-        if (mp.id == id) {
-            particionMontada = true;
-            Disco disco = Disco(mp.path);
-            if (!disco.existeDisco()) {
-                cout << "Error: Ya no existe el disco con el path de la particion monatada." << endl;
-                return;
-            }
-
-
-            string dir = getDirectory(path);
-            if (!is_directory(dir)) {
-                string comando = "mkdir -p \'" + dir +"\'";
-                system(comando.c_str());
-            }
-
-            if (name == "DISK") {
-                disco.generarReporteDisco(getDirectory(path), getFileName(path), getExtension(path));
-                cout << "Reporte generado." << endl;
-            } else if (name == "MBR") {
-                disco.generarReporteMbr(getDirectory(path), getFileName(path), getExtension(path));
-                cout << "Reporte generado." << endl;
-            } else if (name == "TREE") {
-                ReportTree(mp, rootPath);
-            } else {
-                cout << "Error: No existe reporte con el name escogido." << endl;
-                return;
-            }
-        }
-    }
-    if (!particionMontada) {
-        cout << "Error: No se encontro niguna particion montada con ese ID." << endl;
-        return;
-    }
-
-}
-
-string Rep::ReportTree(MountedPartition _MountedPartition, string _root) /* Este reporte quedó bien mamalon xd */
+string ReportTree(MountedPartition _MountedPartition, string _root) /* Este reporte quedó bien mamalon xd */
 {
     string grafo =
             std::string("digraph G {\n") +
@@ -101,7 +39,7 @@ string Rep::ReportTree(MountedPartition _MountedPartition, string _root) /* Este
     return grafo;
 }
 
-string Rep::getDotTree(int _index_inode, int _start_inodes, int _start_blocks, string _path, int _index_root)
+string getDotTree(int _index_inode, int _start_inodes, int _start_blocks, string _path, int _index_root)
 {
     FILE *_file = fopen(_path.c_str(), "rb");
     string _dot = "";
@@ -154,7 +92,7 @@ string Rep::getDotTree(int _index_inode, int _start_inodes, int _start_blocks, s
     return _dot;
 }
 
-string Rep::getDot_inode_tree(Inodo _inode, int _index_inode)
+string getDot_inode_tree(Inodo _inode, int _index_inode)
 {
     string dot =
             string("\"INODE_" + std::to_string(_index_inode) + "\" [ fontsize=\"17\" label = <\n") +
@@ -197,7 +135,7 @@ string Rep::getDot_inode_tree(Inodo _inode, int _index_inode)
     return dot;
 }
 
-string Rep::getDot_folder_block_tree(int _start_blocks, int _index_block, string _path)
+string getDot_folder_block_tree(int _start_blocks, int _index_block, string _path)
 {
     FILE *_file = fopen(_path.c_str(), "rb");
     BloqueDeCarpeta cb;
@@ -235,7 +173,7 @@ string Rep::getDot_folder_block_tree(int _start_blocks, int _index_block, string
     return dot;
 }
 
-string Rep::getDot_file_block_tree(int _start_blocks, int _index_block, string _path)
+string getDot_file_block_tree(int _start_blocks, int _index_block, string _path)
 {
     FILE *_file = fopen(_path.c_str(), "rb");
     BloqueDeArchivo ab;

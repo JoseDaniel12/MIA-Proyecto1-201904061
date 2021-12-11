@@ -11,7 +11,7 @@
 #include "../../structs.h"
 
 extern vector<MountedPartition> mountedPartitions;
-extern Usuario usuario;
+extern Usuario usuario_montado;
 
 class Login : public Command {
 public:

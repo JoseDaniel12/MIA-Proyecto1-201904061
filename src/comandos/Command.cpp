@@ -4,12 +4,11 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 #include "Command.h"
-#include "../Entidades/Disco.h"
 
 using namespace std;
 
@@ -146,12 +145,14 @@ string Command::toUpper(const string& cadena) {
     return res;
 }
 
-void Command::getMounted(string id, MountedPartition* destinoMp) {
+bool Command::getMounted(string id, MountedPartition* destinoMp) {
     for (auto mp : mountedPartitions) {
         if (id == mp.id) {
             *destinoMp = mp;
+            return true;
         }
     }
+    return false;
 }
 
 vector<string> Command::getPathSeparado(string path) {
@@ -214,6 +215,28 @@ string Command::getBitmap(MountedPartition mp, bool de_inodos) {
     return bm;
 }
 
+void Command::escribirBitMap(string bit_map, MountedPartition mp, bool de_inodos) {
+    FILE *file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
+    fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
+
+    // Se recoge el super bloque
+    SuperBloque sp;
+    fread(&sp, sizeof(SuperBloque), 1, file);
+
+    int tamano_bm = -1;
+    if (de_inodos) {
+        fseek(file, sp.s_bm_inode_start, SEEK_SET); // Se mueve el puntero al area de inodos
+        tamano_bm = sp.s_bm_block_start - sp.s_bm_inode_start;
+    } else {
+        fseek(file, sp.s_bm_block_start, SEEK_SET); // Se mueve el puntero al area de bloques
+        tamano_bm = sp.s_inode_start - sp.s_bm_block_start;
+    }
+
+    char arreglo_bm[tamano_bm];
+    strcpy(arreglo_bm, bit_map.c_str());
+    fwrite(&arreglo_bm, tamano_bm, 1, file);
+    fclose(file);
+}
 
 int Command::getIndiceForNewInodo(MountedPartition mp) {
     string bm_inodos = getBitmap(mp);
@@ -485,7 +508,7 @@ int Command::existePathSimulado(string pathSimulado, MountedPartition mp, int in
     return -1;
 }
 
-bool Command::crearArchivo(int indice_inodo_carpeta, string nombre_archivo, string texto, MountedPartition mp) {
+int Command::crearArchivo(int indice_inodo_carpeta, string nombre_archivo, MountedPartition mp) {
     int indice_inodo_archivo = getIndiceForNewInodo(mp); // Se obtiene el indice para el inodo del archivo a crear
     ContentDeCarpeta contenedor_archvio; // Se crea el contenido de carpeta que contedra el archvio
     strcpy(contenedor_archvio.b_name, nombre_archivo.c_str()); // Se le pone el nombre del archvio al contenedor
@@ -525,27 +548,33 @@ bool Command::crearArchivo(int indice_inodo_carpeta, string nombre_archivo, stri
 
     Inodo inodo_archivo = getNewInodo(); // Se crea el inodo para el nuevo archivo
     inodo_archivo.i_type = '1'; // Se marca que es un indo de archivo
+    escribirInodo(inodo_archivo, indice_inodo_archivo, mp); // Se escribe el indo del archvio
+    return indice_inodo_archivo;
+}
+
+
+void Command::escribirEnArchivo(int indice_inodo_archivo, string texto, MountedPartition mp) {
+    Inodo inodo_archivo = getInodoByIndex(indice_inodo_archivo, mp); // Se obtinene el indo donde se escribira el contenido
 
     int bytes_escritos = 0;
     for (int i = 0; i < 15; i++) {
-        if (bytes_escritos >= texto.length() - 1) {
+        if (bytes_escritos >= texto.length()) {
             break;
         }
         if (i < 12) {
             if (inodo_archivo.i_block[i] == -1) {
                 BloqueDeArchivo bloqueDeArchivo;
                 int indice_bloque_archvios = getIndiceForNewBloque(mp);
-                string sub_cadena = texto.substr(bytes_escritos, 64).c_str();
-                strcpy(bloqueDeArchivo.b_content, sub_cadena.c_str());
-                bytes_escritos += 64 + 1;
+                strcpy(bloqueDeArchivo.b_content, texto.substr(bytes_escritos, 63).c_str());
+                bytes_escritos += 63;
                 inodo_archivo.i_block[i] = indice_bloque_archvios;
                 escribirBloqueDeArchivo(bloqueDeArchivo, indice_bloque_archvios, mp);
             }
         }
     }
     escribirInodo(inodo_archivo, indice_inodo_archivo, mp); // Se escribe el indo del archvio
-    return true;
 }
+
 
 string Command::leerArchivo(int indice_inodo_archivo, MountedPartition mp) {
     Inodo inodo = getInodoByIndex(indice_inodo_archivo, mp);
@@ -564,6 +593,21 @@ string Command::leerArchivo(int indice_inodo_archivo, MountedPartition mp) {
     return contenido;
 }
 
+void Command::limpiarArchivo(int indice_inodo_archivo, MountedPartition mp) {
+    Inodo inodo_archivo = getInodoByIndex(indice_inodo_archivo, mp);
+    for (int i = 0; i < 15; i++) {
+        if (inodo_archivo.i_block[i] == -1) {
+            break;
+        }
+        if (i < 12) {
+            string bm_bloques = getBitmap(mp, false);
+            bm_bloques[inodo_archivo.i_block[i]] = '0';
+            escribirBitMap(bm_bloques, mp, false);
+            inodo_archivo.i_block[i] = -1;
+        }
+    }
+    escribirInodo(inodo_archivo, indice_inodo_archivo, mp);
+}
 
 bool Command::crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp) {
     Inodo inodo_carpeta_padre = getInodoByIndex(indice_inodo_carpeta_padre, mp); // Se obtiene el inodo de la carpeta padre a la que se va crear
@@ -613,4 +657,24 @@ bool Command::crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta
         }
     }
     return true;
+}
+
+vector<vector<string>> Command::getRegistrosArchivoUsuarios(string contenido_archivo_usuarios) {
+    vector<vector<string>> registros;
+    stringstream archivo_stream(contenido_archivo_usuarios);
+    string linea;
+    while (getline(archivo_stream, linea, '\n')) {
+        vector<string> registro;
+        stringstream linea_strema(linea);
+        string valor;
+        while (getline(linea_strema, valor, ',')) {
+            if (valor.substr(0, 1) == " ") {
+                registro.push_back(valor.substr(1, valor.length()));
+            } else {
+                registro.push_back(valor);
+            }
+        }
+        registros.push_back(registro);
+    }
+    return registros;
 }

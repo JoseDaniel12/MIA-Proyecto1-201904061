@@ -148,6 +148,18 @@
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkfs.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkgrp.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkgrp.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkuser.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkuser.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mount.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
@@ -160,10 +172,19 @@
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Param.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Pause.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Pause.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rep.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rep.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Reportes/tree.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Rmdisk.cpp">

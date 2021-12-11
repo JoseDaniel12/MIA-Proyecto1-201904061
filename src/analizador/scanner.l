@@ -1,6 +1,9 @@
 %{
-    //Compilar_con: flex --header-file=scanner.h -o scanner.cpp scanner.l
-    //Importaciones y codigo:
+    // Compilar_con: flex --header-file=scanner.h -o scanner.cpp scanner.l
+    // Nota: el comentario multiliena no srive cuando se ejecuta el exec por lee linea por linea y
+    // puede quedar imcompleto y la expresion regular no casaria
+
+    // Importaciones y codigo:
     #include <iostream>
     #include "parser.h"
 
@@ -14,6 +17,11 @@
 %option case-insensitive
 %option noyywrap
 
+ignorarCero "//".*|"/*"(.*[\n].*)*"*/"
+ignorarUno ["#"][\"][^\"\n]*[\"\n]
+ignorarDos [#.*\n]
+ignorarTres ["#""*"[^"*"]*"*""\n"]
+saltosLinea [\n]+
 
 letra       [a-zA-Z]
 digito      [0-9]
@@ -30,6 +38,8 @@ filen       "-file"{digito}+
 
 
 %%
+"~"         { return COLOCHO; }
+":"         { return DOSPTS; }
 "="         { return IGUAL; }
 
 "exit"      { return EXIT; }
@@ -57,8 +67,9 @@ filen       "-file"{digito}+
 "chgrp"     { return CHGRP; }
 "pouse"     { return POUSE; }
 "exec"      { return EXEC; }
+"pause"     { return PAUSE; }
 "rep"       { return REP; }
-
+"mkusr"     { return MKUSR; }
 
 "-size"     { strcpy(yylval.text, yytext); return PARAM_SIZE; }
 "-f"        { strcpy(yylval.text, yytext); return PARAM_F; }
@@ -89,6 +100,14 @@ filen       "-file"{digito}+
 {id}        {strcpy(yylval.text, yytext); return ID;}
 {ruta}      {strcpy(yylval.text, yytext); return RUTA;}
 {filen}     {strcpy(yylval.text, yytext); return FILEN;}
+
+{ignorarCero}
+{ignorarUno}
+{ignorarDos}
+{ignorarTres}
+{saltosLinea}
+"#".*
+
 [[:blank:]] {}
 .           {strcpy(yylval.text, yytext); return DESCONOCIDO; }
 
