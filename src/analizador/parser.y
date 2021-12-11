@@ -22,6 +22,8 @@
     #include "../comandos/Mkdir.h"
     #include "../comandos/Pause.h"
     #include "../comandos/Mkuser.h"
+    #include "../comandos/Mkgrp.h"
+    #include "../comandos/Logout.h"
 
     extern int yylineno;
     extern int columna;
@@ -55,7 +57,7 @@
 %token<text> DESCONOCIDO NUMERO CADENA ID RUTA FILEN COLOCHO DOSPTS
 
 %token<text> EXIT MKDISK RMDISK FDISK MOUNT UMOUNT MKFS LOGIN MKGRP RMGRP RMUSR CHMOD MKFILE CAT
-%token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP MKUSR
+%token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP MKUSR LOGOUT
 
 %token<text> PARAM_SIZE PARAM_F PARAM_U PARAM_PATH PARAM_TYPE PARAM_DELETE PARAM_NAME PARAM_ADD PARAM_ID PARAM_FS
 %token<text> PARAM_USER PARAM_PWD PARAM_USR PARAM_GRP PARAM_UGO PARAM_R PARAM_CONT PARAM_STDIN PARAM_P
@@ -85,7 +87,9 @@ command:
 	|PAUSE params_declaration   { resAnalizer = new Pause(paramVector); paramVector.clear(); }
 	|PAUSE                      { resAnalizer = new Pause(paramVector); paramVector.clear(); }
 	|MKUSR params_declaration   { resAnalizer = new Mkuser(paramVector); paramVector.clear(); }
+	|MKGRP params_declaration   { resAnalizer = new Mkgrp(paramVector); paramVector.clear(); }
 	|EXIT				        {}
+	|LOGOUT                     { resAnalizer = new Logout(paramVector); paramVector.clear(); }
 	|
 ;
 

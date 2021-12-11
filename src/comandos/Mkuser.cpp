@@ -34,9 +34,7 @@ void Mkuser::run() {
     string contenidoUsers = leerArchivo(1, usuario_montado.mountedPartition);
     contenidoUsers += "\n1, U, " + grp + ", " + usr + ", " + pwd;
     limpiarArchivo(1, usuario_montado.mountedPartition);
-    string a = leerArchivo(1, usuario_montado.mountedPartition);
     escribirEnArchivo(1, contenidoUsers, usuario_montado.mountedPartition);
 
     cout << "Usuario creado con exito" << endl;
-
 }

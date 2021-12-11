@@ -29,16 +29,13 @@ void Mkdir::run() {
         return;
     }
 
-    MountedPartition mp;
-    getMounted("611a", &mp);
-
     vector<string> path_separado = getPathSeparado(path);
     string nombre_carpeta_nueva = path_separado[path_separado.size() - 1];
     path_separado.pop_back();
     string path_carpeta_padre = getPathUnido(path_separado);
 
-    int indice_inodo_carpeta_padre = existePathSimulado(path_carpeta_padre, mp);
-    crearCarpeta(indice_inodo_carpeta_padre, nombre_carpeta_nueva, mp);
+    int indice_inodo_carpeta_padre = existePathSimulado(path_carpeta_padre, usuario_montado.mountedPartition);
+    crearCarpeta(indice_inodo_carpeta_padre, nombre_carpeta_nueva, usuario_montado.mountedPartition);
 
     cout << "Carpeta creada con exito" << endl;
 }

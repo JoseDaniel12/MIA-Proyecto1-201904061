@@ -609,7 +609,7 @@ void Command::limpiarArchivo(int indice_inodo_archivo, MountedPartition mp) {
     escribirInodo(inodo_archivo, indice_inodo_archivo, mp);
 }
 
-bool Command::crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp) {
+int Command::crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp) {
     Inodo inodo_carpeta_padre = getInodoByIndex(indice_inodo_carpeta_padre, mp); // Se obtiene el inodo de la carpeta padre a la que se va crear
 
     int indice_inodo_carpeta_nueva = getIndiceForNewInodo(mp); // Se obtiene indice para el inodo de la nueva carpeta
@@ -656,7 +656,7 @@ bool Command::crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta
             break;
         }
     }
-    return true;
+    return indice_inodo_carpeta_nueva;
 }
 
 vector<vector<string>> Command::getRegistrosArchivoUsuarios(string contenido_archivo_usuarios) {
@@ -677,4 +677,30 @@ vector<vector<string>> Command::getRegistrosArchivoUsuarios(string contenido_arc
         registros.push_back(registro);
     }
     return registros;
+}
+
+
+int Command::crearDirectorioAnidado(string ruta, MountedPartition mp) {
+    vector<string> directorio = getPathSeparado(ruta);
+    int ultimo_dir_creado = 0;
+    for (int i = 0; i < directorio.size(); i++) {
+        vector<string> sub_dir_padre;
+        vector<string> sub_dir_hijo;
+        copy(directorio.begin(), directorio.begin() + i, back_inserter(sub_dir_padre));
+        copy(directorio.begin(), directorio.begin() + i + 1, back_inserter(sub_dir_hijo));
+
+        int indice_inodo_padre = existePathSimulado(getPathUnido(sub_dir_padre), mp);
+        if (indice_inodo_padre == -1) {
+            return -1;
+        }
+
+        int indice_inodo_hijo = existePathSimulado(getPathUnido(sub_dir_hijo), mp);
+        if (indice_inodo_hijo == -1) {
+            ultimo_dir_creado = crearCarpeta(indice_inodo_padre, directorio[i], mp);
+        } else {
+            ultimo_dir_creado = indice_inodo_hijo;
+        }
+
+    }
+    return ultimo_dir_creado;
 }

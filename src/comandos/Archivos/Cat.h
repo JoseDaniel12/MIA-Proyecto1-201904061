@@ -7,6 +7,8 @@
 
 #include "../Command.h"
 
+extern Usuario usuario_montado;
+
 class Cat : public Command {
 public:
     void run() override;

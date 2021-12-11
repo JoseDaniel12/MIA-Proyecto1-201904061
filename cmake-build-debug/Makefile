@@ -321,6 +321,30 @@ src/comandos/Fdisk.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.s
 .PHONY : src/comandos/Fdisk.cpp.s
 
+src/comandos/Logout.o: src/comandos/Logout.cpp.o
+.PHONY : src/comandos/Logout.o
+
+# target to build an object file
+src/comandos/Logout.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.o
+.PHONY : src/comandos/Logout.cpp.o
+
+src/comandos/Logout.i: src/comandos/Logout.cpp.i
+.PHONY : src/comandos/Logout.i
+
+# target to preprocess a source file
+src/comandos/Logout.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.i
+.PHONY : src/comandos/Logout.cpp.i
+
+src/comandos/Logout.s: src/comandos/Logout.cpp.s
+.PHONY : src/comandos/Logout.s
+
+# target to generate assembly for a file
+src/comandos/Logout.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.s
+.PHONY : src/comandos/Logout.cpp.s
+
 src/comandos/Mkdir.o: src/comandos/Mkdir.cpp.o
 .PHONY : src/comandos/Mkdir.o
 
@@ -690,6 +714,9 @@ help:
 	@echo "... src/comandos/Fdisk.o"
 	@echo "... src/comandos/Fdisk.i"
 	@echo "... src/comandos/Fdisk.s"
+	@echo "... src/comandos/Logout.o"
+	@echo "... src/comandos/Logout.i"
+	@echo "... src/comandos/Logout.s"
 	@echo "... src/comandos/Mkdir.o"
 	@echo "... src/comandos/Mkdir.i"
 	@echo "... src/comandos/Mkdir.s"

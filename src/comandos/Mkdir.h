@@ -7,6 +7,8 @@
 
 #include "Command.h"
 
+extern Usuario usuario_montado;
+
 class Mkdir : public Command {
 public:
     vector<string> admisableParams = {"-PATH", "-P"};

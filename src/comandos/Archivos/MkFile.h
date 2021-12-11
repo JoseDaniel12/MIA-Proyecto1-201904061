@@ -9,10 +9,12 @@
 
 #include "../Command.h"
 
+extern Usuario usuario_montado;
+
 class MkFile : public Command {
 public:
-    vector<string> admisableParams = {"-PATH", "-R", "-SIZE", "-CONT", "-STDIN", "-ID"};
-    vector<string> obligatoryParams = {"-PATH", "-ID"};
+    vector<string> admisableParams = {"-PATH", "-R", "-SIZE", "-CONT", "-STDIN"};
+    vector<string> obligatoryParams = {"-PATH"};
     void run() override;
 
     explicit MkFile(vector<Param> parametros);
@@ -21,8 +23,6 @@ public:
     int size;
     string cont;
     string pStdin;
-    string id;
-
 };
 
 

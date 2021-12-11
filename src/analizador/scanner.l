@@ -70,6 +70,7 @@ filen       "-file"{digito}+
 "pause"     { return PAUSE; }
 "rep"       { return REP; }
 "mkusr"     { return MKUSR; }
+"logout"    { return LOGOUT; }
 
 "-size"     { strcpy(yylval.text, yytext); return PARAM_SIZE; }
 "-f"        { strcpy(yylval.text, yytext); return PARAM_F; }

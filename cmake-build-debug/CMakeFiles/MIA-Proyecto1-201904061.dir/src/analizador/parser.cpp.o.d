@@ -329,4 +329,6 @@ CMakeFiles/MIA-Proyecto1-201904061.dir/src/analizador/parser.cpp.o: \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Archivos/Cat.h \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Mkdir.h \
  /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Pause.h \
- /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Mkuser.h
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Mkuser.h \
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Mkgrp.h \
+ /home/jose/Desktop/MIA-Proyecto1-201904061/src/analizador/../comandos/Logout.h

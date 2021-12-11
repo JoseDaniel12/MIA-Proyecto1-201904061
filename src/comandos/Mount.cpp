@@ -70,7 +70,7 @@ void Mount::run() {
 string Mount::getMountedPartitionId() const {
     vector<char> abcdario = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
                               'r', 's', 'u', 'v', 'w', 'x', 'y', 'z' };
-    string id = "61";
+    string id = "vd";
     char letra;
     map<string, int> registroNumParticiones; // path, numero de veces que sale ese path (cantidad de particiones)
     for (auto & mp : mountedPartitions) {

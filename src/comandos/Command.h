@@ -54,11 +54,12 @@ public:
     void escribirBloqueDeCarpeta(BloqueDeCarpeta bloque, int indice_bloque, MountedPartition mp);
     void escribirInodo(Inodo inodo, int indice_inodo, MountedPartition mp);
     int crearArchivo(int indice_inodo, string nombre_archivo, MountedPartition mp);
-    bool crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp);
+    int crearCarpeta(int indice_inodo_carpeta_padre, string nombre_carpeta, MountedPartition mp);
     string leerArchivo(int indice_inodo, MountedPartition mp);
     void escribirEnArchivo(int indice_inodo_archivo, string texto, MountedPartition mp);
     void limpiarArchivo(int indice_inodo_archivo, MountedPartition mp);
     vector<vector<string>> getRegistrosArchivoUsuarios(string contenido_archivo_usuarios);
+    int crearDirectorioAnidado(string direcorio_anidado, MountedPartition mp);
 };
 
 #endif //ARCHIVOSP1_COMMAND_H

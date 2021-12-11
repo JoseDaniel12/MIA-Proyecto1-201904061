@@ -28,14 +28,11 @@ Cat::Cat(const vector<Param> &parametros):Command(parametros) {
 
 
 void Cat::run() {
-    MountedPartition mp;
-    getMounted("611a", &mp);
-
     for (auto ruta : rutas_archivos) {
-        int indice_inodo_archivo = existePathSimulado(ruta, mp);
+        int indice_inodo_archivo = existePathSimulado(ruta, usuario_montado.mountedPartition);
         cout << "______________________________________________" << endl;
         cout << getFileName(ruta) + "." + getExtension(ruta) << ": " << endl;
-        cout << leerArchivo(indice_inodo_archivo, mp) << endl;
+        cout << leerArchivo(indice_inodo_archivo, usuario_montado.mountedPartition) << endl;
     }
     cout << "______________________________________________" << endl;
 }
