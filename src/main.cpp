@@ -23,6 +23,9 @@ int main() {
         strcpy(entradaCharArray, entrada.c_str());
         YY_BUFFER_STATE buffer = yy_scan_string(entradaCharArray);
         if (yyparse() == 0) {
+            if (resAnalizer == NULL) {
+                continue;
+            }
             int status;
             cout << "_____________________________________" << resAnalizer->commandName << "_____________________________________" << endl;
             resAnalizer->run();

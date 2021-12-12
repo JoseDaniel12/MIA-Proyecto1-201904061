@@ -18,8 +18,8 @@ Mkdir::Mkdir(const vector<Param> &parametros):Command(parametros) {
     for (const Param& p: parametros) {
         if (p.name == "-PATH") {
             path = quitarComillas(p.value);
-        } else if (p.name == "-P") {
-            param_p = quitarComillas(p.value);
+        } else if (p.name == "-P" and p.value == "-P") {
+            param_p = true;
         }
     }
 }
@@ -34,7 +34,20 @@ void Mkdir::run() {
     path_separado.pop_back();
     string path_carpeta_padre = getPathUnido(path_separado);
 
+    if (!usuario_montado.logeado) {
+        cout << "Error: no se puede ejcutar el comando pues no hay nigun usuario logeado" << endl;
+    }
+
     int indice_inodo_carpeta_padre = existePathSimulado(path_carpeta_padre, usuario_montado.mountedPartition);
+    if (indice_inodo_carpeta_padre == -1) {
+        if (param_p) {
+            indice_inodo_carpeta_padre = crearDirectorioAnidado(path_carpeta_padre, usuario_montado.mountedPartition);
+        } else {
+            cout << "Error: no existe la ruta en la que se quiere crear la carpeta." << endl;
+            return;
+        }
+    }
+
     crearCarpeta(indice_inodo_carpeta_padre, nombre_carpeta_nueva, usuario_montado.mountedPartition);
 
     cout << "Carpeta creada con exito" << endl;

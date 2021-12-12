@@ -36,13 +36,15 @@ void Exec::run() {
         return;
     }
 
-    string texto;
     ifstream archivo(path);
     while(!archivo.eof()) {
         string linea;
         getline(archivo,linea);
         YY_BUFFER_STATE buffer = yy_scan_string(linea.c_str());
         if (yyparse() == 0) {
+            if (resAnalizer == NULL) {
+                continue;
+            }
             cout << "\n//=====================================" << resAnalizer->commandName << "=====================================\\\\" << endl;
             cout << "Comando analizando: " << linea << endl;
             resAnalizer->run();
@@ -56,6 +58,4 @@ void Exec::run() {
         }
     }
     archivo.close();
-
-    cout << texto << endl;
 }

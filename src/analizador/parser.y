@@ -90,7 +90,7 @@ command:
 	|MKGRP params_declaration   { resAnalizer = new Mkgrp(paramVector); paramVector.clear(); }
 	|EXIT				        {}
 	|LOGOUT                     { resAnalizer = new Logout(paramVector); paramVector.clear(); }
-	|
+	|                           { resAnalizer = NULL; }
 ;
 
 params_declaration:
@@ -101,6 +101,8 @@ params_declaration:
 param_declaration:
 	param_name signo_asignacion param_value	{ paramVector.push_back(*new Param(toUpper(paramName), paramValue)); }
 	|PARAM_R	                            { paramVector.push_back(*new Param(toUpper($1), "-R")); }
+	|PARAM_P	                            { paramVector.push_back(*new Param(toUpper($1), "-P")); }
+	|PARAM_STDIN	                        { paramVector.push_back(*new Param(toUpper($1), "-STDIN")); }
 ;
 
 signo_asignacion:

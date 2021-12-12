@@ -17,11 +17,8 @@
 %option case-insensitive
 %option noyywrap
 
-ignorarCero "//".*|"/*"(.*[\n].*)*"*/"
-ignorarUno ["#"][\"][^\"\n]*[\"\n]
-ignorarDos [#.*\n]
-ignorarTres ["#""*"[^"*"]*"*""\n"]
-saltosLinea [\n]+
+comentario [#[^\n]*]
+ignorados [\n|\t|\s|$]+
 
 letra       [a-zA-Z]
 digito      [0-9]
@@ -34,8 +31,7 @@ extension   "."{id}
 diagonal    "/"
 ruta        ({diagonal}{id})*({diagonal}{id}{extension})?
 directorio  ({diagonal}{id})+
-filen       "-file"{digito}+
-
+filen       "-file"{digito}*
 
 %%
 "~"         { return COLOCHO; }
@@ -102,14 +98,11 @@ filen       "-file"{digito}+
 {ruta}      {strcpy(yylval.text, yytext); return RUTA;}
 {filen}     {strcpy(yylval.text, yytext); return FILEN;}
 
-{ignorarCero}
-{ignorarUno}
-{ignorarDos}
-{ignorarTres}
-{saltosLinea}
+{comentario}
+{ignorados}
 "#".*
 
 [[:blank:]] {}
-.           {strcpy(yylval.text, yytext); return DESCONOCIDO; }
+.           {}
 
 %%

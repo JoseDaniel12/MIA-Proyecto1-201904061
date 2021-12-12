@@ -17,7 +17,7 @@ public:
 
     explicit Mkdir(const vector<Param> &parametros);
     string path;
-    string param_p;
+    bool param_p;
 };
 
 

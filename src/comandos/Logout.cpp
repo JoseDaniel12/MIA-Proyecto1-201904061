@@ -12,6 +12,7 @@ Logout::Logout(vector<Param> parametros) : Command(parametros) {
 }
 
 void Logout::run() {
+    commandName = "LOGOUT";
     if (!runnable) {
         return;
     }

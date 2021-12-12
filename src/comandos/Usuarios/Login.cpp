@@ -64,6 +64,6 @@ void Login::run() {
         return;
     }
 
-    cout << "Se ha inidciado seccion con exito" << endl;
+    cout << "Se ha inidciado sesion con exito" << endl;
 }
 

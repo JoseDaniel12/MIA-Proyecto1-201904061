@@ -17,6 +17,8 @@ void Pause::run() {
         return;
     }
 
-    cout << "-> Presione una tecla para continuar: ";
-    getchar();
+    string res;
+    cout << "-> Presione (Y) para continuar: ";
+    getline(cin, res);
+    cout << endl;
 }

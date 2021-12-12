@@ -22,7 +22,7 @@ public:
     bool r;
     int size = 0;
     string cont;
-    bool pStdin;
+    bool pStdin = false;
 };
 
 
