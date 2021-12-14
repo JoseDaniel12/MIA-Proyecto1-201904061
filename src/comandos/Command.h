@@ -44,6 +44,7 @@ public:
     Inodo getInodoByIndex(int indice, MountedPartition mp);
     BloqueDePunteros getBloqueDePunteroByIndex(int indice, MountedPartition mp);
     BloqueDeCarpeta getBloqueDeCarpetaByIndex(int indice_bloque, MountedPartition mp);
+    BloqueDeArchivo getBloqueDeArchivoByIndex(int indice_bloque, MountedPartition mp);
     vector<int> getIndicesBloquesCarpetaDeInodo(Inodo inodo, MountedPartition mp);
     int existePathSimulado(string pathSimulado, MountedPartition mp, int indice_inodo = 0);
     string getBitmap(MountedPartition mp, bool de_inodos = true);

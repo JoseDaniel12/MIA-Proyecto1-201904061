@@ -34,13 +34,13 @@ Fdisk::Fdisk(const vector<Param> &parametros): Command(parametros) {
     for (const Param& p: parametros) {
         if (p.name == "-SIZE") {
             size = stoi(p.value);
-        } else if (p.name == "-U") {
+        } else if (p.name == "-UNIT") {
             u = toUpper(p.value.c_str())[0];
         } else if (p.name == "-PATH") {
             path = rootPath + quitarComillas(p.value);
         } else if (p.name == "-TYPE") {
             type = toUpper(p.value.c_str())[0];
-        }  else if (p.name == "-F") {
+        }  else if (p.name == "-FIT") {
             f = toUpper(p.value.c_str())[0];
         } else if (p.name == "-DELETE") {
             pdelete = toUpper(p.value);

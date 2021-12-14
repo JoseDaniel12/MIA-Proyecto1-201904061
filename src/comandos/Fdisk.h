@@ -10,7 +10,7 @@
 #include "../structs.h"
 class Fdisk : public Command {
 public:
-    vector<string> admisableParams = {"-SIZE", "-U", "-PATH", "-TYPE", "-F", "-DELETE", "-NAME", "-ADD"};
+    vector<string> admisableParams = {"-SIZE", "-UNIT", "-PATH", "-TYPE", "-FIT", "-DELETE", "-NAME", "-ADD"};
     vector<string> obligatoryParams = {"-PATH", "-NAME"};
     virtual void run() override;
 

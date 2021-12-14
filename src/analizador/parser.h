@@ -100,15 +100,14 @@ extern int yydebug;
     PARAM_USR = 306,
     PARAM_GRP = 307,
     PARAM_UGO = 308,
-    PARAM_R = 309,
-    PARAM_CONT = 310,
-    PARAM_STDIN = 311,
-    PARAM_P = 312,
-    PARAM_DEST = 313,
-    PARAM_RUTA = 314,
-    PARAM_ROOT = 315,
-    PAUSE = 316,
-    IGUAL = 317
+    PARAM_CONT = 309,
+    PARAM_STDIN = 310,
+    PARAM_P = 311,
+    PARAM_DEST = 312,
+    PARAM_RUTA = 313,
+    PARAM_ROOT = 314,
+    PAUSE = 315,
+    IGUAL = 316
   };
 #endif
 

@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <filesystem>
+#include <fstream>
+#include <string>
+#include <algorithm>
 
 #include "Rep.h"
 #include "../Entidades/Disco.h"
@@ -14,6 +17,7 @@ using std::filesystem::is_directory;
 
 Rep::Rep(const vector<Param>& parametros) : Command(parametros) {
     commandName = "REP";
+    unique_id  = 0;
     if (!correctParams(parametros, admisableParams, obligatoryParams)) {
         runnable = false;
         return;
@@ -27,12 +31,13 @@ Rep::Rep(const vector<Param>& parametros) : Command(parametros) {
         } else if (p.name == "-ID") {
             id = quitarComillas(p.value);
         } else if (p.name == "-RUTA") {
-            ruta = rootPath + quitarComillas(p.value);
+            ruta = quitarComillas(p.value);
         } else if (p.name == "-ROOT") {
             root  = stoi(p.value);
         }
     }
 }
+
 
 void Rep::run() {
     if (!runnable) {
@@ -58,206 +63,538 @@ void Rep::run() {
 
             if (name == "DISK") {
                 disco.generarReporteDisco(getDirectory(path), getFileName(path), getExtension(path));
-                cout << "Reporte generado." << endl;
+                cout << "Reporte de Disco generado." << endl;
             } else if (name == "MBR") {
                 disco.generarReporteMbr(getDirectory(path), getFileName(path), getExtension(path));
-                cout << "Reporte generado." << endl;
+                cout << "Reporte de Mbr generado." << endl;
+            } else if (name == "BM_INODE") {
+                crearImgenDeDot(getDotBitmap(mp, true), path);
+                cout << "Reporte de Bitmap de Inodos generado." << endl;
+            } else if (name == "BM_BLOCK") {
+                crearImgenDeDot(getDotBitmap(mp, false), path);
+                cout << "Reporte de Bitmpa de Bloques generado." << endl;
+            } else if (name == "INODE") {
+                crearReporteInodos(mp, path);
+            } else if (name == "BLOCK") {
+                crearReporteBloques(mp, path);
             } else if (name == "TREE") {
-                ReportTree(mp, rootPath);
-            } else {
+                crearReporteTree(mp, path);
+            } else if (name == "SB") {
+                crearReportSuperBloque(mp, path);
+            } else if (name == "FILE") {
+                hacerReporteDeArchivo(mp, ruta, path);
+            }
+
+            else {
                 cout << "Error: No existe reporte con el name escogido." << endl;
                 return;
             }
+            break;
         }
     }
     if (!particionMontada) {
         cout << "Error: No se encontro niguna particion montada con ese ID." << endl;
         return;
     }
+}
+
+
+string Rep::get_unic_id() {
+    int res = unique_id;
+    unique_id += 1;
+    return "i" + to_string(res);
+}
+
+
+bool Rep::crearImgenDeDot(string dot_text, string ruta_imagen) {
+    string directory = getDirectory(ruta_imagen);
+    string fileName = getFileName(ruta_imagen);
+    string extension = getExtension(ruta_imagen);
+
+    if (!is_directory(directory)) {
+        string comando = "mkdir -p \'" + directory +"\'";
+        system(comando.c_str());
+    }
+
+    ofstream file;
+    file.open(directory + fileName + ".dot");
+    file << dot_text;
+    file.close();
+    string comando = "dot -T" + extension + " " +  directory + fileName + ".dot -o " + directory + fileName + "." + extension;
+    system(comando.c_str());
+    string dotPath = directory + fileName + ".dot";
+    remove(dotPath.c_str());
 
 }
 
-string Rep::ReportTree(MountedPartition _MountedPartition, string _root) /* Este reporte quedó bien mamalon xd */
-{
-    string grafo =
-            std::string("digraph G {\n") +
-            +"graph[bgcolor=\"#154a7e\" margin=0]\n" +
-            +"rankdir=\"LR\";\n" +
-            +"node [shape=plaintext fontname= \"Ubuntu\"];\n" +
-            +"edge [arrowhead=\"normal\" penwidth=3];\n\n";
 
-    FILE *file = fopen(_MountedPartition.path.c_str(), "rb");
-    /* Lectura del superbloque */
-    SuperBloque super_bloque;
-    fseek(file, _MountedPartition.partition.part_start, SEEK_SET);
-    fread(&super_bloque, sizeof(SuperBloque), 1, file);
-    fclose(file);
-    file = NULL;
-
-    int index_root = (_root == "") ? (-1) : (std::stoi(_root));
-    grafo += getDotTree(0, super_bloque.s_inode_start, super_bloque.s_block_start, _MountedPartition.path, index_root);
-    grafo += "\n}";
-
-    return grafo;
+string Rep::getDotBitmap(MountedPartition mp, bool de_inodos) {
+    string dot = "digraph { \n";
+    dot += "rankdir = LR \n";
+    dot += "node[shape = record] \n";
+    dot += "struct [";
+    dot += "label = ";
+    dot += "\"";
+    string bit_map;
+    if (de_inodos) {
+        dot += "Bitmap de Inodos|";
+        bit_map = getBitmap(mp, true);
+    } else {
+        dot += "Bitmap de Bloques|";
+        bit_map = getBitmap(mp, false);
+    }
+    for (int i = 0; i < bit_map.length() - 1; i++) {
+        dot += bit_map.substr(i, 1) + " ";
+        if ((i + 1)  % 60 == 0) {
+            dot += "\\l";
+        }
+    }
+    if (dot[dot.length() - 1] != 'l') {
+        dot += "\\l";
+    }
+    dot += "\"";
+    dot += "] \n";
+    dot += "}";
+    return dot;
 }
 
-string Rep::getDotTree(int _index_inode, int _start_inodes, int _start_blocks, string _path, int _index_root)
-{
-    FILE *_file = fopen(_path.c_str(), "rb");
-    string _dot = "";
-    if (_index_inode == _index_root)
-        _index_root = -1;
-    /* Leer el inodo */
-    Inodo inode_current;
-    fseek(_file, _start_inodes, SEEK_SET);
-    fseek(_file, _index_inode * sizeof(Inodo), SEEK_CUR);
-    fread(&inode_current, sizeof(Inodo), 1, _file);
-    fclose(_file);
-    if (_index_root == -1)
-        _dot += getDot_inode_tree(inode_current, _index_inode);
-    if (inode_current.i_type == '0')
-    {
-        BloqueDeCarpeta folder_block;
-        for (int i = 0; i < 15; i++) // falta indirectos
-        {
-            if (inode_current.i_block[i] != -1)
-            { /* Leer el bloque y redireccionar al inodo y ver si de nuevo es otra carpeta */
-                if (_index_root == -1)
-                    _dot += getDot_folder_block_tree(_start_blocks, inode_current.i_block[i], _path);
-                _file = fopen(_path.c_str(), "rb");
-                fseek(_file, _start_blocks, SEEK_SET);
-                fseek(_file, inode_current.i_block[i] * 64, SEEK_CUR);
-                fread(&folder_block, 64, 1, _file);
-                fclose(_file);
-                for (int j = 0; j < 4; j++)
-                {
-                    if (folder_block.b_content[j].b_inodo > 0 && folder_block.b_content[j].b_inodo != _index_inode && string(folder_block.b_content[j].b_name) != ".." && string(folder_block.b_content[j].b_name) != ".")
-                    {
-                        // std::cout << folder_block.b_content[j].b_name << std::endl;
-                        _index_inode = folder_block.b_content[j].b_inodo;
-                        _dot += getDotTree(_index_inode, _start_inodes, _start_blocks, _path, _index_root);
+
+string Rep::getDotInodo(int indice_inodo, MountedPartition mp, string* destino_dot, string id_padre, bool graficar_apuntadores) {
+    Inodo inodo = getInodoByIndex(indice_inodo, mp);
+    string id_inodo = get_unic_id();
+
+    string dot_bloques  = "";
+    string dot_text= "//Inodo \n";
+    dot_text += id_inodo + " [ \n";
+    dot_text += "shape=plaintext \n";
+    dot_text += "label=< \n";
+    dot_text += "<table> \n";
+
+    dot_text += "<tr> \n";
+    dot_text += "<td><b>Inodo No: </b></td> \n";
+    dot_text += "<td><b>" + to_string(indice_inodo) + "</b></td> \n";
+    dot_text += "</tr> \n";
+
+    // i_uid
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_uid: </td> \n";
+    dot_text += "<td>"+ to_string(inodo.i_uid) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // i_gid
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_gid: </td> \n";
+    dot_text += "<td>"+ to_string(inodo.i_gid) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // i_size
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_size: </td> \n";
+    dot_text += "<td>"+ to_string(inodo.i_size) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // i_atime
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_atime: </td> \n";
+    dot_text += "<td>";
+    dot_text += asctime(localtime(&inodo.i_atime));
+    dot_text += "</td> \n";
+    dot_text += "</tr> \n";
+
+    // i_ctime
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_ctime: </td> \n";
+    dot_text += "<td>";
+    dot_text += asctime(localtime(&inodo.i_ctime));
+    dot_text += "</td> \n";
+    dot_text += "</tr> \n";
+
+    // i_mtime
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_mtime: </td> \n";
+    dot_text += "<td>";
+    dot_text += asctime(localtime(&inodo.i_mtime));
+    dot_text += "</td> \n";
+    dot_text += "</tr> \n";
+
+    // Apuntadores
+    for (int i = 0; i < 15; i++) {
+        string id_apuntador = id_inodo + "_" + to_string(i);
+        dot_text += "<tr> \n";
+        dot_text += "<td>i_block_" + to_string(i) + ": </td> \n";
+        dot_text += "<td port = \'" + id_apuntador + "\'>"+ to_string(inodo.i_block[i]) + "</td> \n";
+        dot_text += "</tr> \n";
+        if (graficar_apuntadores && inodo.i_block[i] != -1) {
+            if (i < 12) {
+                string dot_bloque;
+                if (inodo.i_type == '1') {
+                    getDotBloqueDeArchivo(inodo.i_block[i], mp, &dot_bloque, id_inodo + ":" + id_apuntador);
+                } else {
+                    getDotBloqueDeCarpeta(inodo.i_block[i], mp, &dot_bloque, id_inodo + ":" + id_apuntador, true);
+                }
+                dot_bloques += dot_bloque;
+            }
+        }
+    }
+
+    // i_type
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_type: </td> \n";
+    dot_text += "<td>"+ to_string(inodo.i_type) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // i_perm
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_perm: </td> \n";
+    dot_text += "<td>"+ to_string(inodo.i_perm) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    dot_text += "</table> \n";
+    dot_text += ">]; \n\n";
+
+    dot_text += dot_bloques;
+
+    if (id_padre != "-1") {
+        dot_text += id_padre + " -> " + id_inodo + "\n";
+    }
+
+    if (destino_dot != nullptr) {
+        *destino_dot = dot_text;
+    }
+    return id_inodo;
+}
+
+
+string Rep::getDotBloqueDeArchivo(int indice_bloque_archivo, MountedPartition mp, string* destino_dot, string id_padre) {
+    BloqueDeArchivo bloqueDeArchivo = getBloqueDeArchivoByIndex(indice_bloque_archivo, mp);
+    string id_bloque = get_unic_id();
+
+    string dot_text = "//Bloque de archivo \n";
+    dot_text += id_bloque + " [ \n";
+    dot_text += "shape=plaintext \n";
+    dot_text += "label=< \n";
+    dot_text += "<table> \n";
+
+    // Encabezado
+    dot_text += "<tr> \n";
+    dot_text += "<td><b>(De archivo) Bloque No: </b></td> \n";
+    dot_text += "<td><b>" + to_string(indice_bloque_archivo) + "</b></td> \n";
+    dot_text += "</tr> \n";
+
+    // b_content
+    dot_text += "<tr> \n";
+    dot_text += "<td>b_content: </td> \n";
+    dot_text += "<td>";
+    dot_text += bloqueDeArchivo.b_content;
+    dot_text += "</td> \n";
+    dot_text += "</tr> \n";
+
+    dot_text += "</table> \n";
+    dot_text += ">]; \n\n";
+
+    if (id_padre != "-1") {
+        dot_text += id_padre + " -> " + id_bloque + "\n";
+    }
+
+    if (destino_dot != nullptr) {
+        *destino_dot = dot_text;
+    }
+    return id_bloque;
+}
+
+
+string Rep::getDotBloqueDeCarpeta(int indice_bloque_carpeta, MountedPartition mp, string* destino_dot, string id_padre, bool graficar_apuntadores) {
+    BloqueDeCarpeta bloqueDeCarpeta = getBloqueDeCarpetaByIndex(indice_bloque_carpeta, mp);
+    string id_bloque = get_unic_id();
+
+    string dot_inodos = "";
+    string dot_text = "//Bloque de carepta \n";
+    dot_text += id_bloque + " [ \n";
+    dot_text += "shape=plaintext \n";
+    dot_text += "label=< \n";
+    dot_text += "<table> \n";
+
+    // Encabezado
+    dot_text += "<tr> \n";
+    dot_text += "<td><b>(De carpeta) Bloque No: </b></td> \n";
+    dot_text += "<td><b>" + to_string(indice_bloque_carpeta) + "</b></td> \n";
+    dot_text += "</tr> \n";
+
+    // b_content
+    for (int i = 0; i < 4; i++) {
+        string id_apuntador = id_bloque + "_" + to_string(i);
+        dot_text += "<tr> \n";
+        dot_text += "<td>";
+        dot_text += bloqueDeCarpeta.b_content[i].b_name;
+        dot_text += "</td> \n";
+        dot_text += "<td port = \'" + id_apuntador + "\'>" + to_string(bloqueDeCarpeta.b_content[i].b_inodo) + "</td> \n";
+        dot_text += "</tr> \n";
+        string dot_inodo;
+        if (graficar_apuntadores) {
+            if (i >= 2 && bloqueDeCarpeta.b_content[i].b_inodo != -1) {
+                getDotInodo(bloqueDeCarpeta.b_content[i].b_inodo, mp, &dot_inodo, id_bloque + ":" + id_apuntador, true);
+            }
+        }
+        dot_inodos += dot_inodo;
+    }
+
+    dot_text += "</table> \n";
+    dot_text += ">]; \n\n";
+
+    dot_text += dot_inodos;
+
+    if (id_padre != "-1") {
+        dot_text += id_padre + " -> " + id_bloque + "\n";
+    }
+
+    if (destino_dot != nullptr) {
+        *destino_dot = dot_text;
+    }
+    return id_bloque;
+}
+
+
+void Rep::crearReporteInodos(MountedPartition mp, string ruta_reporte) {
+    string dot_text = "digraph Inodos { \n";
+    dot_text += "rankdir = UD \n";
+
+    string bm_inodos = getBitmap(mp, true);
+    for (int i = 0; i < bm_inodos.length(); i++) {
+        string dot_inodo;
+        if (bm_inodos[i] == '1') {
+            getDotInodo(i, mp, &dot_inodo);
+        }
+        dot_text += dot_inodo;
+    }
+
+    dot_text += "}";
+
+    crearImgenDeDot(dot_text, ruta_reporte);
+    cout << "Reporte de Inodos generado." << endl;
+}
+
+
+void Rep::crearReporteBloques(MountedPartition mp, string ruta_reporte) {
+    string dot_text = "digraph Bloques { \n";
+    dot_text += "rankdir = UD \n";
+
+    string bm_bloques = getBitmap(mp, false);
+    string bm_inodos = getBitmap(mp, true);
+    for (int i = 0; i < bm_bloques.length(); i++) {
+        string dot_bloque;
+        if (bm_bloques[i] == '1') {
+            for (int j = 0; j < bm_inodos.length(); j++) {
+                if (bm_inodos[j] == '1') {
+                    Inodo inodo = getInodoByIndex(j, mp);
+                    for (int k = 0; k < 12; k++) {
+                        if (inodo.i_block[k] == i) {
+                            if (inodo.i_type == '1') {
+                                getDotBloqueDeArchivo(i, mp, &dot_bloque);
+                            } else {
+                                getDotBloqueDeCarpeta(i, mp, &dot_bloque);
+                            }
+                            goto dot_de_bloque_obtenido;
+                        }
                     }
                 }
             }
         }
+        dot_de_bloque_obtenido:
+        dot_text += dot_bloque;
     }
-    else if (_index_root == -1) // Es inodo de archivo
-    {
-        for (int i = 0; i < 15; i++)
-        {
-            if (inode_current.i_block[i] != -1)
-                _dot += getDot_file_block_tree(_start_blocks, inode_current.i_block[i], _path);
+
+    dot_text += "}";
+
+    crearImgenDeDot(dot_text, ruta_reporte);
+    cout << "Reporte de Bloques generado." << endl;
+}
+
+
+void Rep::crearReporteTree(MountedPartition mp, string ruta_reporte) {
+    string dot_tree = "digraph Tree { \n";
+    dot_tree += "rankdir = LR \n";
+    string tree_content;
+    getDotInodo(0, mp, &tree_content, "-1", true);
+    dot_tree += tree_content;
+    dot_tree += "}";
+    crearImgenDeDot(dot_tree, ruta_reporte);
+    cout << "Reporte de Tree generado." << endl;
+}
+
+void Rep::crearReportSuperBloque(MountedPartition mp, string ruta_reporte) {
+    string dot_text = "digraph SuperBloque { \n";
+    dot_text += "rankdir = LR \n";
+
+    FILE *file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
+    fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
+
+    // Se recoge el super bloque
+    SuperBloque sp;
+    fread(&sp, sizeof(SuperBloque), 1, file);
+
+    dot_text += "//Bloque de archivo \n";
+    dot_text += "sb [ \n";
+    dot_text += "shape=plaintext \n";
+    dot_text += "label=< \n";
+    dot_text += "<table> \n";
+
+    // encabezado
+    dot_text += "<tr> \n";
+    dot_text += "<td><b>Reporte: </b></td> \n";
+    dot_text += "<td><b> Super Bloque </b></td> \n";
+    dot_text += "</tr> \n";
+
+    // s_filystem_type
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_filystem_type: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_filesystem_type) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_inodes_count
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_inodes_count: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_inodes_count) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_blocks_count
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_blocks_count: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_blocks_count) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_free_blocks_count
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_free_blocks_count: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_free_blocks_count) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_free_inodes_count
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_free_inodes_count: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_free_inodes_count) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_free_inodes_count
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_free_inodes_count: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_free_inodes_count) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_mtime
+    dot_text += "<tr> \n";
+    dot_text += "<td>i_atime: </td> \n";
+    dot_text += "<td>";
+    dot_text += asctime(localtime(&sp.s_mtime));
+    dot_text += "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_umtime
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_umtime: </td> \n";
+    dot_text += "<td>";
+    dot_text += asctime(localtime(&sp.s_umtime));
+    dot_text += "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_mnt_count
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_mnt_count: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_mnt_count) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_magic
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_magic: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_magic) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_inode_size
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_inode_size: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_inode_size) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_block_size
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_block_size: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_block_size) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_first_ino
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_block_size: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_first_ino) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_first_blo
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_first_blo: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_first_blo) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_bm_inode_start
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_bm_inode_start: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_bm_inode_start) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_bm_block_start
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_bm_block_start: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_bm_block_start) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    // s_inode_start
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_inode_start: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_inode_start) + "</td> \n";
+    dot_text += "</tr> \n";
+
+
+    // s_block_start
+    dot_text += "<tr> \n";
+    dot_text += "<td>s_block_start: </td> \n";
+    dot_text += "<td>"+ to_string(sp.s_block_start) + "</td> \n";
+    dot_text += "</tr> \n";
+
+    dot_text += "</table> \n";
+    dot_text += ">]; \n\n";
+    dot_text += "}";
+
+    crearImgenDeDot(dot_text, ruta_reporte);
+    cout << "Reporte de Super Bloque generado." << endl;
+}
+
+void Rep::hacerReporteDeArchivo(MountedPartition mp, string ruta_simulada_archivo, string ruta_reporte) {
+    int indice_inodo_archivo = existePathSimulado(ruta_simulada_archivo, mp);
+    if (indice_inodo_archivo == -1) {
+        cout << "Error: No se encontro el archivo en esa ruta." << endl;
+        return;
+    }
+    string contenido_archivo = leerArchivo(indice_inodo_archivo, mp);
+    string contenido_con_formato;
+    for (int i = 0; i < contenido_archivo.length(); i++) {
+        if (contenido_archivo[i] != '\n') {
+            contenido_con_formato += contenido_archivo[i];
+        } else {
+            contenido_con_formato += "\\l";
         }
     }
-    // fclose(_file);
-    _file = NULL;
-    return _dot;
-}
 
-string Rep::getDot_inode_tree(Inodo _inode, int _index_inode)
-{
-    string dot =
-            string("\"INODE_" + std::to_string(_index_inode) + "\" [ fontsize=\"17\" label = <\n") +
-            "<TABLE BGCOLOR=\"#009999\" BORDER=\"2\" COLOR=\"BLACK\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n" +
-            "<TR>\n" +
-            "<TD BGCOLOR=\"#B8860B\" COLSPAN=\"2\">Inodo " + std::to_string(_index_inode) + " </TD>\n" +
-            "</TR>\n" +
-            "<TR>\n" +
-            "<TD WIDTH=\"130\" BGCOLOR=\"#708090\"><B>Tipo</B></TD>\n" +
-            "<TD WIDTH=\"70\" BGCOLOR=\"#797d7f\"> " + _inode.i_type + " </TD>\n" +
-            "</TR>\n" +
+    string dot = "digraph { \n";
+    dot += "rankdir = LR \n";
+    dot += "node[shape = record] \n";
+    dot += "struct [ \n";
+    dot += "label = ";
+    dot += "\"";
+    string bit_map;
+    dot += getFileName(ruta_simulada_archivo) + "|";
+    dot += contenido_archivo;
 
-            "<TR>\n" +
-            "<TD WIDTH=\"130\" BGCOLOR=\"#708090\"><B>Tamaño</B></TD>\n" +
-            "<TD WIDTH=\"70\" BGCOLOR=\"#797d7f\"> " + std::to_string(_inode.i_size) + " </TD>\n" +
-            "</TR>\n" +
+    dot += "\"";
+    dot += "] \n";
+    dot += "}";
 
-            "<TR>\n" +
-            "<TD WIDTH=\"130\" BGCOLOR=\"#708090\"><B>Permisos</B></TD>\n" +
-            "<TD WIDTH=\"70\" BGCOLOR=\"#797d7f\"> " + std::to_string(_inode.i_perm) + " </TD>\n" +
-            "</TR>\n" +
-            "\n";
-    for (int i = 0; i < 15; i++)
-    {
-        // if (_inode.i_block[i] != -1)
-        dot +=
-                string("<TR>\n") +
-                "<TD WIDTH=\"130\" BGCOLOR=\"#708090\"><B>i_block[" + std::to_string(i) + "]</B></TD>\n" +
-                "<TD PORT=\"PI_" + std::to_string(i) + "\" BGCOLOR=\"#797d7f\">" + std::to_string(_inode.i_block[i]) + "</TD>\n" +
-                "</TR>\n\n";
-    }
-    dot += "</TABLE>>];\n\n";
-    for (int i = 0; i < 15; i++)
-    {
-        if (_inode.i_block[i] != -1)
-        {
-            dot += "\"INODE_" + std::to_string(_index_inode) + "\":\"PI_" + std::to_string(i) + "\" -> \"BLOCK_" + std::to_string(_inode.i_block[i]) + "\";\n\n";
-        }
-    }
-    return dot;
-}
-
-string Rep::getDot_folder_block_tree(int _start_blocks, int _index_block, string _path)
-{
-    FILE *_file = fopen(_path.c_str(), "rb");
-    BloqueDeCarpeta cb;
-    fseek(_file, _start_blocks, SEEK_SET);
-    fseek(_file, _index_block * 64, SEEK_CUR);
-    fread(&cb, 64, 1, _file);
-    string dot =
-            string("\"BLOCK_" + std::to_string(_index_block) + "\" [ fontsize=\"17\" label = <\n") +
-            "<TABLE BGCOLOR=\"#009999\" BORDER=\"2\" COLOR=\"BLACK\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n" +
-            "<TR>\n" +
-            "<TD BGCOLOR=\"#B8860B\" COLSPAN=\"2\">Bloque de carpeta " + std::to_string(_index_block) + "</TD>\n" +
-            "</TR>\n" +
-            "<TR>\n" +
-            "<TD WIDTH=\"130\" BGCOLOR=\"#708090\"><B>b_name</B></TD>\n" +
-            "<TD WIDTH=\"70\" BGCOLOR=\"#708090\"><B>b_inodo</B></TD>\n" +
-            "</TR>\n" +
-            "\n";
-    for (int i = 0; i < 4; i++)
-    {
-        dot +=
-                string("<TR>\n") +
-                "<TD ALIGN=\"left\">   " + cb.b_content[i].b_name + "</TD>\n" +
-                "<TD PORT=\"PB_" + std::to_string(i) + "\">" + std::to_string(cb.b_content[i].b_inodo) + "</TD>\n" +
-                "</TR>\n" +
-                "\n";
-    }
-    dot += "</TABLE>>];\n\n";
-    for (int i = 0; i < 4; i++)
-    {
-        if (cb.b_content[i].b_inodo != -1)
-            dot += "\"BLOCK_" + std::to_string(_index_block) + "\":\"PB_" + std::to_string(i) + "\" -> \"INODE_" + std::to_string(cb.b_content[i].b_inodo) + "\";\n\n";
-    }
-    fclose(_file);
-    _file = NULL;
-    return dot;
-}
-
-string Rep::getDot_file_block_tree(int _start_blocks, int _index_block, string _path)
-{
-    FILE *_file = fopen(_path.c_str(), "rb");
-    BloqueDeArchivo ab;
-    fseek(_file, _start_blocks, SEEK_SET);
-    fseek(_file, _index_block * 64, SEEK_CUR);
-    fread(&ab, 64, 1, _file);
-    string content = string(ab.b_content);
-    size_t pos;
-    while ((pos = content.find("\n")) != std::string::npos)
-        content.replace(pos, 1, "<br/>");
-    string dot =
-            string("\"BLOCK_" + std::to_string(_index_block) + "\" [ fontsize=\"17\" label = <\n") +
-            "<TABLE BGCOLOR=\"#009999\"  BORDER=\"2\" COLOR=\"BLACK\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n" +
-            "<TR>\n" +
-            "<TD WIDTH=\"190\" BGCOLOR=\"#708090\">Bloque de archivo " + std::to_string(_index_block) + "</TD>\n" +
-            "</TR>\n" +
-            "\n" +
-            "<TR>\n" +
-            "<TD>\n";
-    dot += (content + "\n");
-    dot += string("</TD>\n</TR>\n\n</TABLE>>];\n\n");
-    fclose(_file);
-    _file = NULL;
-    return dot;
+    crearImgenDeDot(dot, ruta_reporte);
+    cout << "Reporte de Archivo generado." << endl;
 }

@@ -20,7 +20,7 @@ MkFile::MkFile(vector<Param> parametros) : Command(parametros) {
     for (const Param& p: parametros) {
         if (p.name == "-PATH") {
             path = quitarComillas(p.value);
-        } else if (p.name == "-R") {
+        } else if (p.name == "-P") {
             r = true;
         } else if (p.name == "-SIZE") {
             size = stoi(p.value);
@@ -53,7 +53,7 @@ void MkFile::run() {
             contenido_archivo = contenido_archivo.substr(0, contenido_archivo.length() - 1);
             archivo_con_contenido.close();
         } else  {
-            cout << "Error: no se el conteido para instar el archivo en la ruta indicada." << endl;
+            cout << "Error: no se encuentra el conteido del archivo en la ruta indicada." << endl;
             return;
         }
     } else if (pStdin) {

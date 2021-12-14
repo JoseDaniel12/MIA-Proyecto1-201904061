@@ -14,7 +14,7 @@ using namespace std;
 
 class Mkdisk: public Command {
 public:
-    vector<string> admisableParams = {"-SIZE", "-F", "-U", "-PATH"};
+    vector<string> admisableParams = {"-SIZE", "-FIT", "-UNIT", "-PATH"};
     vector<string> obligatoryParams = {"-SIZE", "-PATH"};
     void run() override;
 

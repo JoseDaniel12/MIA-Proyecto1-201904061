@@ -210,7 +210,7 @@ string Command::getBitmap(MountedPartition mp, bool de_inodos) {
         tamano_bm = sp.s_inode_start - sp.s_bm_block_start;
     }
 
-    char bm[tamano_bm];
+    char bm[tamano_bm + 1];
     fread(&bm, tamano_bm, 1, file);
     return bm;
 }
@@ -366,7 +366,7 @@ BloqueDePunteros Command::getBloqueDePunteroByIndex(int indice, MountedPartition
     return bloqueDePunteros;
 }
 
-BloqueDeArchivo getBloqueDeArchivoByIndex(int indice_bloque, MountedPartition mp) {
+BloqueDeArchivo Command::getBloqueDeArchivoByIndex(int indice_bloque, MountedPartition mp) {
     FILE* file = fopen(mp.path.c_str(), "rb+"); // Se abre el archivo del disco que contiene la particion montada
     fseek(file, mp.partition.part_start, SEEK_SET);   // Se mueve el puntero al area de la particion montada
 

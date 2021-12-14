@@ -13,7 +13,7 @@ extern Usuario usuario_montado;
 
 class MkFile : public Command {
 public:
-    vector<string> admisableParams = {"-PATH", "-R", "-SIZE", "-CONT", "-STDIN"};
+    vector<string> admisableParams = {"-PATH", "-P", "-SIZE", "-CONT", "-STDIN"};
     vector<string> obligatoryParams = {"-PATH"};
     void run() override;
 

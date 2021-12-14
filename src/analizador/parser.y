@@ -60,7 +60,7 @@
 %token<text> RM EDIT REN MKDIR CP MV FIND CHOWN CHGRP POUSE EXEC REP MKUSR LOGOUT
 
 %token<text> PARAM_SIZE PARAM_F PARAM_U PARAM_PATH PARAM_TYPE PARAM_DELETE PARAM_NAME PARAM_ADD PARAM_ID PARAM_FS
-%token<text> PARAM_USER PARAM_PWD PARAM_USR PARAM_GRP PARAM_UGO PARAM_R PARAM_CONT PARAM_STDIN PARAM_P
+%token<text> PARAM_USER PARAM_PWD PARAM_USR PARAM_GRP PARAM_UGO PARAM_CONT PARAM_STDIN PARAM_P
 %token<text> PARAM_DEST PARAM_RUTA PARAM_ROOT PAUSE
 
 
@@ -100,7 +100,6 @@ params_declaration:
 
 param_declaration:
 	param_name signo_asignacion param_value	{ paramVector.push_back(*new Param(toUpper(paramName), paramValue)); }
-	|PARAM_R	                            { paramVector.push_back(*new Param(toUpper($1), "-R")); }
 	|PARAM_P	                            { paramVector.push_back(*new Param(toUpper($1), "-P")); }
 	|PARAM_STDIN	                        { paramVector.push_back(*new Param(toUpper($1), "-STDIN")); }
 ;

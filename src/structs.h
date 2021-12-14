@@ -78,7 +78,7 @@ typedef struct {
     int i_size;
     time_t i_atime;
     time_t i_ctime;
-    int i_mtime;
+    time_t i_mtime;
     int i_block[15];
     char i_type;
     int i_perm;

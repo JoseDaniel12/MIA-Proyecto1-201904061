@@ -69,8 +69,8 @@ filen       "-file"{digito}*
 "logout"    { return LOGOUT; }
 
 "-size"     { strcpy(yylval.text, yytext); return PARAM_SIZE; }
-"-f"        { strcpy(yylval.text, yytext); return PARAM_F; }
-"-u"        { strcpy(yylval.text, yytext); return PARAM_U; }
+"-fit"      { strcpy(yylval.text, yytext); return PARAM_F; }
+"-unit"     { strcpy(yylval.text, yytext); return PARAM_U; }
 "-path"     { strcpy(yylval.text, yytext); return PARAM_PATH; }
 "-type"     { strcpy(yylval.text, yytext); return PARAM_TYPE; }
 "-delete"   { strcpy(yylval.text, yytext); return PARAM_DELETE; }
@@ -83,7 +83,6 @@ filen       "-file"{digito}*
 "-usr"      { strcpy(yylval.text, yytext); return PARAM_USR; }
 "-grp"      { strcpy(yylval.text, yytext); return PARAM_GRP; }
 "-ugo"      { strcpy(yylval.text, yytext); return PARAM_UGO; }
-"-r"        { strcpy(yylval.text, yytext); return PARAM_R; }
 "-cont"     { strcpy(yylval.text, yytext); return PARAM_CONT; }
 "-stdin"    { strcpy(yylval.text, yytext); return PARAM_STDIN; }
 "-filen"    { strcpy(yylval.text, yytext); return PARAM_STDIN; }

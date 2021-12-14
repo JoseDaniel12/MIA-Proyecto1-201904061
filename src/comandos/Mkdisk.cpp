@@ -27,9 +27,9 @@ Mkdisk::Mkdisk(const vector<Param>& parametros):Command(parametros) {
     for (const Param& p: parametros) {
         if (p.name == "-SIZE") {
             size = stoi(p.value);
-        } else if (p.name == "-F") {
+        } else if (p.name == "-FIT") {
             f = (char) toupper(p.value.c_str()[0]);
-        } else if (p.name == "-U") {
+        } else if (p.name == "-UNIT") {
             u = (char) toupper(p.value.c_str()[0]);
         } else if (p.name == "-PATH") {
             path = rootPath + quitarComillas(p.value);

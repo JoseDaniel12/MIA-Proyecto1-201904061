@@ -23,14 +23,19 @@ public:
     string id;
     string ruta;
     int root;
+    int unique_id;
 
-    string ReportTree(MountedPartition _MountedPartition, string _root);
-    string getDotTree(int _index_inode, int _start_inodes, int _start_blocks, string _path, int _index_root);
-    string getDot_inode_tree(Inodo _inode, int _index_inode);
-    string getDot_folder_block_tree(int _start_blocks, int _index_block, string _path);
-    string getDot_file_block_tree(int _start_blocks, int _index_block, string _path);
-
-
+    string getDotBitmap(MountedPartition mp, bool de_inodos);
+    bool crearImgenDeDot(string dot, string ruta_imagen);
+    string get_unic_id();
+    string getDotInodo(int indice_inodo, MountedPartition mp, string* destino_dot, string id_padre = "-1", bool graficar_apuntadores = false);
+    void crearReporteInodos(MountedPartition mp, string ruta);
+    void crearReporteBloques(MountedPartition mp, string ruta_reporte);
+    string getDotBloqueDeArchivo(int indice_bloque_archivo, MountedPartition mp, string* destino_dot, string id_padre = "-1");
+    string getDotBloqueDeCarpeta(int indice_bloque_carpeta, MountedPartition mp, string* destino_dot, string id_padre = "-1", bool graficar_apuntadores = false);
+    void crearReporteTree(MountedPartition mp, string ruta_reporte);
+    void crearReportSuperBloque(MountedPartition mp, string ruta_reporte);
+    void hacerReporteDeArchivo(MountedPartition mp, string ruta_archivo_simulad, string ruta_reporte);
 };
 
 #endif //MIA_PROYECTO1_201904061_REP_H
