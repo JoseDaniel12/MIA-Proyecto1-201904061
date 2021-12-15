@@ -23,6 +23,7 @@ Rep::Rep(const vector<Param>& parametros) : Command(parametros) {
         return;
     }
 
+    root = 0;
     for (const Param& p: parametros) {
         if (p.name == "-NAME") {
             name = toUpper(p.value);
@@ -78,7 +79,7 @@ void Rep::run() {
             } else if (name == "BLOCK") {
                 crearReporteBloques(mp, path);
             } else if (name == "TREE") {
-                crearReporteTree(mp, path);
+                crearReporteTree(mp, root, path);
             } else if (name == "SB") {
                 crearReportSuperBloque(mp, path);
             } else if (name == "FILE") {
@@ -410,11 +411,11 @@ void Rep::crearReporteBloques(MountedPartition mp, string ruta_reporte) {
 }
 
 
-void Rep::crearReporteTree(MountedPartition mp, string ruta_reporte) {
+void Rep::crearReporteTree(MountedPartition mp, int indice_inodo_raiz, string ruta_reporte) {
     string dot_tree = "digraph Tree { \n";
     dot_tree += "rankdir = LR \n";
     string tree_content;
-    getDotInodo(0, mp, &tree_content, "-1", true);
+    getDotInodo(indice_inodo_raiz, mp, &tree_content, "-1", true);
     dot_tree += tree_content;
     dot_tree += "}";
     crearImgenDeDot(dot_tree, ruta_reporte);

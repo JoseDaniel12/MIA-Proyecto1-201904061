@@ -35,7 +35,7 @@ int main() {
             }
             cout << "\n";
         } else {
-            cout << "ERROR: Comando no valido" << endl;
+            cout << "ERROR: " << entrada << ", no es un comando valido. \n" << endl;
         }
         resAnalizer = NULL;
     }

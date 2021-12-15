@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Command.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Command.cpp.o.d"
   "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Exec.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o.d"
   "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Fdisk.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o.d"
+  "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Find.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.o.d"
   "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Logout.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.o.d"
   "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdir.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdir.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdir.cpp.o.d"
   "/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Mkdisk.cpp" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o" "gcc" "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdisk.cpp.o.d"

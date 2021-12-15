@@ -96,5 +96,5 @@ string Mount::getMountedPartitionId() const {
         cont++;
     }
 
-    return id + to_string((encontrado ? cont : registroNumParticiones.size()) + 1) + letra;
+    return id + letra + to_string((encontrado ? cont : registroNumParticiones.size()) + 1);
 }

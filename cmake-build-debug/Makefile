@@ -321,6 +321,30 @@ src/comandos/Fdisk.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.s
 .PHONY : src/comandos/Fdisk.cpp.s
 
+src/comandos/Find.o: src/comandos/Find.cpp.o
+.PHONY : src/comandos/Find.o
+
+# target to build an object file
+src/comandos/Find.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.o
+.PHONY : src/comandos/Find.cpp.o
+
+src/comandos/Find.i: src/comandos/Find.cpp.i
+.PHONY : src/comandos/Find.i
+
+# target to preprocess a source file
+src/comandos/Find.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.i
+.PHONY : src/comandos/Find.cpp.i
+
+src/comandos/Find.s: src/comandos/Find.cpp.s
+.PHONY : src/comandos/Find.s
+
+# target to generate assembly for a file
+src/comandos/Find.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MIA-Proyecto1-201904061.dir/build.make CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.s
+.PHONY : src/comandos/Find.cpp.s
+
 src/comandos/Logout.o: src/comandos/Logout.cpp.o
 .PHONY : src/comandos/Logout.o
 
@@ -714,6 +738,9 @@ help:
 	@echo "... src/comandos/Fdisk.o"
 	@echo "... src/comandos/Fdisk.i"
 	@echo "... src/comandos/Fdisk.s"
+	@echo "... src/comandos/Find.o"
+	@echo "... src/comandos/Find.i"
+	@echo "... src/comandos/Find.s"
 	@echo "... src/comandos/Logout.o"
 	@echo "... src/comandos/Logout.i"
 	@echo "... src/comandos/Logout.s"

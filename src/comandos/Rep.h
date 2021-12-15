@@ -33,7 +33,7 @@ public:
     void crearReporteBloques(MountedPartition mp, string ruta_reporte);
     string getDotBloqueDeArchivo(int indice_bloque_archivo, MountedPartition mp, string* destino_dot, string id_padre = "-1");
     string getDotBloqueDeCarpeta(int indice_bloque_carpeta, MountedPartition mp, string* destino_dot, string id_padre = "-1", bool graficar_apuntadores = false);
-    void crearReporteTree(MountedPartition mp, string ruta_reporte);
+    void crearReporteTree(MountedPartition mp, int indice_inodo_raiz, string ruta_reporte);
     void crearReportSuperBloque(MountedPartition mp, string ruta_reporte);
     void hacerReporteDeArchivo(MountedPartition mp, string ruta_archivo_simulad, string ruta_reporte);
 };

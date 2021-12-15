@@ -13,6 +13,7 @@ using namespace std;
 MkFile::MkFile(vector<Param> parametros) : Command(parametros) {
     commandName = "MKFILE";
     if (!correctParams(parametros, admisableParams, obligatoryParams)) {
+        cout << "\nCommando erroneo: " << commandName << endl;
         runnable = false;
         return;
     }
@@ -39,6 +40,11 @@ void MkFile::run() {
 
     if (!usuario_montado.logeado) {
         cout << "Error: no se puede ejcutar el comando pues no hay nigun usuario logeado" << endl;
+        return;
+    }
+
+    if (size < 0) {
+        cout << "Error: el tamano del archivo no puede ser negativo." << endl;
         return;
     }
 

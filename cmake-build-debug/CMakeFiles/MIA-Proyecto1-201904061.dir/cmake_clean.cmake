@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Exec.cpp.o.d"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Fdisk.cpp.o.d"
+  "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.o"
+  "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Find.cpp.o.d"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.o"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Logout.cpp.o.d"
   "CMakeFiles/MIA-Proyecto1-201904061.dir/src/comandos/Mkdir.cpp.o"

@@ -54,7 +54,7 @@ void Exec::run() {
             }
             cout << "//\n";
         } else {
-            cout << "ERROR: Comando no valido" << endl;
+            cout << "ERROR: " << linea <<", no es un comando valido." << endl;
         }
     }
     archivo.close();

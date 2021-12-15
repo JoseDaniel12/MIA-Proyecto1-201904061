@@ -41,7 +41,7 @@ bool Command::missingParams(vector<Param> params, vector<string> obligatoryParam
             }
         }
         if (!contained) {
-            cout << "ERROR: Faltan parametros obligatorios." << endl;
+            cout << "\nERROR: Faltan parametros obligatorios.";
             return true;
         }
     }
@@ -57,7 +57,7 @@ bool Command::inadmisableParams(vector<Param> params, vector<string> admisablePa
             }
         }
         if (!contained) {
-            cout << "ERROR: Parametros inadmisibles encontrados." << endl;
+            cout << "\nERROR: Parametros inadmisibles encontrados.";
             return true;
         }
     }
@@ -73,7 +73,7 @@ bool Command::repeatedParams(vector<Param> params) {
             }
         }
         if (cont > 1) {
-            cout << "ERROR: Parametros repetidos encontrados." << endl;
+            cout << "\nERROR: Parametros repetidos encontrados.";
             return true;
         }
     }
@@ -84,7 +84,11 @@ bool Command::correctParams(vector<Param> params, vector<string> admisableParams
     bool c1 = missingParams(params, obligatoryParams);
     bool c2 = inadmisableParams(params, admisableParams);
     bool c3 = repeatedParams(params);
-    return !c1 && !c2 && !c3;
+    bool correct_params = !c1 && !c2 && !c3;
+    if (!correct_params) {
+        cout << endl;
+    }
+    return correct_params;
 }
 
 string Command::getDirectory(string path) {

@@ -74,7 +74,8 @@
 				38,
 				39,
 				41,
-				43
+				43,
+				45
 			]
 		}
 	],
@@ -129,7 +130,8 @@
 				38,
 				39,
 				41,
-				43
+				43,
+				45
 			]
 		},
 		{
@@ -157,7 +159,8 @@
 				37,
 				40,
 				42,
-				44
+				44,
+				46
 			]
 		}
 	],
@@ -409,6 +412,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/comandos/Logout.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/comandos/Find.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/comandos/Find.h",
 			"sourceGroupIndex" : 1
 		}
 	],

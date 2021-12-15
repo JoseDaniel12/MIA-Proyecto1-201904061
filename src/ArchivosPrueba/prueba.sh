@@ -44,12 +44,12 @@ moUnt -PAth~:~"/home/archivos/fase2/D2.dk" -name~:~"PRI2"
 mouNt -path~:~"/home/archivos/fase2/D1.dk" -NamE~:~"PRI1"
 moUnt -name~:~"PRI2" -PAth~:~"/home/archivos/fase2/D1.dk"
 
-mkfs -id~:~"vd1a" -type~:~Full
-Mkfs -id~:~"vd1b"
+mkfs -id~:~"vda1" -type~:~Full
+Mkfs -id~:~"vdb1"
 
 #Usuario de generacion es 201700308 -> 08
 
-loGin -usr~:~root -pwd~:~123 -id~:~"vd1a"
+loGin -usr~:~root -pwd~:~123 -id~:~"vda1"
 
 #Crearemos un grupo llamado "Barcelona" ,"Real Madrid" y "Atletico Madrid"
 
@@ -66,7 +66,7 @@ Mkusr -usr~:~"user3" -grp~:~"Barcelona" -pwd~:~user3
 LogouT
 
 #nos logueamos en la particion PRI1 con nuestro usuario root
-loGin -usr~:~root -pwd~:~123 -id~:~"vd1b"
+loGin -usr~:~root -pwd~:~123 -id~:~"vdb1"
 
 #Crearemos un grupo llamado "Barcelona" ,"Real Madrid" y "Atletico Madrid"
 mkgrp -name~:~"Barcelona"
@@ -82,11 +82,11 @@ LogouT
 
 pause
 
-#Cerramos sesión e iniciamos sesión con vd1a
+#Cerramos sesión e iniciamos sesión con vda1
 
 LogouT
 
-loGin -usr~:~root -pwd~:~123 -id~:~"vd1a"
+loGin -usr~:~root -pwd~:~123 -id~:~"vda1"
 
 #Creamos la ruta y las padres que no existan
 
@@ -141,8 +141,8 @@ pause
 
 #GENERACION DE REPORTES
 
-rep -id~:~"vd1a" -Path~:~"/home/user/reports/reporte_1.jpg" -name~:~mbr
-rep -id~:~"vd1a" -Path~:~"/home/user/reports/disko.jpg" -name~:~disk
+rep -id~:~"vda1" -Path~:~"/home/user/reports/reporte_1.jpg" -name~:~mbr
+rep -id~:~"vda1" -Path~:~"/home/user/reports/disko.jpg" -name~:~disk
 
 pause
 
@@ -162,7 +162,7 @@ pause
 
 logouT
 
-loGin -usr~:~root -pwd~:~123 -id~:~"vd1b"
+loGin -usr~:~root -pwd~:~123 -id~:~"vdb1"
 
 #Crearemos la ruta y las padres que no existan
 mkdir -path~:~"/home/archivos/mia/fase2" -p

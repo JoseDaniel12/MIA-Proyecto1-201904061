@@ -130,6 +130,12 @@
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Fdisk.h">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Find.cpp">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
+		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Find.h">
+			<Option target="MIA-Proyecto1-201904061"/>
+		</Unit>
 		<Unit filename="/home/jose/Desktop/MIA-Proyecto1-201904061/src/comandos/Logout.cpp">
 			<Option target="MIA-Proyecto1-201904061"/>
 		</Unit>
