@@ -1,0 +1,4 @@
+CREATE ROLE IF NOT EXISTS administrador
+CREATE ROLE IF NOT EXISTS empleado
+
+

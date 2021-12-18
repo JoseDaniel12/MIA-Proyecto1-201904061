@@ -1,11 +1,14 @@
-DROP TABLE geoname;
-DROP TABLE project;
-DROP TABLE level_1a;
-DROP TABLE transaction;
-DROP TABLE country_code;
-DROP TABLE location;
-DROP TABLE status;
-DROP TABLE currenci;
+use prueba;
+
+DROP TABLE IF EXISTS geoname;
+DROP TABLE IF EXISTS project;
+DROP TABLE IF EXISTS level_1a;
+DROP TABLE IF EXISTS transaction;
+DROP TABLE IF EXISTS country_code;
+DROP TABLE IF EXISTS location;
+DROP TABLE IF EXISTS status;
+DROP TABLE IF EXISTS currenci;
+
 
 \! clear
 
@@ -14,15 +17,13 @@ DROP TABLE currenci;
 -- __________ location __________
 
 CREATE TABLE IF NOT EXISTS location (
-    id_location INT NOT NULL AUTO_INCREMENT,
     location_type_code VARCHAR(255),
-    location_type_name VARCHAR(255),
-    PRIMARY KEY (id_location)
+    location_type_name VARCHAR(255)
 );
 
 INSERT INTO location
 (location_type_code, location_type_name)
-SELECT * FROM location_t;
+SELECT DISTINCT * FROM location_t;
 
 SELECT COUNT(*) AS location_final_rows FROM location;
 
@@ -30,39 +31,32 @@ SELECT COUNT(*) AS location_final_rows FROM location;
 -- __________ status __________
 
 CREATE TABLE IF NOT EXISTS status (
-    id_status INT NOT NULL AUTO_INCREMENT,
-    name_status VARCHAR(255),
-    PRIMARY KEY (id_status)
+    name_status VARCHAR(255)
 );
 
 INSERT INTO status
 (name_status)
-SELECT status FROM project_t GROUP BY status;
+SELECT DISTINCT status FROM project_t GROUP BY status;
 
 SELECT COUNT(*) AS status_rows FROM status;
-SELECT * FROM status;
 
 
 -- __________ currenci __________
 
 CREATE TABLE IF NOT EXISTS currenci (
-    id_currency INT NOT NULL AUTO_INCREMENT,
-    name_currency VARCHAR(255),
-    PRIMARY KEY (id_currency)
+    name_currency VARCHAR(255)
 );
 
 INSERT INTO currenci
 (name_currency)
-SELECT transaction_currency FROM transaction_t GROUP BY transaction_currency;
+SELECT DISTINCT transaction_currency FROM transaction_t GROUP BY transaction_currency;
 
 SELECT COUNT(*) AS currenci_rows FROM currenci;
-SELECT * FROM currenci;
 
 
 -- __________ country_code __________
 
 CREATE TABLE IF NOT EXISTS country_code (
-    id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255),
     iso2 VARCHAR(255),
     name_name VARCHAR(255),
@@ -80,8 +74,7 @@ CREATE TABLE IF NOT EXISTS country_code (
     name_oecd_code INT,
     name_oecd_name VARCHAR(255),
     name_un_code INT,
-    name_wb_code VARCHAR(255),
-    PRIMARY KEY (id)
+    name_wb_code VARCHAR(255)
 );
 
 INSERT INTO country_code
@@ -97,7 +90,6 @@ SELECT COUNT(*) AS country_code_final_rows FROM country_code;
 -- __________ geoname __________
 
 CREATE TABLE IF NOT EXISTS geoname (
-    id INT NOT NULL AUTO_INCREMENT,
     geoname_id INT,
     place_name VARCHAR(255),
     latitude FLOAT,
@@ -107,8 +99,7 @@ CREATE TABLE IF NOT EXISTS geoname (
     gazetteer_adm_code VARCHAR(255),
     gazetteer_adm_name VARCHAR(255),
     location_class INT,
-    geographic_exactness INT,
-    PRIMARY KEY (id)
+    geographic_exactness INT
 );
 
 INSERT INTO geoname
@@ -123,7 +114,6 @@ SELECT COUNT(*) AS geoname_final_rows FROM geoname;
 -- __________ project __________
 
 CREATE TABLE IF NOT EXISTS project (
-    id_proyecto INT NOT NULL AUTO_INCREMENT,
     project_id VARCHAR(255),
     is_geocoded  INT,
     project_title VARCHAR(255),
@@ -138,16 +128,15 @@ CREATE TABLE IF NOT EXISTS project (
     status VARCHAR(255),
     transactions_start_year VARCHAR(255),
     transactions_end_year VARCHAR(255),
-    total_commitments  VARCHAR(255),
-    total_disbursements VARCHAR(255),
-    PRIMARY KEY (id_proyectod)
+    total_commitments  DECIMAL(65, 30),
+    total_disbursements DECIMAL(65, 30)
 );
 
 INSERT INTO project
 (project_id, is_geocoded, project_title, start_actual_isodate, end_actual_isodate, donors,
 donors_iso3, recipients, recipients_iso3, ad_sector_codes, ad_sector_names, status,
 transactions_start_year, transactions_end_year, total_commitments, total_disbursements)
-SELECT * FROM project_t;
+SELECT DISTINCT * FROM project_t;
 
 SELECT COUNT(*) AS project_final_rows FROM project;
 
@@ -155,24 +144,19 @@ SELECT COUNT(*) AS project_final_rows FROM project;
 -- __________ level_1a __________
 
 CREATE TABLE IF NOT EXISTS level_1a (   
-    id INT NOT NULL AUTO_INCREMENT,
     project_id VARCHAR(255),
     project_location_id VARCHAR(255),
     geoname_id INT,
     transactions_start_year YEAR,
     transactions_end_year YEAR,
     even_split_commitments VARCHAR(255),
-    even_split_disbursements DECIMAL(65, 30),
-    PRIMARY KEY (id)
-    --PRIMARY KEY (project_location_id),
-    --FOREIGN KEY (project_id) REFERENCES project(project_id),
-    --FOREIGN KEY (geoname_id) REFERENCES geoname(geoname_id)
+    even_split_disbursements DECIMAL(65, 30)
 );
 
 INSERT INTO level_1a
 (project_id, project_location_id, geoname_id, transactions_start_year, transactions_end_year,
 even_split_commitments, even_split_disbursements)
-SELECT * FROM level_1a_t;
+SELECT DISTINCT * FROM level_1a_t;
 
 SELECT COUNT(*) AS level_1a_final_rows FROM level_1a;
 
@@ -180,20 +164,18 @@ SELECT COUNT(*) AS level_1a_final_rows FROM level_1a;
 -- __________ transaction __________
 
 CREATE TABLE IF NOT EXISTS transaction (
-    id INT NOT NULL AUTO_INCREMENT,
     transaction_id VARCHAR(255),
     project_id VARCHAR(255),
     transaction_isodate DATE,
     transaction_year YEAR,
     transaction_value_code CHAR,
     transaction_currency VARCHAR(255),
-    transaction_value DECIMAL(65, 30),
-    PRIMARY KEY (id)
+    transaction_value DECIMAL(65, 30)
 );
 
 INSERT INTO transaction
 (transaction_id, project_id, transaction_isodate, transaction_year, transaction_value_code, 
 transaction_currency, transaction_value)
-SELECT * FROM transaction_t;
+SELECT DISTINCT * FROM transaction_t;
 
 SELECT COUNT(*) AS transaction_final_rows FROM transaction;

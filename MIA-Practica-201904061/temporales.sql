@@ -1,15 +1,14 @@
-DROP TABLE geoname_t;
-DROP TABLE project_t;
-DROP TABLE level_1a_t;
-DROP TABLE transaction_t;
-DROP TABLE country_code_t;
-DROP TABLE location_t;
+USE prueba;  
+
+DROP TEMPORARY TABLE IF EXISTS geoname_t;
+DROP TEMPORARY TABLE IF EXISTS project_t;
+DROP TEMPORARY TABLE IF EXISTS level_1a_t;
+DROP TEMPORARY TABLE IF EXISTS transaction_t;
+DROP TEMPORARY TABLE IF EXISTS country_code_t;
+DROP TEMPORARY TABLE IF EXISTS location_t;
 
 
 \! clear
-
-CREATE DATABASE prueba;
-USE prueba;  
 
 
 -- __________ Tablas de la Asociación Internacional de Fomento (IDA) __________
@@ -56,8 +55,8 @@ CREATE TEMPORARY TABLE IF NOT EXISTS project_t (
     status VARCHAR(255),
     transactions_start_year VARCHAR(255),
     transactions_end_year VARCHAR(255),
-    total_commitments  VARCHAR(255),
-    total_disbursements VARCHAR(255)
+    total_commitments  DECIMAL(65, 30),
+    total_disbursements DECIMAL(65, 30)
 );
 
 LOAD DATA INFILE '/var/lib/mysql-files/projects.csv' 
@@ -69,9 +68,11 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (project_id, is_geocoded, project_title, @start_actual_isodate, @end_actual_isodate, donors,
 donors_iso3, recipients, recipients_iso3, ad_sector_codes, ad_sector_names, status,
-transactions_start_year, transactions_end_year, total_commitments, total_disbursements)
+transactions_start_year, transactions_end_year, @total_commitments, @total_disbursements)
 SET start_actual_isodate = STR_TO_DATE(@start_actual_isodate, '%d/%m/%Y'),
-    end_actual_isodate = IF (STRCMP(@end_actual_isodate,"") = 0, NULL, STR_TO_DATE(@end_actual_isodate, '%d/%m/%Y'))
+    end_actual_isodate = IF (STRCMP(@end_actual_isodate,"") = 0, NULL, STR_TO_DATE(@end_actual_isodate, '%d/%m/%Y')),
+    total_commitments = NULLIF(@total_commitments, 0.0),
+    total_disbursements = NULLIF(@total_disbursements, 0.0)
 ;
 
 
