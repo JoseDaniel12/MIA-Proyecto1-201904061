@@ -1,16 +1,4 @@
-use prueba;
-
-DROP TABLE IF EXISTS geoname;
-DROP TABLE IF EXISTS project;
-DROP TABLE IF EXISTS level_1a;
-DROP TABLE IF EXISTS transaction;
-DROP TABLE IF EXISTS country_code;
-DROP TABLE IF EXISTS location;
-DROP TABLE IF EXISTS status;
-DROP TABLE IF EXISTS currenci;
-
-
-\! clear
+USE prueba;
 
 -- __________________ Creacion de las tablas unidas _____________________________
 
@@ -179,3 +167,4 @@ transaction_currency, transaction_value)
 SELECT DISTINCT * FROM transaction_t;
 
 SELECT COUNT(*) AS transaction_final_rows FROM transaction;
+

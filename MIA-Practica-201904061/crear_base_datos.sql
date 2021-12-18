@@ -1,0 +1,3 @@
+\! clear
+
+CREATE DATABASE IF NOT EXISTS prueba;

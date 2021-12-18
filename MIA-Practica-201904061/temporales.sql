@@ -1,13 +1,5 @@
 USE prueba;  
 
-DROP TEMPORARY TABLE IF EXISTS geoname_t;
-DROP TEMPORARY TABLE IF EXISTS project_t;
-DROP TEMPORARY TABLE IF EXISTS level_1a_t;
-DROP TEMPORARY TABLE IF EXISTS transaction_t;
-DROP TEMPORARY TABLE IF EXISTS country_code_t;
-DROP TEMPORARY TABLE IF EXISTS location_t;
-
-
 \! clear
 
 
@@ -27,15 +19,6 @@ CREATE TEMPORARY TABLE IF NOT EXISTS geoname_t (
     location_class INT,
     geographic_exactness INT
 );
-
-LOAD DATA INFILE '/var/lib/mysql-files/geonames.csv' 
-INTO TABLE geoname_t 
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '\"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
-
-SELECT COUNT(*) AS geonames_t_rows FROM geoname_t;
 
 
 -- __________ project_t __________
@@ -59,26 +42,6 @@ CREATE TEMPORARY TABLE IF NOT EXISTS project_t (
     total_disbursements DECIMAL(65, 30)
 );
 
-LOAD DATA INFILE '/var/lib/mysql-files/projects.csv' 
-INTO TABLE project_t
-CHARACTER SET latin1
-FIELDS TERMINATED BY ','  
-ENCLOSED BY '\"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS
-(project_id, is_geocoded, project_title, @start_actual_isodate, @end_actual_isodate, donors,
-donors_iso3, recipients, recipients_iso3, ad_sector_codes, ad_sector_names, status,
-transactions_start_year, transactions_end_year, @total_commitments, @total_disbursements)
-SET start_actual_isodate = STR_TO_DATE(@start_actual_isodate, '%d/%m/%Y'),
-    end_actual_isodate = IF (STRCMP(@end_actual_isodate,"") = 0, NULL, STR_TO_DATE(@end_actual_isodate, '%d/%m/%Y')),
-    total_commitments = NULLIF(@total_commitments, 0.0),
-    total_disbursements = NULLIF(@total_disbursements, 0.0)
-;
-
-
-
-SELECT COUNT(*) AS projects_t_rows FROM project_t;
-
 
 -- __________ level_1a_t __________
 
@@ -91,21 +54,6 @@ CREATE TEMPORARY TABLE IF NOT EXISTS level_1a_t (
     even_split_commitments VARCHAR(255),
     even_split_disbursements DECIMAL(65, 30)
 );
-
-LOAD DATA INFILE '/var/lib/mysql-files/level_1a.csv'
-INTO TABLE level_1a_t
-CHARACTER SET latin1
-FIELDS TERMINATED BY ','
-ENCLOSED BY '\"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS
-(project_id, project_location_id, geoname_id, transactions_start_year, transactions_end_year,
-even_split_commitments, @even_split_disbursements)
-SET even_split_disbursements = NULLIF(@even_split_disbursements, 0.0);
-
-
-SELECT COUNT(*) AS level_1a_t_rows FROM level_1a_t;
-
 
 
 -- ______ The International Banc for Reconstruction and Develpmnet (IBDR) ______
@@ -121,20 +69,6 @@ CREATE TEMPORARY TABLE IF NOT EXISTS transaction_t (
     transaction_currency VARCHAR(255),
     transaction_value DECIMAL(65, 30)
 );
-
-LOAD DATA INFILE '/var/lib/mysql-files/transactions.csv' 
-INTO TABLE transaction_t 
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '\"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS
-(transaction_id, project_id, @transaction_isodate, transaction_year, transaction_value_code, 
-transaction_currency, transaction_value)
-SET transaction_isodate = STR_TO_DATE(@transaction_isodate, '%d/%m/%Y')
-;
-
-
-SELECT COUNT(*) AS transactions_t_rows FROM transaction_t;
 
 
 -- __________ country_code_t __________
@@ -160,28 +94,6 @@ CREATE TEMPORARY TABLE IF NOT EXISTS country_code_t (
     name_wb_code VARCHAR(255)
 );
 
-LOAD DATA INFILE '/var/lib/mysql-files/country_codes.tsv' 
-INTO TABLE country_code_t
-CHARACTER SET latin1
-FIELDS TERMINATED BY '\t' 
-ENCLOSED BY '\"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS
-(name, iso2, name_name, @name_aiddata_code, name_aiddata_name, name_cow_alpha, @name_cow_numeric,
-@name_fao_code, name_fips, @name_geonames_id, @name_imf_code, name_iso2, name_iso3, @name_iso_numeric, 
-@name_oecd_code, name_oecd_name, @name_un_code, name_wb_code)
-SET name_aiddata_code = NULLIF(@name_aiddata_code, 0),
-    name_cow_numeric = NULLIF(@name_cow_numeric, 0),
-    name_fao_code = NULLIF(@name_fao_code, 0),
-    name_geonames_id = NULLIF(@name_geonames_id, 0),
-    name_imf_code = NULLIF(@name_imf_code, 0),
-    name_oecd_code = NULLIF(@name_oecd_code, 0),
-    name_iso_numeric = NULLIF(@name_iso_numeric, 0),
-    name_un_code = NULLIF(@name_un_code, 0)
-;
-
-SELECT COUNT(*) AS country_code_t_rows FROM country_code_t;
-
 
 -- __________ location_t __________
 
@@ -190,12 +102,3 @@ CREATE TEMPORARY TABLE IF NOT EXISTS location_t (
     location_type_name VARCHAR(255)
 );
 
-LOAD DATA INFILE '/var/lib/mysql-files/locations.tsv'
-INTO TABLE location_t
-CHARACTER SET latin1
-FIELDS TERMINATED BY '\t'
-ENCLOSED BY '\"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
-
-SELECT COUNT(*) AS locations_t_rows FROM location_t;

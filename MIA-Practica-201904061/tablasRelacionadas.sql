@@ -1,11 +1,4 @@
-DROP TABLE geoname;
-DROP TABLE project;
-DROP TABLE level_1a;
-DROP TABLE transaction;
-DROP TABLE country_code;
-DROP TABLE location;
-DROP TABLE status;
-DROP TABLE currenci;
+USE prueba;  
 
 \! clear
 
@@ -209,3 +202,4 @@ transaction_currency, transaction_value)
 SELECT * FROM transaction_t;
 
 SELECT COUNT(*) AS transaction_final_rows FROM transaction;
+

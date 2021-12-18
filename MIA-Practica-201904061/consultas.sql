@@ -1,3 +1,5 @@
+USE prueba;  
+
 \! clear
 
 -- ____________________________ CONSULTAS ____________________________
@@ -117,4 +119,3 @@ WHERE project.project_title LIKE '%RI-East Africa Public Health Laboratory Netwo
 ORDER BY cotos_mas_elevados DESC
 LIMIT 3;
 
-quit
