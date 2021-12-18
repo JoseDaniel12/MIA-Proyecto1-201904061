@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DF6E584B-A13C-B477-5DA2-4DA4E4607AD5" name="status">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 18:21:00 UTC</createdTime>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_status" id="DCC6452F-6F10-08AF-E488-A4CEF2D4E631">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:05:59 UTC</createdTime>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name_status" id="628E7CF6-0DE4-EDE1-D317-1CBBDFE5057C">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 18:21:09 UTC</createdTime>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8D6BC34A-C348-ACA4-9A64-70570973B76E" name="status PK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:10:21 UTC</createdTime>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DCC6452F-6F10-08AF-E488-A4CEF2D4E631</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

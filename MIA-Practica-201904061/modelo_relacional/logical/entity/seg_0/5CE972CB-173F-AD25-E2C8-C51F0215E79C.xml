@@ -1,0 +1,202 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5CE972CB-173F-AD25-E2C8-C51F0215E79C" name="transaction">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:01:48 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="E6C0BD0E-E0E8-B2D1-B288-B8B3D2F72F5E">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:15:09 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="transaction_id" id="667CEC26-7D36-086F-D8A3-424A83FDF619">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:01:58 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="project_id" id="55F4D823-14A2-60D1-AD51-09ED1373DBAD">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:02:16 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="transaction_isodate" id="3DA7120B-2091-DFB2-E45F-D1C0A2C61A70">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:02:44 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="transaction_year" id="443AD53D-1C35-47AF-0DD0-93C09D9DCC19">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:03:01 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="transaction_value_code" id="7875C57B-F8A3-3388-8310-8CD313786155">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:03:24 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="transaction_currency" id="3D9C1441-1244-4207-E20D-B7FCA378B885">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:03:36 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="transaction_value" id="4CE5DFD6-98D3-E91C-77CC-077FDC842713">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:03:50 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>65</dataTypePrecision>
+<dataTypeScale>30</dataTypeScale>
+<ownDataTypeParameters>,65,30</ownDataTypeParameters>
+</Attribute>
+<Attribute name="project_id1" id="3A5E4D3F-91D6-F7C3-F347-113111CC3798">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:21:47 UTC</createdTime>
+<generatorID>A059BCD1-26B6-E05E-3420-E14EEB55959F</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<referedAttribute>01E8867C-A94A-5E37-E53F-D75090639879</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_status" id="0B2DC6F4-2E90-FF82-78F2-1B7507CDA2CA">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:22:16 UTC</createdTime>
+<generatorID>A059BCD1-26B6-E05E-3420-E14EEB55959F</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<referedAttribute>55F35E71-C5F1-65A9-0854-0EBFE4C21FB7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="488D2399-7D51-AAF6-6FEB-F242AB7655BA">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:23:01 UTC</createdTime>
+<generatorID>A059BCD1-26B6-E05E-3420-E14EEB55959F</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<referedAttribute>0491636C-72B7-509C-FCAE-1B46A2628C25</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_currency" id="257AFD18-1EA8-45E4-01B4-D7B8C01E91DD">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:23:16 UTC</createdTime>
+<generatorID>AFEA6E4A-12B7-D65B-B0C0-FC9410F02A00</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="true"/>
+</engineerTo>
+<referedAttribute>AFAE742D-7CED-125F-80BE-C54205547C81</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="74489A33-BE6C-2FA9-B450-65AD0945C8BC" name="transaction PK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:15:18 UTC</createdTime>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="509902DA-14D8-E032-5C45-D425ECBE78D6" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E6C0BD0E-E0E8-B2D1-B288-B8B3D2F72F5E</attributeRef>
+<attributeRef>3A5E4D3F-91D6-F7C3-F347-113111CC3798</attributeRef>
+<attributeRef>0B2DC6F4-2E90-FF82-78F2-1B7507CDA2CA</attributeRef>
+<attributeRef>488D2399-7D51-AAF6-6FEB-F242AB7655BA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

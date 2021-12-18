@@ -1,0 +1,214 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E15262DB-941B-4A9F-6954-0EA61A36F7B3" name="transaction">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>5CE972CB-173F-AD25-E2C8-C51F0215E79C</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="F8DA5D6D-E7A0-B349-5ABC-8CD4E8E92B9E">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>E6C0BD0E-E0E8-B2D1-B288-B8B3D2F72F5E</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transaction_id" id="96150040-B555-972C-C6A2-53B90FB9EB0B">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>667CEC26-7D36-086F-D8A3-424A83FDF619</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="project_id" id="2C154C9F-EAE0-6B9B-E2B9-40D4B4965BB3">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>55F4D823-14A2-60D1-AD51-09ED1373DBAD</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transaction_isodate" id="1574208C-767B-3F50-6631-7889A15AA9FF">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>3DA7120B-2091-DFB2-E45F-D1C0A2C61A70</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transaction_year" id="1F8CE175-35C0-F0DE-0D4F-37C74CE57479">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>443AD53D-1C35-47AF-0DD0-93C09D9DCC19</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transaction_value_code" id="B6DE8A59-23D9-BE0C-5732-2A1F135F7FF5">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>7875C57B-F8A3-3388-8310-8CD313786155</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transaction_currency" id="4261021F-4F16-ED2A-A9C4-C7136465950B">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>3D9C1441-1244-4207-E20D-B7FCA378B885</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transaction_value" id="EDDB78B6-12E4-FF01-84F9-882A805E24E9">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>4CE5DFD6-98D3-E91C-77CC-077FDC842713</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>65</dataTypePrecision>
+<dataTypeScale>30</dataTypeScale>
+<ownDataTypeParameters>,65,30</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="project_project_id" id="54D21C0E-DE96-4C1F-69F0-830BBE9D2ACA">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>3A5E4D3F-91D6-F7C3-F347-113111CC3798</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8BBD531F-3243-1D45-8230-35EDE922E8FD" referredColumn="E62C0384-1DB3-58A0-12B0-8751C4FC2BAA"/>
+</associations>
+</Column>
+<Column name="project_status_id_status" id="AE97120E-41F1-2F8E-1756-9B823E9D2B7B">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>0B2DC6F4-2E90-FF82-78F2-1B7507CDA2CA</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8BBD531F-3243-1D45-8230-35EDE922E8FD" referredColumn="CC8E947C-FA02-C11E-07DB-A3AE44E1D764"/>
+</associations>
+</Column>
+<Column name="project_country_code_id" id="A200B5A1-8B34-CAF5-5364-2D5B8F86A027">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>488D2399-7D51-AAF6-6FEB-F242AB7655BA</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8BBD531F-3243-1D45-8230-35EDE922E8FD" referredColumn="612D6D1D-1936-A2DA-A87E-EFA2112B3BBC"/>
+</associations>
+</Column>
+<Column name="currenci_id_currency" id="35F6AB46-FCF9-4052-9263-02003C89D3C5">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>257AFD18-1EA8-45E4-01B4-D7B8C01E91DD</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="93266109-9164-5473-C9A4-A047EFE76244" referredColumn="02764101-D57A-467C-A717-8BD69B020EE2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B7A0D052-167B-F885-14F4-D587E9438063" name="transaction_PK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>74489A33-BE6C-2FA9-B450-65AD0945C8BC</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F8DA5D6D-E7A0-B349-5ABC-8CD4E8E92B9E"/>
+<colUsage columnID="54D21C0E-DE96-4C1F-69F0-830BBE9D2ACA"/>
+<colUsage columnID="AE97120E-41F1-2F8E-1756-9B823E9D2B7B"/>
+<colUsage columnID="A200B5A1-8B34-CAF5-5364-2D5B8F86A027"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="18E36F87-9CA9-F8C7-CB1D-21DF2D5DEEB5" name="transaction_currenci_FK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>AFEA6E4A-12B7-D65B-B0C0-FC9410F02A00</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35F6AB46-FCF9-4052-9263-02003C89D3C5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="122F7DDA-CA1B-6245-7A15-4F8E96C9F710" name="transaction_project_FK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>A059BCD1-26B6-E05E-3420-E14EEB55959F</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="54D21C0E-DE96-4C1F-69F0-830BBE9D2ACA"/>
+<colUsage columnID="AE97120E-41F1-2F8E-1756-9B823E9D2B7B"/>
+<colUsage columnID="A200B5A1-8B34-CAF5-5364-2D5B8F86A027"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

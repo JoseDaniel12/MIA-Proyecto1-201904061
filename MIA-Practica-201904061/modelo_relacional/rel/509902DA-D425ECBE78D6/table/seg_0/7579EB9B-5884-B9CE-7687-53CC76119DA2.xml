@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7579EB9B-5884-B9CE-7687-53CC76119DA2" name="status">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>DF6E584B-A13C-B477-5DA2-4DA4E4607AD5</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_status" id="6CFA38A1-5B48-E18B-7E6B-47E28DFBB0EF">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>DCC6452F-6F10-08AF-E488-A4CEF2D4E631</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name_status" id="F718724C-57EB-FDA1-50FA-598A5D5B825A">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>628E7CF6-0DE4-EDE1-D317-1CBBDFE5057C</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7DC0334A-C774-62C8-4509-07AE885C0DD2" name="status_PK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>8D6BC34A-C348-ACA4-9A64-70570973B76E</generatorID>
+<ownerDesignName>modelo_relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6CFA38A1-5B48-E18B-7E6B-47E28DFBB0EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

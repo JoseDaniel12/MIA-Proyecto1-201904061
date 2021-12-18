@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3502C83B-20FA-5C1B-15E6-B48113B0E209" containerWithKeyObject="8D242F68-A5B9-4EB9-BCEC-FDB61589A762" localFKIndex="D2EF26A3-FB00-A9C7-36E2-5C55063DB765" name="geoname_location_FK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>F3594734-5FB2-A8E0-91B4-49805CB6DDB3</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<referredTableLongName>location</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>5678D2A2-2DF4-189A-ED47-4291F4556D24</referredTableID>
+<keyObject>4BEA8B0B-00A5-2C3C-0B52-D5D51783E4F3</keyObject>
+<referredKeyID>4BEA8B0B-00A5-2C3C-0B52-D5D51783E4F3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_location</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

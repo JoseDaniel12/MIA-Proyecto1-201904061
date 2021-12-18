@@ -1,0 +1,233 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AE67D331-8525-409C-6689-65649380545D" name="level_1a">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>C570D221-9F64-2A72-DDB6-DF56F1FC1042</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="35FAFFFF-22CA-CDA6-115C-54DD55B1DB9C">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>59A60F38-A3B9-8CA0-6F78-0BFD4CC5B002</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="project_id" id="4B37E722-DA70-456A-B243-61176B6032CB">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>BE2EF66E-B727-9CFB-8C6A-257CECBD3482</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="project_location_id" id="4CF2DB07-CA89-AA78-619F-46D89C39D89D">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>57A63A49-E2D1-009E-7E28-F8BF6C399FB2</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="geoname_id" id="A11FFF96-D028-7C7E-1370-B6E00C2B272A">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>7E3C7560-4E2D-C8DD-B03A-412E4EBAC348</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transactions_start_year" id="1BB8A24B-8CE3-FDE2-63A0-07BCDFC21EB6">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>B6098060-AA25-BFD8-58D7-1B42A5086EFE</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transactions_end_year" id="CB3D913C-6A21-1302-80DC-A45D8381EEE2">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>120A91E1-99E0-181D-9A00-61672F108AB2</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="even_split_commitments" id="76B38721-AEE3-44D7-5406-2355E312BEAF">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>EEEEFE5F-AD83-BC7A-DE2C-8880A963ECC3</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="even_split_disbursements" id="4FF8A200-5583-8A5B-6BAE-4B61B88ED60C">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>E6D63021-8795-7736-E937-2478A885C9F7</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>65</dataTypePrecision>
+<dataTypeScale>30</dataTypeScale>
+<ownDataTypeParameters>,65,30</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Attribute_8" id="99253777-FEB0-C97B-D395-33FB13FA7C84">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>A3B2461D-23CA-47EB-C6CF-C9D5E123D0AF</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="geoname_id2" id="96CD204E-902A-027C-04C5-B105DC1FC0BE">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>98FE100C-1F48-81A5-75A3-5EB716244FAC</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B1D4820F-DD40-633A-6DF2-48649F80FBCE" referredColumn="B9056A39-8FE7-34CE-B5D2-3EC44EA6044B"/>
+</associations>
+</Column>
+<Column name="project_project_id" id="E8357F4E-F6FF-0739-519A-1B694F373ADB">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>01C1C9AF-08A8-9BD5-1B31-23DC9D3414CC</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C9053371-10AE-9000-A86B-0DCCC346F8C1" referredColumn="E62C0384-1DB3-58A0-12B0-8751C4FC2BAA"/>
+</associations>
+</Column>
+<Column name="geoname_location_id_location" id="848A2E17-1B1F-58B6-6F60-EEAB0919EA47">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>046E2D9A-7943-8609-41E1-143D21A7675E</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B1D4820F-DD40-633A-6DF2-48649F80FBCE" referredColumn="5AF35758-633D-BA43-22B6-8EACDD1DF826"/>
+</associations>
+</Column>
+<Column name="project_status_id_status" id="78F76FA7-ACE7-37F5-F7E1-000D299A2E77">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>6A126575-8576-0571-1516-9E126AD84705</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C9053371-10AE-9000-A86B-0DCCC346F8C1" referredColumn="CC8E947C-FA02-C11E-07DB-A3AE44E1D764"/>
+</associations>
+</Column>
+<Column name="project_country_code_id" id="FA53AA51-5134-F270-EE6D-5C8FB84A0A47">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>E31A13DD-AE39-4EC7-13A1-7B231A1FF29B</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C9053371-10AE-9000-A86B-0DCCC346F8C1" referredColumn="612D6D1D-1936-A2DA-A87E-EFA2112B3BBC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FC5D8012-935D-0C2C-36CF-68BA7A9990AC" name="level_1a_PK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>A8EAD46C-51EA-5B45-23D3-22710A18C436</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35FAFFFF-22CA-CDA6-115C-54DD55B1DB9C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5AD8E4A2-89C5-BB0D-1407-7094057526B2" name="level_1a_geoname_FK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>70BEBEBA-2B55-1053-2AE2-52D19D581DF4</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="96CD204E-902A-027C-04C5-B105DC1FC0BE"/>
+<colUsage columnID="848A2E17-1B1F-58B6-6F60-EEAB0919EA47"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B8515309-DFB6-7AFD-CBBB-57A09610606C" name="level_1a_project_FK">
+<createdBy>jose</createdBy>
+<createdTime>2021-12-18 19:25:18 UTC</createdTime>
+<generatorID>BABFC938-BE58-0B7F-3CBF-E8AE72227642</generatorID>
+<ownerDesignName>modelo_logico</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E8357F4E-F6FF-0739-519A-1B694F373ADB"/>
+<colUsage columnID="78F76FA7-ACE7-37F5-F7E1-000D299A2E77"/>
+<colUsage columnID="FA53AA51-5134-F270-EE6D-5C8FB84A0A47"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
