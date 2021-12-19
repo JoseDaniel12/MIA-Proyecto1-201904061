@@ -1,5 +1,7 @@
 \! clear
 
+CREATE DATABASE IF NOT EXISTS prueba;
+
 use prueba;
 
 DROP TEMPORARY TABLE IF EXISTS geoname_t;

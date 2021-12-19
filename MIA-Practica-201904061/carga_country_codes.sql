@@ -6,7 +6,7 @@ LOAD DATA INFILE '/var/lib/mysql-files/country_codes.tsv'
 INTO TABLE country_code_t
 CHARACTER SET latin1
 FIELDS TERMINATED BY '\t' 
-ENCLOSED BY '\"'
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (name, iso2, name_name, @name_aiddata_code, name_aiddata_name, name_cow_alpha, @name_cow_numeric,

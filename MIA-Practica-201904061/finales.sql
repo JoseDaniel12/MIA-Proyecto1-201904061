@@ -108,9 +108,10 @@ geoname_t.gazetteer_adm_code,
 geoname_t.gazetteer_adm_name,
 geoname_t.location_class,
 geoname_t.geographic_exactness
-FROM geoname_t INNER JOIN location
-ON (geoname_t.location_type_code = location.location_type_code 
-AND geoname_t.location_type_name = location.location_type_name);
+FROM geoname_t 
+INNER JOIN location
+ON geoname_t.location_type_code = location.location_type_code 
+AND geoname_t.location_type_name = location.location_type_name;
 
 SELECT COUNT(*) AS geoname_final_rows FROM geoname;
 

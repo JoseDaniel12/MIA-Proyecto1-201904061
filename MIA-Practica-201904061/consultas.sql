@@ -7,7 +7,7 @@ USE prueba;
 --   ____________________________ 1 ____________________________
 -- ¿Cunatos proyectos inciaron en 2011?
 
-SELECT 
+SELECT
 COUNT(*) AS proyectos_iniciados_en_2011
 FROM (
     SELECT transactions_start_year
@@ -20,7 +20,7 @@ FROM (
 --   ____________________________ 2 ____________________________
 -- ¿ Cuál es el proyecto de mayor duracioón?
 
-SELECT 
+SELECT
 project_title, 
 DATEDIFF(project.end_actual_isodate, project.start_actual_isodate) AS duracion_en_dias
 FROM project 
@@ -31,7 +31,7 @@ LIMIT 1;
 --   ____________________________ 3 ____________________________
 -- ¿ Cuál es el proyecto de nenor duracioón?
 
-SELECT 
+SELECT
 project_title AS proyecto_de_menor_duracion, 
 DATEDIFF(project.end_actual_isodate, project.start_actual_isodate) AS duracion 
 FROM project 
@@ -43,7 +43,7 @@ LIMIT 1;
 --   ____________________________ 4 ____________________________
 -- Top 5 de paises con mas proyectos asignados
 
-SELECT 
+SELECT
 country_code.name AS top_5_pasises_con_mas_poryectos,
 COUNT(*) AS num_proyectos
 FROM project
@@ -57,8 +57,8 @@ LIMIT 5;
 --   ____________________________ 5 ____________________________
 -- Top 5 de paises con menos proyectos asignados
 
-SELECT 
-country_code.name AS top_5_pasises_con_mas_poryectos,
+SELECT
+country_code.name AS top_5_pasises_con_menos_poryectos,
 COUNT(*) AS num_proyectos
 FROM project
 INNER JOIN country_code

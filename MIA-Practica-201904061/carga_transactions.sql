@@ -4,8 +4,9 @@ use prueba;
 
 LOAD DATA INFILE '/var/lib/mysql-files/transactions.csv' 
 INTO TABLE transaction_t 
+CHARACTER SET latin1
 FIELDS TERMINATED BY ',' 
-ENCLOSED BY '\"'
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (transaction_id, project_id, @transaction_isodate, transaction_year, transaction_value_code, 

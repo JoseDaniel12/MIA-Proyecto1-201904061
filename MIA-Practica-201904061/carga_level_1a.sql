@@ -6,7 +6,7 @@ LOAD DATA INFILE '/var/lib/mysql-files/level_1a.csv'
 INTO TABLE level_1a_t
 CHARACTER SET latin1
 FIELDS TERMINATED BY ','
-ENCLOSED BY '\"'
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (project_id, project_location_id, geoname_id, transactions_start_year, transactions_end_year,
