@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS currenci (
 
 INSERT INTO currenci
 (name_currency)
-SELECT transaction_currency FROM transaction_t GROUP BY transaction_currency;
+SELECT transaction_currenci FROM transaction_t GROUP BY transaction_currenci;
 
 SELECT COUNT(*) AS currenci_rows FROM currenci;
 SELECT * FROM currenci;
@@ -188,17 +188,17 @@ CREATE TABLE IF NOT EXISTS transaction (
     transaction_isodate DATE,
     transaction_year YEAR,
     transaction_value_code CHAR,
-    transaction_currency VARCHAR(255),
+    transaction_currenci VARCHAR(255),
     transaction_value DECIMAL(65, 30),
     PRIMARY KEY (id)
     --PRIMARY KEY (transaction_id),
     --FOREIGN KEY (project_id) REFERENCES project(project_id),
-    --FOREIGN KEY (transaction_currency) REFERENCES currenci(name_currency)
+    --FOREIGN KEY (transaction_currenci) REFERENCES currenci(name_currency)
 );
 
 INSERT INTO transaction
 (transaction_id, project_id, transaction_isodate, transaction_year, transaction_value_code, 
-transaction_currency, transaction_value)
+transaction_currenci, transaction_value)
 SELECT * FROM transaction_t;
 
 SELECT COUNT(*) AS transaction_final_rows FROM transaction;

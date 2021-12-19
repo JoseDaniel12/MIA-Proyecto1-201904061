@@ -23,4 +23,3 @@ SET name_aiddata_code = NULLIF(@name_aiddata_code, 0),
 ;
 
 SELECT COUNT(*) AS country_code_t_rows FROM country_code_t;
-

@@ -36,8 +36,8 @@ CREATE TEMPORARY TABLE IF NOT EXISTS project_t (
     ad_sector_codes varchar(255),
     ad_sector_names varchar(255),
     status VARCHAR(255),
-    transactions_start_year VARCHAR(255),
-    transactions_end_year VARCHAR(255),
+    transactions_start_year YEAR,
+    transactions_end_year YEAR,
     total_commitments  DECIMAL(65, 30),
     total_disbursements DECIMAL(65, 30)
 );
@@ -51,7 +51,7 @@ CREATE TEMPORARY TABLE IF NOT EXISTS level_1a_t (
     geoname_id INT,
     transactions_start_year YEAR,
     transactions_end_year YEAR,
-    even_split_commitments VARCHAR(255),
+    even_split_commitments DECIMAL(65, 30),
     even_split_disbursements DECIMAL(65, 30)
 );
 
@@ -66,7 +66,7 @@ CREATE TEMPORARY TABLE IF NOT EXISTS transaction_t (
     transaction_isodate DATE,
     transaction_year YEAR,
     transaction_value_code CHAR,
-    transaction_currency VARCHAR(255),
+    transaction_currenci VARCHAR(255),
     transaction_value DECIMAL(65, 30)
 );
 

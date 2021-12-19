@@ -44,10 +44,12 @@ LIMIT 1;
 -- Top 5 de paises con mas proyectos asignados
 
 SELECT 
-recipients AS top_5_pasises_con_mas_poryectos,
+country_code.name AS top_5_pasises_con_mas_poryectos,
 COUNT(*) AS num_proyectos
 FROM project
-GROUP BY recipients 
+INNER JOIN country_code
+ON project.id_country_code = country_code.id_country_code
+GROUP BY country_code.name 
 ORDER BY num_proyectos DESC
 LIMIT 5;
 
@@ -55,14 +57,15 @@ LIMIT 5;
 --   ____________________________ 5 ____________________________
 -- Top 5 de paises con menos proyectos asignados
 
-SELECT
-project.recipients AS top_5_pasises_con_menos_poryectos,
+SELECT 
+country_code.name AS top_5_pasises_con_mas_poryectos,
 COUNT(*) AS num_proyectos
 FROM project
-GROUP BY top_5_pasises_con_menos_poryectos 
+INNER JOIN country_code
+ON project.id_country_code = country_code.id_country_code
+GROUP BY country_code.name 
 ORDER BY num_proyectos
 LIMIT 5;
-
 
 --   ____________________________ 6 ____________________________
 -- ¿Cuál es el proyecto con mas costo?
@@ -114,7 +117,7 @@ SELECT
 project.project_title AS organizacion_solicitada,
 ROUND(transaction.transaction_value, 2) AS cotos_mas_elevados
 FROM project INNER JOIN transaction
-ON project.project_id = transaction.project_id
+ON project.id_project = transaction.id_project
 WHERE project.project_title LIKE '%RI-East Africa Public Health Laboratory Networking Project%'
 ORDER BY cotos_mas_elevados DESC
 LIMIT 3;
