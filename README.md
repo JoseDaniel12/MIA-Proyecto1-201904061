@@ -26,7 +26,7 @@ Top 5 paises con menos proyectos asignados
 ![imagen5](./MIA-Practica-201904061/Resultados_Consultas/consulta5.jpg)
 
 ## CONSULTA 6:
-¿Cuál fue el proyecto mas costoso?
+¿Cuál fue el proyecto mas costoso?, se nos indico que "total_commitments" era el costo de un proyecto
 
 ![imagen6](./MIA-Practica-201904061/Resultados_Consultas/consulta6.jpg)
 
