@@ -28,7 +28,7 @@ jngg
 ## CONSULTA 6:
 ¿Cuál fue el proyecto mas costoso?
 
-![imagen6](./Resultados_Consultas/consulta6.jpg)
+![imagen6](./MIA-Practica-201904061/Resultados_Consultas/consulta6.jpg)
 
 ## CONSULTA 7:
 ¿Cuál fue el proyecto menos costoso?
