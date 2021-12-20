@@ -3,54 +3,54 @@
 ## CONSULTA 1:
 ¿Cuántos proyectos iniciaron en el 2011?
 
-![imagen1](./MIA-Practica-201904061/Resultados_Consultas/consulta1.jng)
+![imagen1](./MIA-Practica-201904061/Resultados_Consultas/consulta1.jpg)
 
 ## CONSULTA 2:
 ¿Cuál es el proyecto de mayor duración?
 
-![imagen2](./MIA-Practica-201904061/Resultados_Consultas/consulta2.jng)
+![imagen2](./MIA-Practica-201904061/Resultados_Consultas/consulta2.jpg)
 
 ## CONSULTA 3:
 ¿Cuál es el proyecto de menor duración?
 
-![imagen3](./MIA-Practica-201904061/Resultados_Consultas/consulta3.jng)
+![imagen3](./MIA-Practica-201904061/Resultados_Consultas/consulta3.jpg)
 
 ## CONSULTA 4:
 Top 5 paises con mas proyectos asignados
 
-![imagen4](./MIA-Practica-201904061/Resultados_Consultas/consulta4.jngg)
+![imagen4](./MIA-Practica-201904061/Resultados_Consultas/consulta4.jpg)
 
 ## CONSULTA 5:
 Top 5 paises con menos proyectos asignados
 
-![imagen5](./MIA-Practica-201904061/Resultados_Consultas/consulta5.jng)
-
+![imagen5](./MIA-Practica-201904061/Resultados_Consultas/consulta5.jpg)
+jngg
 ## CONSULTA 6:
 ¿Cuál fue el proyecto mas costoso?
 
-![imagen6](./Resultados_Consultas/consulta6.jng)
+![imagen6](./Resultados_Consultas/consulta6.jpg)
 
 ## CONSULTA 7:
 ¿Cuál fue el proyecto menos costoso?
 
-![imagen7](./MIA-Practica-201904061/Resultados_Consultas/consulta7.jng
+![imagen7](./MIA-Practica-201904061/Resultados_Consultas/consulta7.jpg)
 
 ## CONSULTA 8:
 Top 5 de proyectos más costos
 
-![imagen8](./MIA-Practica-201904061/Resultados_Consultas/consulta8.jng)
+![imagen8](./MIA-Practica-201904061/Resultados_Consultas/consulta8.jpg)
 
 ## CONSULTA 9:
 Costo total de todos los proyectos
 
-![imagen9](./MIA-Practica-201904061/Resultados_Consultas/consulta9.jng)
+![imagen9](./MIA-Practica-201904061/Resultados_Consultas/consulta9.jpg)
 
 ## CONSULTA 10:
 Top 3 de las Transacciones mas costas de RI-East Africa Public Health Laboratory Networking Project
 
-![imagen10](./MIA-Practica-201904061/Resultados_Consultas/consulta10.jng)
+![imagen10](./MIA-Practica-201904061/Resultados_Consultas/consulta10.jpg)
 
 ## MODELO RELACIONAL:
 Hecho con oracle data modeler
 
-![imagen11](./MIA-Practica-201904061/modelo_relacional.jng)
+![imagen11](./MIA-Practica-201904061/modelo_relacional.jpg)
