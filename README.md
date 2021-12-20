@@ -24,7 +24,7 @@ Top 5 paises con mas proyectos asignados
 Top 5 paises con menos proyectos asignados
 
 ![imagen5](./MIA-Practica-201904061/Resultados_Consultas/consulta5.jpg)
-jngg
+
 ## CONSULTA 6:
 ¿Cuál fue el proyecto mas costoso?
 
